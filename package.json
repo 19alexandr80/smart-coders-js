@@ -1,21 +1,21 @@
 {
-  "name": "parcel-project-template",
+  "name": "smart-coders-js",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://19alexandr80.github.io/smart-coders-js",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /parcel-project-template/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/19alexandr80/smart-coders-js.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "smart-coders-js",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/19alexandr80/smart-coders-js/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
