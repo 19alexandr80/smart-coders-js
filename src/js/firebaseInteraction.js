@@ -57,7 +57,6 @@ export class DataFirebase {
       const user = au.user;
       localStorage.setItem('tokenResponse', token);
       localStorage.setItem('email', user.email);
-      console.log('user', user.email);
       console.log('user photoUrl', user.photoURL);
     } catch (error) {
       console.error('get-error', error.message);
