@@ -1,0 +1,67 @@
+/* ACCENT COLORS */
+$primary-accent-color: #4f2ee8; //violet
+$secondary-accent-color: #eac645; //yellow
+// -----------------------------------------------------------------------------------
+
+/* TEXT COLORS */
+$secondary-txt-clr: #b4afaf; //books author і т.і.
+
+/* Text colors Light Theme */
+$primary-txt-clr-light: #111111;
+$additional-txt-clr-light: #ffffff; //Support UA
+
+$sidebar-txt-clr-light: rgba(17, 17, 17, 0.6);
+
+$shop-list-info-txt-clr-light: rgba(0, 0, 0, 0.6); //Shopping List
+
+$book-modal-info-txt-clr-light: rgba(17, 17, 17, 0.5); //Pop up
+
+$registration-modal-btn-txt-clr-light: #f3f3f3; //Start
+$registration-modal-sign-in-txt-clr-light: rgba(17, 17, 17, 0.5); //Start
+
+/* Text colors Dark Theme */
+$primary-txt-clr-dark: #ffffff;
+
+$sidebar-txt-clr-dark: rgba(255, 255, 255, 0.6);
+
+$shop-list-info-txt-clr-dark: rgba(255, 255, 255, 0.6); //Shopping List
+
+$book-modal-info-txt-clr-dark: rgba(255, 255, 255, 0.5); //Pop up
+
+$registration-modal-btn-txt-clr-dark: #202024; //Start
+$registration-modal-sign-in-txt-clr-dark: rgba(246, 246, 246, 0.5); //Start
+$registration-modal-input-txt-clr-dark: #f6f6f6; //Start
+// -----------------------------------------------------------------------------------
+
+/* BG COLORS */
+$backdrop-bgc: rgba(17, 17, 17, 0.4);
+$gradient-bgc: radial-gradient(183.6% 183.01% at 59.76% -23.42%, #4f2ee8 18.03%, #ffffff 100%);
+
+/* BG colors Light Theme */
+$primary-bgc-light: #f6f6f6;
+$secondary-bgc-light: #ffffff;
+
+$scroll-bgc-light: #e0e0e0; //Home
+
+/* BG colors Dark Theme */
+$primary-bgc-dark: #202024;
+$secondary-bgc-dark: #111111;
+
+$scroll-bgc-dark: rgba(17, 17, 17, 0.6); //Home
+// -----------------------------------------------------------------------------------
+
+/* BORDER COLORS */
+$shop-list-brdr-clr: rgba(79, 46, 232, 0.4); //Shopping List
+
+/* Border colors Light Theme */
+$primary-brdr-clr-light: #111111;
+
+/* Border colors Dark Theme */
+$primary-brdr-clr-dark: #ffffff;
+
+$registration-modal-brdr-clr-dark: #f6f6f6; //Start
+
+// -----------------------------------------------------------------------------------
+
+/* SHADOWS */
+$icon-hover-shadow: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
