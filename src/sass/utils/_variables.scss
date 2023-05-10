@@ -35,7 +35,11 @@ $registration-modal-input-txt-clr-dark: #f6f6f6; //Start
 
 /* BG COLORS */
 $backdrop-bgc: rgba(17, 17, 17, 0.4);
-$gradient-bgc: radial-gradient(183.6% 183.01% at 59.76% -23.42%, #4f2ee8 18.03%, #ffffff 100%);
+$gradient-bgc: radial-gradient(
+  183.6% 183.01% at 59.76% -23.42%,
+  #4f2ee8 18.03%,
+  #ffffff 100%
+);
 
 /* BG colors Light Theme */
 $primary-bgc-light: #f6f6f6;
@@ -52,6 +56,7 @@ $scroll-bgc-dark: rgba(17, 17, 17, 0.6); //Home
 
 /* BORDER COLORS */
 $shop-list-brdr-clr: rgba(79, 46, 232, 0.4); //Shopping List
+$scroll-up-brdr-clr: rgba(79, 46, 232, 0.3); //Scroll up
 
 /* Border colors Light Theme */
 $primary-brdr-clr-light: #111111;

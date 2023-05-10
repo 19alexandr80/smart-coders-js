@@ -1,0 +1,40 @@
+/* Buttons */
+
+%btn {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: transparent;
+}
+
+%btn-base-action {
+  width: 499px;
+  height: 64px;
+
+  border-radius: 32px;
+
+  border: 2px solid $primary-accent-color;
+
+  font-family: 'Montserrat'; //TODO: change
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(24 / 18);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+
+  color: $primary-txt-clr-light;
+
+  @include transition(background-color, border-color, color);
+
+  &:hover,
+  &:focus {
+    border: 2px solid $primary-accent-color;
+    background-color: $primary-accent-color;
+    color: $additional-txt-clr-light;
+  }
+
+  &.btn-dark {
+    color: $primary-txt-clr-dark;
+  }
+}
