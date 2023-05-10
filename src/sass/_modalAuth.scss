@@ -1,0 +1,36 @@
+.conteiner {
+  display: flex;
+  align-items: center;
+}
+
+.modal-form-auth {
+  display: flex;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  transform: translateX(100px);
+  transform: translateY(-100px);
+  width: 50vw;
+  flex-direction: column;
+  gap: 20px;
+  background-color: dimgrey;
+  padding: 40px;
+  & input {
+    font-size: 24px;
+  }
+  & button {
+    font-size: 24px;
+    color: brown;
+    background-color: aqua;
+  }
+}
+
+.modal-bakc {
+  position: absolute;
+  background-color: aqua;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+}
