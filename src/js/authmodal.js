@@ -81,7 +81,7 @@ export function modalAuth() {
   </form>
   </div>`;
   modalBox.innerHTML = formHtml;
-  const modalForm = modalBox.querySelector('.modal-form');
+  const modalForm = modalBox.querySelector('.modal-form-auth');
   modalForm.addEventListener('submit', onDataFormAuth);
 }
 
