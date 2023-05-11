@@ -14,4 +14,19 @@
   color: $additional-txt-clr-light;
 
   padding-left: 40px;
+  padding-top: 24px;
+  margin-bottom: 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+.support-icon {
+  width: 20px;
+  height: 32px;
+  margin-left: 12px;
+}
+
+.support-list {
+  margin-bottom: 40px;
 }
