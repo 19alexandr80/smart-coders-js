@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', loadTopBooksOnClick);
 function makeMarkupBook(books) {
   const markup = books
     .map(({ _id, book_image, author, title }) => {
-      return `<li class="book-item" id="${_id}">
+      return `<li class="book-item" data-id="${_id}">
       <a class="bookshelf-bool-link" href="#">
     <div class="book-img-container">
      <img class="book-img" loading="lazy" src="${book_image}" alt="${title}"  width="180px" height="256px"/>
