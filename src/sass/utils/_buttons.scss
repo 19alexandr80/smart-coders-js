@@ -1,0 +1,177 @@
+// ! REGISTRATION button
+.btn-registration-modal-submit {
+  @extend %btn;
+  @extend %btn-base-action;
+
+  border: 2px solid $primary-brdr-clr-light;
+  background-color: $primary-brdr-clr-light;
+
+  color: $registration-modal-btn-txt-clr-light;
+
+  &:hover,
+  &:focus {
+    border: 2px solid $primary-accent-color;
+    background-color: $primary-accent-color;
+  }
+
+  &.dark {
+    border: 2px solid $registration-modal-brdr-clr-dark;
+    background-color: $registration-modal-brdr-clr-dark;
+
+    color: $registration-modal-btn-txt-clr-dark;
+
+    &:hover,
+    &:focus {
+      border: 2px solid $primary-accent-color;
+      background-color: $primary-accent-color;
+      color: $registration-modal-btn-txt-clr-light;
+    }
+  }
+
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 100%;
+    max-width: 294px;
+    height: 50px;
+
+    font-size: 16px;
+    line-height: calc(18 / 16);
+  }
+}
+
+//! SHOP LIST MODAL buttons
+.btn-shop-list-modal-add {
+  @extend %btn;
+  @extend %btn-base-action;
+
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 100%;
+    max-width: 211px;
+
+    height: 46px;
+    font-size: 14px;
+    line-height: calc(18 / 14);
+  }
+}
+
+.btn-shop-list-modal-remove {
+  @extend %btn;
+  @extend %btn-base-action;
+
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 100%;
+    max-width: 279px;
+    height: 46px;
+
+    font-size: 14px;
+    line-height: calc(18 / 14);
+  }
+}
+
+//! SEE MORE button
+.btn-see-more {
+  @extend %btn;
+  @extend %btn-base-action;
+
+  width: 124px;
+  height: 46px;
+  border-radius: 23px;
+
+  font-size: 14px;
+  line-height: calc(18 / 14);
+}
+
+//! LOG OUT button
+.btn-log-out {
+  @extend %btn;
+  @extend %btn-base-action;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+
+  width: 184px;
+  height: 48px;
+  border-radius: 17px;
+  border-color: $primary-brdr-clr-light;
+  background-color: $secondary-bgc-light;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  text-transform: none;
+  letter-spacing: -0.04em;
+
+  &:hover,
+  &:focus {
+    border-color: $primary-brdr-clr-light;
+  }
+
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 100%;
+    max-width: 118px;
+    height: 48px;
+
+    padding: 0 22px;
+
+    font-size: 14px;
+    line-height: calc(18 / 14);
+  }
+}
+
+//! SIGN UP button
+.btn-sign-up {
+  @extend %btn;
+  @extend %btn-base-action;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+
+  width: 184px;
+  height: 48px;
+  border-radius: 17px;
+  border-color: $primary-brdr-clr-light;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  text-transform: none;
+  letter-spacing: -0.04em;
+
+  &:hover,
+  &:focus {
+    border-color: $primary-brdr-clr-light;
+  }
+}
+
+.btn-icn-wrap {
+  display: flex;
+}
+
+//! SCROLL UP button
+.btn-scroll-up {
+  @extend %btn;
+
+  width: 64px;
+  height: 64px;
+
+  border: 5px solid $scroll-up-brdr-clr;
+  border-radius: 50%;
+
+  background-color: $primary-accent-color;
+  background-clip: padding-box;
+
+  @include transition(background-color, border-color);
+
+  &:hover,
+  &:focus {
+    border-color: $primary-accent-color;
+    background-color: $scroll-up-brdr-clr;
+  }
+}
