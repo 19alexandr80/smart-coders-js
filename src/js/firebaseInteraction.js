@@ -63,3 +63,4 @@ export class DataFirebase {
     }
   }
 }
+function renderSpinner() {}
