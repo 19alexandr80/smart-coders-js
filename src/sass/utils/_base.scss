@@ -1,0 +1,85 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $primary-txt-clr-light;
+  background-color: $primary-bgc-light;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Глобальне скидання стилів по тегам*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// ul, ol
+.link {
+  text-decoration: none;
+  color: currentColor;
+}
+
+// li
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: inline-block;
+}
+
+button {
+  border: 0;
+}
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 375px) {
+    max-width: 375px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
