@@ -1,6 +1,8 @@
 /* General */
-@import './common';
 @import './utils/variables';
+@import './fonts';
+@import './utils/base';
+@import './common';
 @import './utils/mixins';
 @import './utils/placeholders';
 @import './utils/buttons';
@@ -9,6 +11,5 @@
 @import './example';
 @import './modalAuth';
 @import './spinner';
-@import './fonts';
 @import './bookshelf';
 @import './categories';
