@@ -1,7 +1,15 @@
 import './js/axiosApi';
-
 import './js/authmodal';
+import './js/main';
 
 // const throttle = require('lodash.throttle');
+// ====================
+// import Notiflix from 'notiflix';
 
-import './js/main';
+// // one by one
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Report } from 'notiflix/build/notiflix-report-aio';
+// import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
+// import { Loading } from 'notiflix/build/notiflix-loading-aio';
+// import { Block } from 'notiflix/build/notiflix-block-aio';
+// ==========================
