@@ -1,0 +1,41 @@
+.container--home-page {
+  display: flex;
+}
+
+.sidebar {
+  padding-top: 40px;
+  margin-right: 40px;
+}
+
+.support {
+  background: $gradient-bgc;
+  box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
+  border-radius: 16px;
+  width: 356px;
+  max-height: 490px;
+}
+
+.support-title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.04em;
+  color: $additional-txt-clr-light;
+
+  padding-left: 40px;
+  padding-top: 24px;
+  margin-bottom: 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+.support-icon {
+  width: 20px;
+  height: 32px;
+  margin-left: 12px;
+}
+
+.support-list {
+  margin-bottom: 40px;
+}
