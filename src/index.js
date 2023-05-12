@@ -2,6 +2,7 @@ import './js/axiosApi';
 import './js/authmodal';
 import './js/main';
 import './js/categories';
+import './js/scroll-up';
 
 // const throttle = require('lodash.throttle');
 // ====================
