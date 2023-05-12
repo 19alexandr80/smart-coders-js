@@ -2,7 +2,8 @@ import './js/axiosApi';
 import './js/authmodal';
 import './js/main';
 import './js/categories';
-
+import './js/scroll-up';
+// import './js/modal-window';
 // const throttle = require('lodash.throttle');
 // ====================
 // import Notiflix from 'notiflix';

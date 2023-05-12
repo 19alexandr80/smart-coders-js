@@ -14,7 +14,7 @@
     background-color: $primary-accent-color;
   }
 
-  &.dark {
+  &.dark-theme {
     border: 2px solid $registration-modal-brdr-clr-dark;
     background-color: $registration-modal-brdr-clr-dark;
 
@@ -67,6 +67,11 @@
 
     font-size: 14px;
     line-height: calc(18 / 14);
+  }
+
+  // 310px
+  @media screen and (max-width: 340px) {
+    font-size: 4.11vw;
   }
 }
 
@@ -152,11 +157,13 @@
 
 .btn-icn-wrap {
   display: flex;
+  justify-content: center;
 }
 
 //! SCROLL UP button
 .btn-scroll-up {
   @extend %btn;
+  @extend %btn-icon;
 
   width: 64px;
   height: 64px;
@@ -166,12 +173,156 @@
 
   background-color: $primary-accent-color;
   background-clip: padding-box;
+  color: $primary-txt-clr-dark;
 
-  @include transition(background-color, border-color);
+  @include transition(background-color, border-color, color);
 
   &:hover,
   &:focus {
     border-color: $primary-accent-color;
     background-color: $scroll-up-brdr-clr;
+    color: $primary-accent-color;
+  }
+}
+
+//! TRASH BOX button
+.btn-trash-box {
+  @extend %btn;
+  @extend %btn-icon;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background-color: $primary-accent-color;
+  color: $primary-accent-color;
+
+  @include transition(background-color, color);
+
+  &:hover,
+  &:focus {
+    background-color: $secondary-accent-color;
+    color: $secondary-accent-color;
+  }
+
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+//! SLIDER button
+.btn-slider {
+  @extend %btn;
+  @extend %btn-icon;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background-color: $secondary-bgc-light;
+  color: $primary-accent-color;
+
+  @include transition(background-color);
+
+  &:hover,
+  &:focus {
+    background-color: $secondary-accent-color;
+  }
+
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+//! PAGINATION button
+.btn-pag {
+  @extend %btn;
+  @extend %btn-icon;
+
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(22 / 18);
+
+  @include transition(border-color, color);
+
+  // tablet, desktop
+  @media screen and (min-width: 768px) {
+    width: 44px;
+    height: 44px;
+  }
+
+  // 310px
+  @media screen and (max-width: 350px) {
+    width: 30px;
+    height: 30px;
+  }
+
+  &--left {
+    border: 1px solid $primary-brdr-clr-light;
+    background-color: $secondary-bgc-dark;
+    color: $secondary-txt-clr;
+
+    &:hover,
+    &:focus {
+      border-color: $primary-accent-color;
+      color: $primary-accent-color;
+    }
+  }
+
+  &--current {
+    border: 1px solid $primary-brdr-clr-light;
+    background-color: $secondary-bgc-dark;
+    color: $additional-txt-clr-light;
+
+    &:hover,
+    &:focus {
+      border-color: $primary-accent-color;
+      color: $primary-accent-color;
+    }
+  }
+
+  &--next {
+    border: 1px solid $primary-brdr-clr-light;
+    color: $primary-txt-clr-light;
+
+    &:hover,
+    &:focus {
+      border-color: $primary-accent-color;
+      color: $primary-accent-color;
+    }
+  }
+
+  // TODO: дублює --next
+  &--more {
+    border: 1px solid $primary-brdr-clr-light;
+    color: $primary-txt-clr-light;
+
+    &:hover,
+    &:focus {
+      border-color: $primary-accent-color;
+      color: $primary-accent-color;
+    }
+  }
+
+  &--right {
+    border: 1px solid $primary-brdr-clr-light;
+    background-color: $secondary-accent-color;
+    color: $primary-txt-clr-light;
+
+    &:hover,
+    &:focus {
+      border-color: $primary-accent-color;
+      color: $primary-accent-color;
+    }
   }
 }
