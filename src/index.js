@@ -3,6 +3,7 @@ import './js/authmodal';
 import './js/main';
 import './js/categories';
 import './js/scroll-up';
+import './js/close-open-modal-window';
 
 // const throttle = require('lodash.throttle');
 // ====================
