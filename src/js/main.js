@@ -1,5 +1,5 @@
 import { axiosApiBooks } from './axiosApi';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 var debounce = require('lodash.debounce');
 
 const refs = {
@@ -67,8 +67,6 @@ async function makeMarkupTopBooksGallery(data) {
       'Best Sellers Books'
     )}</h2>
     ${markup}`;
-
-  //hideBooks();
 }
 
 // загружает топовые книги
@@ -77,14 +75,13 @@ async function loadTopBooksOnClick(event) {
     //refs.spinnerEl.classList.remove('spinner-hidden');
     const data = await axiosApiBooks.fetchTopBooks();
     if (data.length === 0 || data === undefined) {
-      Notiflix.Notify.failure(
+      Notify.failure(
         "Sorry, we didn't find anything according to your request."
       );
       return;
     }
     //refs.spinnerEl.classList.add('spinner-hidden');
     await makeMarkupTopBooksGallery(data);
-    //findAndMarkCartBook(shoppingList);
   } catch (error) {
     console.log(error.message);
   }
@@ -99,14 +96,14 @@ async function onCattegoryButtonElClick(event) {
 
   // получаем название выбранной категории
   const categoryName = event.target.name;
-
+  //refs.spinnerEl.classList.remove('spinner-hidden');
   try {
     // запрашиваем данные книг для выбранной категории
     const booksData = await axiosApiBooks.fetchSelectedCategory(categoryName);
 
     // если данных нет, выводим сообщение об ошибке
     if (!booksData || booksData.length === 0) {
-      Notiflix.Notify.failure(
+      Notify.failure(
         "Sorry, we didn't find anything according to your request."
       );
       return;
@@ -120,6 +117,7 @@ async function onCattegoryButtonElClick(event) {
     const bestsellersTitle = document.querySelector('.bestsellers-title');
     bestsellersTitle.innerHTML = formattedTitle;
     makeMarkupCategoryShelf(booksData, categoryName);
+    //refs.spinnerEl.classList.add('spinner-hidden');
   } catch (error) {
     console.log(error.message);
   }
@@ -146,13 +144,13 @@ async function loadCategoryBooksOnClick(event) {
   ) {
     return;
   }
-
+  //refs.spinnerEl.classList.remove('spinner-hidden');
   try {
     const nameCategory = target.textContent;
     const booksData = await axiosApiBooks.fetchSelectedCategory(nameCategory);
 
     if (!booksData || booksData.length === 0) {
-      Notiflix.Notify.failure(
+      Notify.failure(
         "Sorry, we didn't find anything according to your request."
       );
     }
@@ -160,6 +158,7 @@ async function loadCategoryBooksOnClick(event) {
     const bestsellersTitle = document.querySelector('.bestsellers-title');
     bestsellersTitle.innerHTML = nameCategory;
     makeMarkupCategoryShelf(booksData, nameCategory);
+    //refs.spinnerEl.classList.add('spinner-hidden');
   } catch (error) {
     console.log(error.message);
   }
@@ -192,3 +191,5 @@ function toUpperCaseCategoryName(categoryName) {
   );
   currentSelectedCategory.classList.add('upper-case');
 }
+
+export { refs };
