@@ -93,6 +93,7 @@ export class DataFirebase {
       const user = au.user;
       localStorage.setItem('tokenResponse', token);
       localStorage.setItem('email', user.email);
+      localStorage.setItem('userAvatar', user.photoURL);
       const basketFire = await this.getRequest(user.email);
       if (basketFire) {
         const bookJson = JSON.stringify(basketFire);

@@ -1,0 +1,75 @@
+.conteiner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: $secondary-bgc-light;
+}
+.button-header-home {
+  padding: 8px 16px;
+  width: 72px;
+  height: 34px;
+  background: #eac645;
+  border-radius: 36px;
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #111111;
+  cursor: pointer;
+}
+.button-header-shoping {
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #111111;
+  cursor: pointer;
+  margin-left: 24px;
+  display: flex;
+  align-items: center;
+}
+.logo-group {
+  display: flex;
+  align-items: center;
+}
+.header-button-nav {
+  margin-left: 40px;
+  display: flex;
+}
+.user-img-auth {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+}
+.button-user-in {
+  font-size: 20px;
+}
+.contakts-list-icon {
+  align-self: baseline;
+}
+.user-auth-zone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: $primary-accent-color;
+  padding: 4px;
+  border-radius: 17px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.nik-name {
+  font-family: 'DM Sans';
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 29px;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+.svg-user-auth {
+  fill: #ffffff;
+}

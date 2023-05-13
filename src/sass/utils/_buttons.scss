@@ -247,6 +247,41 @@
   }
 }
 
+//! CLOSE button
+.btn-close {
+  @extend %btn;
+  @extend %btn-icon;
+
+  width: 28px;
+  height: 28px;
+
+  color: $primary-txt-clr-light;
+
+  @include transition(color);
+
+  &:hover,
+  &:focus {
+    color: $primary-accent-color;
+  }
+
+  &.dark-theme {
+    color: $primary-txt-clr-dark;
+
+    &:hover,
+    &:focus {
+      color: $secondary-accent-color;
+    }
+  }
+}
+
+.btn-close-icn {
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
 //! SLIDER button
 .btn-slider {
   @extend %btn;

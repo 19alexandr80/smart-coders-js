@@ -1,13 +1,12 @@
 import { axiosApiBooks } from './axiosApi';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// var debounce = require('lodash.debounce');
+import { spinner } from './spinner-loader';
 
 const refs = {
   bestsellersSectionEl: document.querySelector('.bookshelf'),
   categoriesListEl: document.querySelector('.categories-list'),
   allCategoriesTitleEl: document.querySelector('.cat-list'),
   bestsellersButton: document.querySelector('.bestsellers-button'),
-  //spinnerEl: document.querySelector('.spinner-more'),
 };
 
 // Загружает топовые книги и отображает их на странице (по умолчанию при зангрузке страницы).
@@ -72,16 +71,17 @@ async function makeMarkupTopBooksGallery(data) {
 // загружает топовые книги
 async function loadTopBooksOnClick(event) {
   try {
-    //refs.spinnerEl.classList.remove('spinner-hidden');
+    spinner.show();
     const data = await axiosApiBooks.fetchTopBooks();
-    if (data.length === 0 || data === undefined) {
+    if (!data || data.length === 0) {
       Notify.failure(
         "Sorry, we didn't find anything according to your request."
       );
       return;
     }
-    //refs.spinnerEl.classList.add('spinner-hidden');
+
     await makeMarkupTopBooksGallery(data);
+    spinner.hide();
   } catch (error) {
     console.log(error.message);
   }
@@ -96,7 +96,8 @@ async function onCattegoryButtonElClick(event) {
 
   // получаем название выбранной категории
   const categoryName = event.target.name;
-  //refs.spinnerEl.classList.remove('spinner-hidden');
+  spinner.show();
+
   try {
     // запрашиваем данные книг для выбранной категории
     const booksData = await axiosApiBooks.fetchSelectedCategory(categoryName);
@@ -117,7 +118,7 @@ async function onCattegoryButtonElClick(event) {
     const bestsellersTitle = document.querySelector('.bestsellers-title');
     bestsellersTitle.innerHTML = formattedTitle;
     makeMarkupCategoryShelf(booksData, categoryName);
-    //refs.spinnerEl.classList.add('spinner-hidden');
+    spinner.hide();
   } catch (error) {
     console.log(error.message);
   }
@@ -137,28 +138,29 @@ function changeColorStyleInTitle(category) {
 
 //  функция обрабатывает клик по элементу списка категорий и вызывает запрос к API для получения книг по выбранной категории
 async function loadCategoryBooksOnClick(event) {
-  const target = event.target;
-  if (
-    target.nodeName !== 'LI' ||
-    target.textContent.trim() === 'All categories'
-  ) {
+  const { nodeName, textContent } = event.target;
+
+  // Если nodeName не равен 'LI' ИЛИ textContent не равен 'All categories', то выходим из функции
+  if (nodeName !== 'LI' || textContent.trim() === 'All categories') {
     return;
   }
-  //refs.spinnerEl.classList.remove('spinner-hidden');
-  try {
-    const nameCategory = target.textContent;
-    const booksData = await axiosApiBooks.fetchSelectedCategory(nameCategory);
+  spinner.show();
 
+  try {
+    const booksData = await axiosApiBooks.fetchSelectedCategory(textContent);
+
+    // Если нет данных или массив пустой, выводим уведомление об ошибке и выходим из функции
     if (!booksData || booksData.length === 0) {
       Notify.failure(
         "Sorry, we didn't find anything according to your request."
       );
+      return;
     }
 
     const bestsellersTitle = document.querySelector('.bestsellers-title');
-    bestsellersTitle.innerHTML = nameCategory;
-    makeMarkupCategoryShelf(booksData, nameCategory);
-    //refs.spinnerEl.classList.add('spinner-hidden');
+    bestsellersTitle.innerHTML = textContent;
+    makeMarkupCategoryShelf(booksData, textContent);
+    spinner.hide();
   } catch (error) {
     console.log(error.message);
   }
@@ -190,6 +192,40 @@ function toUpperCaseCategoryName(categoryName) {
     `li[name="${categoryName}"]`
   );
   currentSelectedCategory.classList.add('upper-case');
+}
+
+//код выполняет функцию скрытия книг на странице в зависимости от размеров окна браузера
+let timeoutId;
+window.addEventListener('resize', () => {
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(hideBooksWindow, 300);
+});
+
+function hideBooksWindow() {
+  const bookListEls = document.querySelectorAll('.bestsellers-book-list');
+
+  const categories = {
+    mobile: { index: 0, count: 1 },
+    tablet: { index: 0, count: 3 },
+    desktop: { index: 0, count: Infinity },
+  };
+
+  let currentCategory;
+  if (window.innerWidth < 768) {
+    currentCategory = categories.mobile;
+  } else if (window.innerWidth < 1440) {
+    currentCategory = categories.tablet;
+  } else {
+    currentCategory = categories.desktop;
+  }
+
+  bookListEls.forEach(listEl => {
+    for (let i = 0; i < listEl.children.length; i++) {
+      listEl.children[i].hidden =
+        i < currentCategory.index ||
+        i >= currentCategory.index + currentCategory.count;
+    }
+  });
 }
 
 export { refs };

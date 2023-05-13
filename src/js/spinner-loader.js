@@ -1,4 +1,4 @@
-export class Spinner {
+class Spinner {
   spinnerEl = document.querySelector('.spinner-js');
 
   show() {
@@ -13,3 +13,7 @@ export class Spinner {
     return this.spinnerEl;
   }
 }
+
+const spinner = new Spinner();
+
+export { spinner };
