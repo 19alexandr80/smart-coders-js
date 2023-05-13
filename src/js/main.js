@@ -1,6 +1,6 @@
 import { axiosApiBooks } from './axiosApi';
 import Notiflix from 'notiflix';
-var debounce = require('lodash.debounce');
+// var debounce = require('lodash.debounce');
 
 const refs = {
   bestsellersSectionEl: document.querySelector('.bookshelf'),
