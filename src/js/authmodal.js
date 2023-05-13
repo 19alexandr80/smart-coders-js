@@ -15,7 +15,7 @@ buttonSangIn.addEventListener('click', modalSignIn);
 buttonGoogle.addEventListener('click', onAuthGoogle);
 // ========================================================
 async function onAuthGoogle() {
-  dataFirebase.authGoogle();
+  await dataFirebase.authGoogle();
 }
 // =========================================================
 const auth = dataFirebase.auth;
@@ -52,6 +52,11 @@ async function onDataFormIn(e) {
     localStorage.setItem('tokenResponse', fire._tokenResponse.idToken);
     localStorage.setItem('email', email);
     modalBox.innerHTML = '';
+    const basketFire = await dataFirebase.getRequest(email);
+    if (basketFire) {
+      const bookJson = JSON.stringify(basketFire);
+      localStorage.setItem('shopingList', bookJson);
+    }
   } catch (error) {
     console.error('fire.data-error', error);
     alert(error.message);

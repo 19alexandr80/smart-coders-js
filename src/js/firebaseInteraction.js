@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { axiosApiBooks } from './axiosApi';
 
 const provider = new GoogleAuthProvider();
 const firebaseConfig = {
@@ -25,31 +26,66 @@ export class DataFirebase {
     try {
       // const nikEmail = email.substring(0, email.indexOf("."));
       const response = await axios.post(
-        `${this.app}box/${email}.json`,
+        `${this.app}booksShop/${email}.json`,
+
         request
       );
 
       return response;
     } catch (error) {
-      console.error('post-error', error);
-      // alert(error.message);
+      console.error('post-error', error.message);
+    }
+  }
+  async patchRequest(request, email) {
+    try {
+      // const nikEmail = email.substring(0, email.indexOf("."));
+      const response = await axios.patch(
+        `${this.app}booksShop/${email}.json`,
+        request
+      );
+
+      return response;
+    } catch (error) {
+      console.error('post-error', error.message);
+    }
+  }
+  async putRequest(request, email) {
+    try {
+      // const nikEmail = email.substring(0, email.indexOf("."));
+      const response = await axios.put(
+        `${this.app}booksShop/${email}.json`,
+        request
+      );
+
+      return response;
+    } catch (error) {
+      console.error('post-error', error.message);
     }
   }
   async getRequest(email) {
     try {
-      // const nikEmail = email.substring(0, email.indexOf("."));
-      const respon = await axios.get(`${this.app}box/${email}.json`);
-      console.log(respon.data);
+      const nikEmail = email.substring(0, email.indexOf('.'));
+      const respon = await axios.get(`${this.app}booksShop/${nikEmail}.json`);
       return respon.data;
     } catch (error) {
-      console.error('get-error', error);
-      // alert(error.message);
+      console.error('get-error', error.message);
+    }
+  }
+  async deleteRequest(r = null, id, email) {
+    try {
+      const nikEmail = email.substring(0, email.indexOf('.'));
+      const response = await axios.delete(
+        `${this.app}booksShop/${nikEmail}/${id}.json?auth=${r}`
+      );
+
+      return response;
+    } catch (error) {
+      console.error('error-deleteRequest', error.message);
     }
   }
   // ==========================================================================================
 
   async authGoogle() {
-    console.log('authgoogle');
     try {
       const au = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(au);
@@ -57,10 +93,64 @@ export class DataFirebase {
       const user = au.user;
       localStorage.setItem('tokenResponse', token);
       localStorage.setItem('email', user.email);
-      console.log('user photoUrl', user.photoURL);
+      const basketFire = await this.getRequest(user.email);
+      if (basketFire) {
+        const bookJson = JSON.stringify(basketFire);
+        localStorage.setItem('shopingList', bookJson);
+      }
     } catch (error) {
       console.error('get-error', error.message);
     }
   }
+  // ==================================================================
+  async deleteBook(idBook) {
+    const booking = JSON.parse(localStorage.getItem('shopingList'));
+    const bookKey = Object.keys(booking);
+    bookKey.forEach(id => {
+      if (id === idBook) {
+        delete booking[idBook];
+      }
+    });
+    const bookJson = JSON.stringify(booking);
+    localStorage.setItem('shopingList', bookJson);
+    const email = localStorage.getItem('email');
+    const nikEmail = email.substring(0, email.indexOf('.'));
+    const idBookShop = await this.putRequest(booking, nikEmail);
+  }
+  // ===================================================================
+  async addBookk(id) {
+    const email = localStorage.getItem('email');
+    const boo = await axiosApiBooks.fetchBookInfo(id);
+    const bookData = {
+      buyLinks: boo.buy_links,
+      title: boo.title,
+      id: boo._id,
+      listName: boo.list_name,
+      bookImg: boo.book_image,
+      author: boo.author,
+    };
+
+    if (localStorage.getItem('shopingList')) {
+      const basket = JSON.parse(localStorage.getItem('shopingList'));
+      basket[bookData.id] = bookData;
+      const bookJson = JSON.stringify(basket);
+      localStorage.setItem('shopingList', bookJson);
+    } else {
+      const dataBasket = {};
+      dataBasket[bookData.id] = bookData;
+      const bookJson = JSON.stringify(dataBasket);
+      localStorage.setItem('shopingList', bookJson);
+    }
+
+    const booking = JSON.parse(localStorage.getItem('shopingList'));
+
+    const nikEmail = email.substring(0, email.indexOf('.'));
+    const idBookShop = await this.patchRequest(booking, nikEmail);
+  }
 }
-function renderSpinner() {}
+
+const firefire = new DataFirebase();
+
+// firefire.addBookk('643282b2e85766588626a10a');
+
+// firefire.deleteBook('643282b1e85766588626a07b');
