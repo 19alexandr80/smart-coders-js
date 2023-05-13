@@ -1,0 +1,16 @@
+.pagination-wrap {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 6px;
+}
+
+.pagination-wrap__left .pagination-wrap__right {
+  display: flex;
+  gap: 5px;
+}
+
+.pagination-wrap__center {
+  display: flex;
+  gap: 8px;
+}
