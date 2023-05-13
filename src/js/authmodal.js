@@ -4,18 +4,18 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
-const buttonIn = document.querySelector('.buttonAuthEmail');
-const buttonSangIn = document.querySelector('.buttonSignIn');
-const buttonGoogle = document.querySelector('.buttonGoogle');
+//======================================================================
+const buttonAutnSing = document.querySelector('.button-sing-auth-js');
+buttonAutnSing.addEventListener('click', modalSignIn);
+// =====================================================================
 
 const dataFirebase = new DataFirebase();
 
-buttonIn.addEventListener('click', modalAuth);
-buttonSangIn.addEventListener('click', modalSignIn);
-buttonGoogle.addEventListener('click', onAuthGoogle);
 // ========================================================
 async function onAuthGoogle() {
   await dataFirebase.authGoogle();
+  modalBox.innerHTML = '';
+  authUserMarkUp();
 }
 // =========================================================
 const auth = dataFirebase.auth;
@@ -24,6 +24,7 @@ function modalSignIn() {
   const formHtml = `
     <div class="modal-bakc">
     <form class="modal-form-auth"">
+    <div class='clousModalAuth'>&times;</div>
     <input
       type="email"
       name="email"
@@ -35,11 +36,27 @@ function modalSignIn() {
       placeholder="password"
     />
     <button type="submit">Sign in</button>
+    <div class='button-sing-group'>
+    <p class="button-sign-up">Sing up</p>
+    <p class='button-sing'>Sing in</p>
+    <p class='button-google'>google</p>
+    </div>
   </form>
   </div>`;
   modalBox.innerHTML = formHtml;
+  // ======================================================
   const modalForm = modalBox.querySelector('.modal-form-auth');
+  const buttonSingUp = modalForm.querySelector('.button-sign-up');
+  const buttonSingGoogle = modalForm.querySelector('.button-google');
+  const clousButton = modalForm.querySelector('.clousModalAuth');
+  // ========================================================
+  buttonSingUp.addEventListener('click', modalAuth);
+  buttonSingGoogle.addEventListener('click', onAuthGoogle);
   modalForm.addEventListener('submit', onDataFormIn);
+
+  clousButton.addEventListener('click', onCloseModalAuth);
+  modalBox.classList.add('trans-modal');
+  document.body.classList.add('scroll-off');
 }
 
 async function onDataFormIn(e) {
@@ -61,12 +78,14 @@ async function onDataFormIn(e) {
     console.error('fire.data-error', error);
     alert(error.message);
   }
+  authUserMarkUp();
 }
 // =========================================================
-export function modalAuth() {
+function modalAuth() {
   const formHtml = `
     <div class="modal-bakc">
     <form class="modal-form-auth">
+    <div class='clousModalAuth'>&times;</div>
     <input
       type="email"
       name="email"
@@ -82,12 +101,32 @@ export function modalAuth() {
       name="passwordConfirmation"
       placeholder="password"
     />
-    <button type="submit">Registration</button>
+    <button type="submit">sign up</button>
+    <div class='button-sing-group'>
+    <p class='button-sing'>Sing up</p>
+    <p class="button-sign-in">Sing in</p>
+    <p class='button-google'>google</p>
+    </div>
   </form>
   </div>`;
   modalBox.innerHTML = formHtml;
   const modalForm = modalBox.querySelector('.modal-form-auth');
+  const buttonSingIn = modalForm.querySelector('.button-sign-in');
+  const buttonSingGoogle = modalForm.querySelector('.button-google');
+  const clousButton = modalForm.querySelector('.clousModalAuth');
+  // ====================================================================
+  modalBox.classList.add('trans-modal');
+  buttonSingIn.addEventListener('click', modalSignIn);
   modalForm.addEventListener('submit', onDataFormAuth);
+  buttonSingGoogle.addEventListener('click', onAuthGoogle);
+  clousButton.addEventListener('click', onCloseModalAuth);
+  document.body.classList.add('scroll-off');
+}
+
+function onCloseModalAuth() {
+  modalBox.classList.remove('trans-modal');
+  modalBox.innerHTML = '';
+  document.body.classList.remove('scroll-off');
 }
 
 async function onDataFormAuth(e) {
@@ -111,4 +150,12 @@ async function onDataFormAuth(e) {
   } else {
     alert('Check the password');
   }
+  authUserMarkUp();
 }
+const authInterfase = document.querySelector('.button-sing-auth-js');
+function authUserMarkUp() {
+  if (localStorage.getItem('tokenResponse')) {
+    authInterfase.innerHTML = '';
+  }
+}
+authUserMarkUp();
