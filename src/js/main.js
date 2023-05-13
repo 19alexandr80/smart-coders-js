@@ -1,13 +1,12 @@
 import { axiosApiBooks } from './axiosApi';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-var debounce = require('lodash.debounce');
+import { spinner } from './spinner-loader';
 
 const refs = {
   bestsellersSectionEl: document.querySelector('.bookshelf'),
   categoriesListEl: document.querySelector('.categories-list'),
   allCategoriesTitleEl: document.querySelector('.cat-list'),
   bestsellersButton: document.querySelector('.bestsellers-button'),
-  //spinnerEl: document.querySelector('.spinner-more'),
 };
 
 // Загружает топовые книги и отображает их на странице (по умолчанию при зангрузке страницы).
@@ -72,7 +71,7 @@ async function makeMarkupTopBooksGallery(data) {
 // загружает топовые книги
 async function loadTopBooksOnClick(event) {
   try {
-    //refs.spinnerEl.classList.remove('spinner-hidden');
+    spinner.show();
     const data = await axiosApiBooks.fetchTopBooks();
     if (!data || data.length === 0) {
       Notify.failure(
@@ -80,8 +79,9 @@ async function loadTopBooksOnClick(event) {
       );
       return;
     }
-    //refs.spinnerEl.classList.add('spinner-hidden');
+
     await makeMarkupTopBooksGallery(data);
+    spinner.hide();
   } catch (error) {
     console.log(error.message);
   }
@@ -96,7 +96,8 @@ async function onCattegoryButtonElClick(event) {
 
   // получаем название выбранной категории
   const categoryName = event.target.name;
-  //refs.spinnerEl.classList.remove('spinner-hidden');
+  spinner.show();
+
   try {
     // запрашиваем данные книг для выбранной категории
     const booksData = await axiosApiBooks.fetchSelectedCategory(categoryName);
@@ -117,7 +118,7 @@ async function onCattegoryButtonElClick(event) {
     const bestsellersTitle = document.querySelector('.bestsellers-title');
     bestsellersTitle.innerHTML = formattedTitle;
     makeMarkupCategoryShelf(booksData, categoryName);
-    //refs.spinnerEl.classList.add('spinner-hidden');
+    spinner.hide();
   } catch (error) {
     console.log(error.message);
   }
@@ -143,7 +144,8 @@ async function loadCategoryBooksOnClick(event) {
   if (nodeName !== 'LI' || textContent.trim() === 'All categories') {
     return;
   }
-  //refs.spinnerEl.classList.remove('spinner-hidden');
+  spinner.show();
+
   try {
     const booksData = await axiosApiBooks.fetchSelectedCategory(textContent);
 
@@ -158,7 +160,7 @@ async function loadCategoryBooksOnClick(event) {
     const bestsellersTitle = document.querySelector('.bestsellers-title');
     bestsellersTitle.innerHTML = textContent;
     makeMarkupCategoryShelf(booksData, textContent);
-    //refs.spinnerEl.classList.add('spinner-hidden');
+    spinner.hide();
   } catch (error) {
     console.log(error.message);
   }
