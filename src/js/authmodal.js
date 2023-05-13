@@ -24,6 +24,7 @@ function modalSignIn() {
   const formHtml = `
     <div class="modal-bakc">
     <form class="modal-form-auth"">
+    <div class='clousModalAuth'>&times;</div>
     <input
       type="email"
       name="email"
@@ -40,6 +41,8 @@ function modalSignIn() {
   modalBox.innerHTML = formHtml;
   const modalForm = modalBox.querySelector('.modal-form-auth');
   modalForm.addEventListener('submit', onDataFormIn);
+  const clousButton = modalForm.querySelector('.clousModalAuth');
+  clousButton.addEventListener('click', onCloseModalAuth);
 }
 
 async function onDataFormIn(e) {
@@ -67,6 +70,7 @@ export function modalAuth() {
   const formHtml = `
     <div class="modal-bakc">
     <form class="modal-form-auth">
+    <div class='clousModalAuth'>&times;</div>
     <input
       type="email"
       name="email"
@@ -82,12 +86,18 @@ export function modalAuth() {
       name="passwordConfirmation"
       placeholder="password"
     />
-    <button type="submit">Registration</button>
+    <button type="submit">sign up</button>
   </form>
   </div>`;
   modalBox.innerHTML = formHtml;
   const modalForm = modalBox.querySelector('.modal-form-auth');
   modalForm.addEventListener('submit', onDataFormAuth);
+  const clousButton = modalForm.querySelector('.clousModalAuth');
+  clousButton.addEventListener('click', onCloseModalAuth);
+}
+
+function onCloseModalAuth() {
+  modalBox.innerHTML = '';
 }
 
 async function onDataFormAuth(e) {
