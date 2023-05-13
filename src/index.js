@@ -15,3 +15,4 @@ import './js/scroll-up';
 // import { Loading } from 'notiflix/build/notiflix-loading-aio';
 // import { Block } from 'notiflix/build/notiflix-block-aio';
 // ==========================
+// const basicLightbox = require('basiclightbox')
