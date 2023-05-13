@@ -1,43 +1,43 @@
 import { axiosApiBooks } from './axiosApi';
+import { refs } from './main';
 
-const categoriesRef = document.querySelector('.categories');
+//Если клик был произведен на элементе списка категорий, то код получает название категории, которую кликнули, находит элемент списка с этой категорией, и добавляет ему класс upper-case. Затем он проверяет, является ли категория "All categories", и если да, то вызывает функцию fetchTopBooks()
+refs.categoriesListEl.addEventListener('click', onCategoryNameClick);
 
-const categoriesListRef = document.querySelector('.categories-list');
-const catListRef = document.querySelector('.cat-list');
+//Обработчик клика на категории
+async function onCategoryNameClick(event) {
+  if (!event.target.classList.contains('cat-list')) return;
 
-axiosApiBooks.fetchCategoryList().then(markupCategories).then(createOnScreen);
-
-categoriesListRef.addEventListener('click', onCategoryNameClick);
-
-function onCategoryNameClick(e) {
-  if (!e.target.classList.contains('cat-list')) return;
-
-  const currentName = e.target.textContent;
-  const currentCat = e.target.closest('.cat-list');
-  const currenUpperCaseCategory = document.querySelector(
+  const currentName = event.target.textContent;
+  const currentCat = event.target.closest('.cat-list');
+  const currentUpperCaseCategory = document.querySelector(
     '.cat-list.upper-case'
   );
 
-  if (currenUpperCaseCategory) {
-    currenUpperCaseCategory.classList.remove('upper-case');
+  if (currentUpperCaseCategory) {
+    currentUpperCaseCategory.classList.remove('upper-case');
   }
 
   currentCat.classList.add('upper-case');
 
   if (currentName === 'All categories') {
-    axiosApiBooks.fetchTopBooks();
+    await axiosApiBooks.fetchTopBooks();
     return;
   }
+
+  await axiosApiBooks.fetchSelectedCategory(currentName);
 }
 
-function markupCategories(catArray) {
-  return catArray
-    .map(item => {
-      return `<li class="cat-list cat-text" name="${item.list_name}">${item.list_name}</li>`;
+// рендеринг списка категорий на странице
+async function renderCategories() {
+  const categories = await axiosApiBooks.fetchCategoryList();
+  const categoriesMarkup = categories
+    .map(category => {
+      return `<li class="cat-list cat-text" name="${category.list_name}">${category.list_name}</li>`;
     })
     .join('');
+
+  refs.categoriesListEl.insertAdjacentHTML('beforeend', categoriesMarkup);
 }
 
-function createOnScreen(data) {
-  categoriesListRef.insertAdjacentHTML('beforeend', data);
-}
+renderCategories();

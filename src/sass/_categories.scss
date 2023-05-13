@@ -22,7 +22,7 @@
 }
 
 .cat-list:hover {
-  color: var(--hover-focus);
+  color: $primary-accent-color;
 }
 
 .cat-text {
@@ -32,7 +32,7 @@
   font-size: 16px;
   line-height: 112%;
   letter-spacing: -0.02em;
-  color: var(--text-color-allcategories-white-theme);
+  color: $sidebar-txt-clr-light;
 }
 
 .upper-case {
@@ -44,7 +44,7 @@
   line-height: 112%;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: var(--hover-focus);
+  color: $primary-accent-color;
 }
 
 .categories::-webkit-scrollbar {
@@ -52,7 +52,7 @@
 }
 
 .categories::-webkit-scrollbar-thumb {
-  background: #e0e0e0;
+  background: $scroll-bgc-light;
   border-radius: 12px;
   flex: none;
   order: 1;
@@ -83,9 +83,5 @@
   .categories {
     width: 356px;
     margin-right: 0;
-  }
-
-  .cat-list:hover {
-    text-shadow: 1px 1px 2px grey;
   }
 }

@@ -19,6 +19,7 @@ p,
 ul {
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 img {
@@ -42,6 +43,7 @@ img {
 
 a {
   display: inline-block;
+  text-decoration: none;
 }
 
 button {
@@ -51,8 +53,8 @@ button {
 .container {
   padding-left: 20px;
   padding-right: 20px;
-  // margin-left: auto;
-  // margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 375px) {
     max-width: 375px;
