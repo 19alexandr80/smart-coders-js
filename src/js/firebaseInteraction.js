@@ -27,6 +27,7 @@ export class DataFirebase {
       // const nikEmail = email.substring(0, email.indexOf("."));
       const response = await axios.post(
         `${this.app}booksShop/${email}.json`,
+
         request
       );
 
