@@ -16,6 +16,7 @@ async function onAuthGoogle() {
   await dataFirebase.authGoogle();
   modalBox.innerHTML = '';
   authUserMarkUp();
+  document.body.classList.remove('scroll-off');
 }
 // =========================================================
 const auth = dataFirebase.auth;
@@ -155,7 +156,25 @@ async function onDataFormAuth(e) {
 const authInterfase = document.querySelector('.button-sing-auth-js');
 function authUserMarkUp() {
   if (localStorage.getItem('tokenResponse')) {
-    authInterfase.innerHTML = '';
+    const avatar = localStorage.getItem('userAvatar');
+    const email = localStorage.getItem('email');
+    const userIn = `<div>
+    <button class="button-user-in" type="button">
+        <img
+          src="${avatar}"
+          alt="user avatar"
+          loading="lazy"
+          class="user-img-auth"
+        />
+      ${email}
+      <span class="btn-icn-wrap">
+        <svg width="23" height="26">
+          <use href="./images/icons.svg#caret-down"></use>
+        </svg>
+      </span>
+    </button>
+  </div>`;
+    authInterfase.innerHTML = userIn;
   }
 }
 authUserMarkUp();
