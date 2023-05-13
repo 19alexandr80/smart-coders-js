@@ -1,6 +1,6 @@
 import { axiosApiBooks } from './axiosApi';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-var debounce = require('lodash.debounce');
+// var debounce = require('lodash.debounce');
 
 const refs = {
   bestsellersSectionEl: document.querySelector('.bookshelf'),

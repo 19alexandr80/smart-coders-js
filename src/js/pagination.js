@@ -1,6 +1,12 @@
 //---------------------------------------------
 // https://www.npmjs.com/package/tui-pagination
-const pagination = document.querySelector('.js-pagination');
+const paginationLeft = document.querySelector('.js-pagination-left');
+const paginationCenter = document.querySelector('.js-pagination-center');
+const paginationRight = document.querySelector('.js-pagination-right');
+
+console.log(paginationLeft);
+console.log(paginationCenter);
+console.log(paginationRight);
 
 async function getHero(page = 1) {
   const TOKEN = '18aEQHs2_l3sCMmPg1yk';
@@ -22,52 +28,113 @@ async function getHero(page = 1) {
 
 getHero()
   .then(data => {
+    createPaginataionBtn(data.pages);
     createPaginataion(data.page, data.pages);
   })
   .catch(err => console.log(err));
+
+// import svgLinkdUrl from '../images/linkedin.svg';
+// <a
+//   href="https://www.linkedin.com/in/nataliia-valko-951501212/"
+//   target="_blank"
+//   class="team-linkd"
+// >
+//   <svg width="24" height="24">
+//     <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
+//   </svg>
+// </a>;
+
+function createPaginataionBtn(lastPage) {
+  let markupBtnLeft = '';
+  if (lastPage > 1) {
+    markupBtnLeft = `<button class="btn-pag btn-pag--left" type="button">
+          <span class="btn-icn-wrap">
+            <svg width="24" height="24">
+              <use href="./images/icons.svg#pag-double-left"></use>
+            </svg>
+          </span>
+        </button>
+        <button class="btn-pag btn-pag--left" type="button">
+          <span class="btn-icn-wrap">
+            <svg width="24" height="24">
+              <use href="./images/icons.svg#pag-left"></use>
+            </svg>
+          </span>
+        </button>`;
+
+    markupBtnRight = `<button class="btn-pag btn-pag--right" type="button">
+          <span class="btn-icn-wrap">
+            <svg width="24" height="24">
+              <use href="./images/icons.svg#pag-right"></use>
+            </svg>
+          </span>
+        </button>
+        <button class="btn-pag btn-pag--right" type="button">
+          <span class="btn-icn-wrap">
+            <svg width="24" height="24">
+              <use href="./images/icons.svg#pag-double-right"></use>
+            </svg>
+          </span>
+        </button>`;
+  }
+
+  paginationLeft.innerHTML = markupBtnLeft;
+  paginationRight.innerHTML = markupBtnLeft;
+}
 
 function createPaginataion(currentPage, lastPage) {
   let markup = '';
 
   if (currentPage > 1) {
-    markup = `<li class="js-pagination-item">1</li>`;
+    markup = `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">1</button></li>`;
   }
 
   if (currentPage > 4) {
-    markup += `<li>...</li>`;
+    markup += `<li><button class="btn-pag btn-pag--not-current" type="button">...</button></li>`;
   }
 
   if (currentPage > 3) {
-    markup += `<li class="js-pagination-item">${currentPage - 2}</li>`;
+    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
+      currentPage - 2
+    }</button></li>`;
   }
   if (currentPage > 2) {
-    markup += `<li class="js-pagination-item">${currentPage - 1}</li>`;
+    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
+      currentPage - 1
+    }</button></li>`;
   }
 
-  markup += `<li class="current js-pagination-item">${currentPage}</li>`;
+  markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--current" type="button">${currentPage}</button></li>`;
 
-  if (currentPage < lastPage - 3) {
-    markup += `<li class="js-pagination-item">${currentPage + 1}</li>`;
+  if (currentPage <= lastPage - 3 || currentPage === lastPage - 2) {
+    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
+      currentPage + 1
+    }</button></li>`;
   }
   if (currentPage < lastPage - 2) {
-    markup += `<li class="js-pagination-item">${currentPage + 2}</li>`;
+    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
+      currentPage + 2
+    }</button></li>`;
   }
 
   if (currentPage < lastPage - 3) {
-    markup += `<li>...</li>`;
+    markup += `<li><button class="btn-pag btn-pag--not-current" type="button">...</button></li>`;
   }
 
   if (currentPage < lastPage) {
-    markup += `<li class="js-pagination-item">${lastPage}</li>`;
+    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${lastPage}</button></li>`;
   }
 
-  pagination.innerHTML = markup;
+  paginationCenter.innerHTML = markup;
 }
 
-pagination.addEventListener('click', handlerPagination);
+paginationCenter.addEventListener('click', handlerPagination);
+
 function handlerPagination(evt) {
   if (!evt.target.classList.contains('js-pagination-item')) {
     return;
+  } else {
+    console.log(evt.target);
   }
 
   const page = evt.target.textContent;
@@ -77,22 +144,3 @@ function handlerPagination(evt) {
     })
     .catch(err => console.log(err));
 }
-
-// import axios from 'axios'
-
-// async function serviceImg(query, page = 1) {
-//     try{
-//     const API_KEY = '35967279-8c24489aaedeeb926c95777ea';
-//     const API_URL = `https://pixabay.com/api/?key=${API_KEY}&q=${query}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`;
-
-//     const resp = await axios.get(API_URL)
-//     return resp
-//     // const data = await resp.json()
-//     }
-//     // return data
-//     // return resp.json()
-// }
-
-// // serviceImg('cat').then(data => {}).catch()
-
-// export {serviceImg}
