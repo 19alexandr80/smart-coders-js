@@ -1,18 +1,31 @@
 .container--home-page {
-  display: flex;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 }
 
 .sidebar {
   padding-top: 40px;
   margin-right: 40px;
+
+  @media screen and (min-width: 768px) and (max-width: 1440px) {
+    display: flex;
+  }
 }
 
 .support {
   background: $gradient-bgc;
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
-  width: 356px;
-  margin-top: 86px;
+  width: 335px;
+  max-height: 490px;
+  margin-top: 40px;
+  @media screen and (min-width: 768px) {
+    width: 356px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 86px;
+  }
 }
 
 .support-title {
@@ -37,11 +50,15 @@
 }
 
 .support-list {
-  max-height: 292px;
+  max-height: 188px;
   padding-left: 40px;
   margin-bottom: 40px;
 
   overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    max-height: 292px;
+  }
 }
 
 .support-item:not(:last-child) {
