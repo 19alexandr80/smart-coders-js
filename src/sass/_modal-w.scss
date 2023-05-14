@@ -148,6 +148,10 @@
     align-items: center;
 }
 
+.book_modal-links:hover {
+filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+}
+
 .order-btn {
     font-family: 'DM Sans';
     font-style: normal;
