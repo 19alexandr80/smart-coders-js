@@ -40,9 +40,6 @@
 .support-list {
   padding-left: 40px;
   margin-bottom: 40px;
-  list-style-type: decimal-leading-zero;
-  list-style-position: inside;
-  font-variant-numeric: tabular-nums;
 }
 
 .support-item {
@@ -50,13 +47,16 @@
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: -0.04em;
-
-  // display: flex;
-  // align-items: center;
 }
 
 .support-item:not(:last-child) {
   margin-bottom: 20px;
+}
+
+.support-link {
+  height: 32px;
+  display: flex;
+  align-items: center;
 }
 
 .support-image {

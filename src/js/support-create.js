@@ -17,28 +17,6 @@ const makeSupporItems = itemsEl => {
 const itemsImages = supportArr.map(makeSupporItems).join('');
 supportItemsEl.insertAdjacentHTML('beforeend', itemsImages);
 
-// const imageUrl = new URL('image.jpeg?as=webp&width=250', import.meta.url);
-
-// const imageUrl = new URL(
-//   '../images/support-logo/supp1@1x.png?as=webp&width=250',
-//   import.meta.url
-// );
-
-// let img = document.createElement('img');
-// img.src = new URL('../images/user-@1x.png', import.meta.url);
-// document.body.appendChild(img);
-
-// import svgLinkdUrl from '../images/linkedin.svg';
-// <a
-//   href="https://www.linkedin.com/in/nataliia-valko-951501212/"
-//   target="_blank"
-//   class="team-linkd"
-// >
-//   <svg width="24" height="24">
-//     <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
-//   </svg>
-// </a>;
-
 // <button class="btn-user-in" type="button">
 //   <span class="btn-icn-wrap">
 //     <img
