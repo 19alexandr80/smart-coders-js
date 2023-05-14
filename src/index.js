@@ -4,9 +4,9 @@ import './js/main';
 import './js/categories';
 import './js/scroll-up';
 import { openModal } from './js/modal-w';
+import './js/burgerModal';
 // import './js/modal-window';
 // const throttle = require('lodash.throttle');
-// ====================
 // import Notiflix from 'notiflix';
 
 // // one by one
@@ -17,3 +17,5 @@ import { openModal } from './js/modal-w';
 // import { Block } from 'notiflix/build/notiflix-block-aio';
 // ==========================
 // const basicLightbox = require('basiclightbox')
+import './js/support-create';
+

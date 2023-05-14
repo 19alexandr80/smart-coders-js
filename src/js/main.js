@@ -2,6 +2,7 @@ import { axiosApiBooks } from './axiosApi';
 import { openModal } from './modal-w';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { spinner } from './spinner-loader';
+import debounce from 'lodash.debounce';
 
 function onnmodd(id) {
   openModal(id);
@@ -72,7 +73,6 @@ async function makeMarkupTopBooksGallery(data) {
       'Best Sellers Books'
     )}</h2>
     ${markup}`;
-  console.log(refs.bestsellersSectionEl.innerHTML);
 
   const openModal = document.querySelector('.bookshelf');
   openModal.addEventListener('click', e => {
@@ -80,10 +80,12 @@ async function makeMarkupTopBooksGallery(data) {
       onnmodd(e.target.closest('li').dataset.id);
     }
   });
+
+  hideBooksWindow();
 }
 
 // загружает топовые книги
-async function loadTopBooksOnClick(event) {
+async function loadTopBooksOnClick() {
   try {
     spinner.show();
     const data = await axiosApiBooks.fetchTopBooks();
@@ -102,20 +104,14 @@ async function loadTopBooksOnClick(event) {
 
 // обработка кликов на кнопках категорий книг на странице SEE MORE
 async function onCattegoryButtonElClick(event) {
-  // проверяем, что клик был по кнопке категории
   if (!event.target.classList.contains('bestsellers-button')) {
     return;
   }
-
-  // получаем название выбранной категории
-  const categoryName = event.target.name;
+  const { name: categoryName } = event.target;
   spinner.show();
 
   try {
-    // запрашиваем данные книг для выбранной категории
     const booksData = await axiosApiBooks.fetchSelectedCategory(categoryName);
-
-    // если данных нет, выводим сообщение об ошибке
     if (!booksData || booksData.length === 0) {
       Notify.failure(
         "Sorry, we didn't find anything according to your request."
@@ -123,11 +119,9 @@ async function onCattegoryButtonElClick(event) {
       return;
     }
 
-    // форматируем заголовок страницы
     const formattedCategoryName = toUpperCaseCategoryName(categoryName);
     const formattedTitle = changeColorStyleInTitle(formattedCategoryName);
 
-    // обновляем заголовок и контент на странице
     const bestsellersTitle = document.querySelector('.bestsellers-title');
     bestsellersTitle.innerHTML = formattedTitle;
     makeMarkupCategoryShelf(booksData, categoryName);
@@ -149,7 +143,6 @@ function changeColorStyleInTitle(category) {
   return `${formattedWords} <span class="categories-title-last-word">${lastWord}</span>`;
 }
 
-//  функция обрабатывает клик по элементу списка категорий и вызывает запрос к API для получения книг по выбранной категории
 async function loadCategoryBooksOnClick(event) {
   const { nodeName, textContent } = event.target;
 
@@ -161,8 +154,6 @@ async function loadCategoryBooksOnClick(event) {
 
   try {
     const booksData = await axiosApiBooks.fetchSelectedCategory(textContent);
-
-    // Если нет данных или массив пустой, выводим уведомление об ошибке и выходим из функции
     if (!booksData || booksData.length === 0) {
       Notify.failure(
         "Sorry, we didn't find anything according to your request."
@@ -214,11 +205,7 @@ function toUpperCaseCategoryName(categoryName) {
 }
 
 //код выполняет функцию скрытия книг на странице в зависимости от размеров окна браузера
-let timeoutId;
-window.addEventListener('resize', () => {
-  clearTimeout(timeoutId);
-  timeoutId = setTimeout(hideBooksWindow, 300);
-});
+window.addEventListener('resize', debounce(hideBooksWindow, 300));
 
 function hideBooksWindow() {
   const bookListEls = document.querySelectorAll('.bestsellers-book-list');
