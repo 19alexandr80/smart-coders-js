@@ -1,12 +1,8 @@
-//---------------------------------------------
-// https://www.npmjs.com/package/tui-pagination
+import svgUrl from '../images/icons.svg';
+
 const paginationLeft = document.querySelector('.js-pagination-left');
 const paginationCenter = document.querySelector('.js-pagination-center');
 const paginationRight = document.querySelector('.js-pagination-right');
-
-console.log(paginationLeft);
-console.log(paginationCenter);
-console.log(paginationRight);
 
 async function getHero(page = 1) {
   const TOKEN = '18aEQHs2_l3sCMmPg1yk';
@@ -33,108 +29,99 @@ getHero()
   })
   .catch(err => console.log(err));
 
-// import svgLinkdUrl from '../images/linkedin.svg';
-// <a
-//   href="https://www.linkedin.com/in/nataliia-valko-951501212/"
-//   target="_blank"
-//   class="team-linkd"
-// >
-//   <svg width="24" height="24">
-//     <use href="${svgLinkdUrl}#icon-linkedin-svg"></use>
-//   </svg>
-// </a>;
-
 function createPaginataionBtn(lastPage) {
   let markupBtnLeft = '';
+  let markupBtnRight = '';
+
   if (lastPage > 1) {
-    markupBtnLeft = `<button class="btn-pag btn-pag--left" type="button">
+    markupBtnLeft = `<button class="btn-pag btn-pag--left js-pag-first" type="button">
           <span class="btn-icn-wrap">
             <svg width="24" height="24">
-              <use href="./images/icons.svg#pag-double-left"></use>
+              <use href="${svgUrl}#pag-double-left"></use>
             </svg>
           </span>
         </button>
-        <button class="btn-pag btn-pag--left" type="button">
+        <button class="btn-pag btn-pag--left js-pag-prev" type="button">
           <span class="btn-icn-wrap">
             <svg width="24" height="24">
-              <use href="./images/icons.svg#pag-left"></use>
+              <use href="${svgUrl}#pag-left"></use>
             </svg>
           </span>
         </button>`;
 
-    markupBtnRight = `<button class="btn-pag btn-pag--right" type="button">
+    markupBtnRight = `<button class="btn-pag btn-pag--right js-pag-next" type="button">
           <span class="btn-icn-wrap">
             <svg width="24" height="24">
-              <use href="./images/icons.svg#pag-right"></use>
+              <use href="${svgUrl}#pag-right"></use>
             </svg>
           </span>
         </button>
-        <button class="btn-pag btn-pag--right" type="button">
+        <button class="btn-pag btn-pag--right js-pag-last" type="button">
           <span class="btn-icn-wrap">
             <svg width="24" height="24">
-              <use href="./images/icons.svg#pag-double-right"></use>
+              <use href="${svgUrl}#pag-double-right"></use>
             </svg>
           </span>
         </button>`;
   }
 
   paginationLeft.innerHTML = markupBtnLeft;
-  paginationRight.innerHTML = markupBtnLeft;
+  paginationRight.innerHTML = markupBtnRight;
 }
 
 function createPaginataion(currentPage, lastPage) {
   let markup = '';
 
-  if (currentPage > 1) {
-    markup = `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">1</button></li>`;
-  }
+  if (lastPage > 1) {
+    if (currentPage > 1) {
+      markup = `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">1</button></li>`;
+    }
 
-  if (currentPage > 4) {
-    markup += `<li><button class="btn-pag btn-pag--not-current" type="button">...</button></li>`;
-  }
+    if (currentPage > 4) {
+      markup += `<li><button class="btn-pag btn-pag--more-left" type="button">...</button></li>`;
+    }
 
-  if (currentPage > 3) {
-    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
-      currentPage - 2
-    }</button></li>`;
-  }
-  if (currentPage > 2) {
-    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
-      currentPage - 1
-    }</button></li>`;
-  }
+    if (currentPage > 3) {
+      markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
+        currentPage - 2
+      }</button></li>`;
+    }
+    if (currentPage > 2) {
+      markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
+        currentPage - 1
+      }</button></li>`;
+    }
 
-  markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--current" type="button">${currentPage}</button></li>`;
+    markup += `<li><button class="btn-pag btn-pag--current js-pag-marker" type="button">${currentPage}</button></li>`;
 
-  if (currentPage <= lastPage - 3 || currentPage === lastPage - 2) {
-    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
-      currentPage + 1
-    }</button></li>`;
-  }
-  if (currentPage < lastPage - 2) {
-    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${
-      currentPage + 2
-    }</button></li>`;
-  }
+    if (currentPage <= lastPage - 3 || currentPage === lastPage - 2) {
+      markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
+        currentPage + 1
+      }</button></li>`;
+    }
+    if (currentPage < lastPage - 2) {
+      markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
+        currentPage + 2
+      }</button></li>`;
+    }
 
-  if (currentPage < lastPage - 3) {
-    markup += `<li><button class="btn-pag btn-pag--not-current" type="button">...</button></li>`;
-  }
+    if (currentPage < lastPage - 3) {
+      markup += `<li><button class="btn-pag btn-pag--more-right" type="button">...</button></li>`;
+    }
 
-  if (currentPage < lastPage) {
-    markup += `<li class="js-pagination-item"><button class="btn-pag btn-pag--not-current" type="button">${lastPage}</button></li>`;
-  }
+    // if (currentPage < lastPage) {
+    //   markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${lastPage}</button></li>`;
+    // } //??
 
-  paginationCenter.innerHTML = markup;
+    paginationCenter.innerHTML = markup;
+  }
 }
 
 paginationCenter.addEventListener('click', handlerPagination);
 
 function handlerPagination(evt) {
-  if (!evt.target.classList.contains('js-pagination-item')) {
+  if (!evt.target.classList.contains('js-pag-marker')) {
     return;
-  } else {
-    console.log(evt.target);
   }
 
   const page = evt.target.textContent;

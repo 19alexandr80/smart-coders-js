@@ -336,15 +336,17 @@
     height: 30px;
   }
 
-  &--left {
+  &--left,
+  &--right {
     border: 1px solid $primary-brdr-clr-light;
     background-color: $secondary-bgc-dark;
     color: $secondary-txt-clr;
 
     &:hover,
     &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
+      border-color: $primary-brdr-clr-light;
+      background-color: $secondary-accent-color;
+      color: $primary-txt-clr-light;
     }
   }
 
@@ -353,11 +355,11 @@
     background-color: $secondary-bgc-dark;
     color: $additional-txt-clr-light;
 
-    &:hover,
-    &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
-    }
+    // &:hover,
+    // &:focus {
+    //   border-color: $primary-accent-color;
+    //   color: $secondary-accent-color;
+    // }
   }
 
   &--not-current {
@@ -367,31 +369,32 @@
     &:hover,
     &:focus {
       border-color: $primary-accent-color;
-      color: $primary-accent-color;
+      background-color: $primary-accent-color;
+      color: $primary-txt-clr-dark;
     }
   }
 
-  // TODO: дублює --next
-  &--more {
+  &--more-left,
+  &--more-right {
     border: 1px solid $primary-brdr-clr-light;
     color: $primary-txt-clr-light;
 
-    &:hover,
-    &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
-    }
+    // &:hover,
+    // &:focus {
+    //   border-color: $primary-accent-color;
+    //   color: $primary-accent-color;
+    // }
   }
 
-  &--right {
-    border: 1px solid $primary-brdr-clr-light;
-    background-color: $secondary-accent-color;
-    color: $primary-txt-clr-light;
+  // &--right {
+  //   border: 1px solid $primary-brdr-clr-light;
+  //   background-color: $secondary-accent-color;
+  //   color: $primary-txt-clr-light;
 
-    &:hover,
-    &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
-    }
-  }
+  //   &:hover,
+  //   &:focus {
+  //     border-color: $primary-accent-color;
+  //     color: $primary-accent-color;
+  //   }
+  // }
 }
