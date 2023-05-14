@@ -3,7 +3,7 @@ import './js/authmodal';
 import './js/main';
 import './js/categories';
 import './js/scroll-up';
-import './js/pagination-btn';
+import './js/burgerModal';
 // import './js/modal-window';
 // const throttle = require('lodash.throttle');
 // ====================
@@ -17,3 +17,5 @@ import './js/pagination-btn';
 // import { Block } from 'notiflix/build/notiflix-block-aio';
 // ==========================
 // const basicLightbox = require('basiclightbox')
+import './js/support-create';
+

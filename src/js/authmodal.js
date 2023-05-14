@@ -4,7 +4,6 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import svgRight from '../images/icons.svg';
-console.log(svgRight);
 
 //======================================================================
 const buttonAutnSing = document.querySelector('.button-sing-auth-js');
@@ -56,7 +55,7 @@ function modalSignIn() {
   </form>
   </div>`;
   modalBox.innerHTML = formHtml;
-  // ======================================================
+  // ====================================================== body
   const modalForm = modalBox.querySelector('.modal-form-auth');
   const buttonSingUp = modalForm.querySelector('.button-sign-up');
   const buttonSingGoogle = modalForm.querySelector('.button-google');
@@ -164,6 +163,7 @@ async function onDataFormAuth(e) {
   }
   authUserMarkUp();
 }
+const headerNav = document.querySelector('.header-button-nav');
 const authInterfase = document.querySelector('.button-sing-auth-js');
 function authUserMarkUp() {
   let userIn = '';
@@ -185,16 +185,18 @@ function authUserMarkUp() {
         </svg>
         </div>
     </div>`;
+    headerNav.classList.remove('header-not-uyth');
   } else {
     userIn = `<div class="button-sing-auth-js">
       <button class="btn-log-out" type="button">
-        Log out<span class="btn-icn-wrap">
+        Log in<span class="btn-icn-wrap">
           <svg width="20" height="20">
             <use href="${svgRight}#arrow-right"></use>
           </svg>
         </span>
       </button>
     </div>`;
+    headerNav.classList.add('header-not-uyth');
   }
   authInterfase.innerHTML = userIn;
 }
