@@ -3,7 +3,7 @@ import './js/authmodal';
 import './js/main';
 import './js/categories';
 import './js/scroll-up';
-import './js/pagination';
+import './js/pagination-btn';
 // import './js/modal-window';
 // const throttle = require('lodash.throttle');
 // ====================
