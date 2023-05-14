@@ -16,3 +16,4 @@ import './js/scroll-up';
 // import { Block } from 'notiflix/build/notiflix-block-aio';
 // ==========================
 // const basicLightbox = require('basiclightbox')
+import './js/support-create';
