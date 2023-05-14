@@ -7,9 +7,10 @@ import bookShop from '../images/shops/books@1x.png';
 import bookShop2x from '../images/shops/books@2x.png';
 
 const LOCAL_KEY = 'booksID';
+// openModal('643282b1e85766588626a0ba');
 
 export async function openModal(element) {
-  const bookId = element.dataset.id;
+  const bookId = element;
   console.log(bookId);
 
   const dataBook = await booksId(bookId);
