@@ -43,7 +43,7 @@
 }
 
 .bestsellers-title {
-  color: #111;
+  color: $primary-brdr-clr-light;
   font-weight: 700;
   font-size: 32px;
   line-height: 1.18;
@@ -53,7 +53,7 @@
 
 .bestsellers-category-name {
   margin-bottom: 18px;
-  color: #B4AFAF;
+  color: $secondary-txt-clr;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
@@ -62,7 +62,7 @@
 }
 
 .categories-title-last-word {
-  color: #4f2ee8;
+  color: $primary-accent-color;
 }
 
 .category-book-list {
@@ -83,7 +83,7 @@
 }
 
 .book-img-container {
-  background-image: url('../images/plug.svg');
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='44' height='40' viewBox='0 0 44 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M42.94 9.64103C42 9.14872 41.02 8.73846 40 8.38974V33.0667C37.72 32.2256 35.38 31.7949 33 31.7949C29.2 31.7949 25.44 32.9026 22 35.0359V10.2154C18.76 8.30769 15.02 7.17949 11 7.17949C7.42 7.17949 4.04 8.08205 1.06 9.64103C0.4 9.96923 0 10.6872 0 11.4462V36.2256C0 37.4154 0.94 38.2564 2 38.2564C2.32 38.2564 2.64 38.1744 2.96 38.0103C5.38 36.718 8.1 35.8974 11 35.8974C15.14 35.8974 18.96 37.5795 22 40C25.04 37.5795 28.86 35.8974 33 35.8974C35.9 35.8974 38.62 36.718 41.04 38.0308C41.36 38.1949 41.68 38.2769 42 38.2769C43.04 38.2769 44 37.4359 44 36.2462V11.4462C44 10.6872 43.6 9.96923 42.94 9.64103ZM18 33.0667C15.72 32.2256 13.38 31.7949 11 31.7949C8.62 31.7949 6.28 32.2256 4 33.0667V12.7385C6.22 11.7744 8.56 11.2821 11 11.2821C13.4 11.2821 15.78 11.7949 18 12.759V33.0667ZM36 0L26 10.2564V29.7436L36 20.5128V0Z' fill='%234F2EE8'/%3e%3c/svg%3e ");
   background-color: inherit;
   background-repeat: no-repeat;
   background-position: 123px 205px;
@@ -112,7 +112,7 @@
   left: 0;
   height: 70px;
   width: 100%;
-  background-color: #eac645;
+  background-color: $secondary-accent-color;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,7 +129,7 @@
   font-size: 14px;
   line-height: 1.29;
   letter-spacing: 0.04;
-  color: #111111;
+  color: $primary-brdr-clr-light;
   text-transform: uppercase;
 }
 
@@ -142,7 +142,7 @@
   font-size: 16px;
   line-height: 1.125;
   letter-spacing: 0.04;
-  color: #111111;
+  color: $primary-brdr-clr-light;
   margin-bottom: 4px;
 }
 
@@ -156,7 +156,7 @@
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04;
-  color: #B4AFAF;
+  color: $secondary-txt-clr;
 }
 
 .bestsellers-button-container {
@@ -173,20 +173,20 @@
   margin-top: 6px;
   display: flex;
   border-radius: 40px;
-  border: 2px solid #4f2ee8;
+  border: 2px solid $primary-accent-color;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.29;
   letter-spacing: 0.01;
-  color: #111111;
+  color: $primary-brdr-clr-light;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .bestsellers-button:hover,
 .bestsellers-button:focus {
-  background-color: #4f2ee8;
-  color: #ffffff;
+  background-color: $primary-accent-color;
+  color: $primary-brdr-clr-dark;
   transition: background-color .35s ease-in-out;
 }
 
@@ -271,19 +271,19 @@
     margin-top: 6px;
     display: flex;
     border-radius: 40px;
-    border: 2px solid #4f2ee8;
+    border: 2px solid $primary-accent-color;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.29;
     letter-spacing: 0.01;
-    color: #111111;
+    color: $primary-brdr-clr-light;
     text-transform: uppercase;
   }
 
   .bestsellers-button:hover,
   .bestsellers-button:focus {
-    background-color: #4f2ee8;
-    color: #ffffff;
+    background-color: $primary-accent-color;
+    color: $primary-brdr-clr-dark;
     transition: background-color .35s ease-in-out;
   }
 }
@@ -345,19 +345,19 @@
     margin-top: 6px;
     display: flex;
     border-radius: 40px;
-    border: 2px solid #4f2ee8;
+    border: 2px solid $primary-accent-color;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.29;
     letter-spacing: 0.01;
-    color: #111111;
+    color: $primary-brdr-clr-light;
     text-transform: uppercase;
   }
 
   .bestsellers-button:hover,
   .bestsellers-button:focus {
-    background-color: #4f2ee8;
-    color: #ffffff;
+    background-color: $primary-accent-color;
+    color: $primary-brdr-clr-dark;
     transition: background-color .35s ease-in-out;
   }
 }

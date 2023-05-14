@@ -3,6 +3,7 @@ import './js/authmodal';
 import './js/main';
 import './js/categories';
 import './js/scroll-up';
+import './js/burgerModal';
 // import './js/modal-window';
 // const throttle = require('lodash.throttle');
 // ====================
@@ -17,3 +18,4 @@ import './js/scroll-up';
 // ==========================
 // const basicLightbox = require('basiclightbox')
 import './js/support-create';
+

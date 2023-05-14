@@ -6,10 +6,11 @@ refs.categoriesListEl.addEventListener('click', onCategoryNameClick);
 
 //Обработчик клика на категории
 async function onCategoryNameClick(event) {
-  if (!event.target.classList.contains('cat-list')) return;
+  const { target } = event;
+  if (!target.classList.contains('cat-list')) return;
 
-  const currentName = event.target.textContent;
-  const currentCat = event.target.closest('.cat-list');
+  const { textContent: currentName, closest: findParent } = target;
+  const currentCat = findParent.call(target, '.cat-list');
   const currentUpperCaseCategory = document.querySelector(
     '.cat-list.upper-case'
   );
@@ -31,9 +32,10 @@ async function onCategoryNameClick(event) {
 // рендеринг списка категорий на странице
 async function renderCategories() {
   const categories = await axiosApiBooks.fetchCategoryList();
+  categories.sort((a, b) => a.list_name.localeCompare(b.list_name));
   const categoriesMarkup = categories
-    .map(category => {
-      return `<li class="cat-list cat-text" name="${category.list_name}">${category.list_name}</li>`;
+    .map(({ list_name }) => {
+      return `<li class="cat-list cat-text" name="${list_name}">${list_name}</li>`;
     })
     .join('');
 

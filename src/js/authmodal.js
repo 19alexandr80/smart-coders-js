@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
+import svgRight from '../images/icons.svg';
 
 //======================================================================
 const buttonAutnSing = document.querySelector('.button-sing-auth-js');
@@ -21,7 +22,16 @@ async function onAuthGoogle() {
 // =========================================================
 const auth = dataFirebase.auth;
 const modalBox = document.querySelector('.modalWindow');
+
 function modalSignIn() {
+  if (localStorage.getItem('tokenResponse')) {
+    localStorage.removeItem('tokenResponse');
+    localStorage.removeItem('userAvatar');
+    localStorage.removeItem('email');
+    localStorage.removeItem('shopingList');
+    authUserMarkUp();
+    return;
+  }
   const formHtml = `
     <div class="modal-bakc">
     <form class="modal-form-auth"">
@@ -45,7 +55,7 @@ function modalSignIn() {
   </form>
   </div>`;
   modalBox.innerHTML = formHtml;
-  // ======================================================
+  // ====================================================== body
   const modalForm = modalBox.querySelector('.modal-form-auth');
   const buttonSingUp = modalForm.querySelector('.button-sign-up');
   const buttonSingGoogle = modalForm.querySelector('.button-google');
@@ -153,28 +163,41 @@ async function onDataFormAuth(e) {
   }
   authUserMarkUp();
 }
+const headerNav = document.querySelector('.header-button-nav');
 const authInterfase = document.querySelector('.button-sing-auth-js');
 function authUserMarkUp() {
+  let userIn = '';
   if (localStorage.getItem('tokenResponse')) {
     const avatar = localStorage.getItem('userAvatar');
     const email = localStorage.getItem('email');
-    const userIn = `<div>
-    <button class="button-user-in" type="button">
+    const nikEmail = email.substring(0, email.indexOf('@'));
+    userIn = `<div class='user-auth-zone'>
         <img
           src="${avatar}"
           alt="user avatar"
           loading="lazy"
           class="user-img-auth"
         />
-      ${email}
-      <span class="btn-icn-wrap">
-        <svg width="23" height="26">
-          <use href="./images/icons.svg#caret-down"></use>
+      <span class='nik-name'>${nikEmail}</span>
+        <div class='svg-user-auth'>
+        <svg width="23" height="26" fill="#ffffff">
+          <use href="${svgRight}#caret-down"></use>
         </svg>
-      </span>
-    </button>
-  </div>`;
-    authInterfase.innerHTML = userIn;
+        </div>
+    </div>`;
+    headerNav.classList.remove('header-not-uyth');
+  } else {
+    userIn = `<div class="button-sing-auth-js">
+      <button class="btn-log-out" type="button">
+        Log in<span class="btn-icn-wrap">
+          <svg width="20" height="20">
+            <use href="${svgRight}#arrow-right"></use>
+          </svg>
+        </span>
+      </button>
+    </div>`;
+    headerNav.classList.add('header-not-uyth');
   }
+  authInterfase.innerHTML = userIn;
 }
 authUserMarkUp();
