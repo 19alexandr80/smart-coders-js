@@ -30,6 +30,7 @@ function makeMarkupBook(books) {
   const markup = books
     .map(({ _id, book_image, author, title }) => {
       return `<li class="book-item" data-id="${_id}">
+      <div class="bookshelf-bool-link">
     <div class="book-img-container">
     <div class="book-shoppingcart is-hidden"></div>
      <img class="book-img" loading="lazy" src="${book_image}" alt="${title}"  width="180px" height="256px"/>
@@ -40,6 +41,7 @@ function makeMarkupBook(books) {
      </div>
      <p class="book-title">${title}</p>
         <p class="author-name">${author}</p>
+        </div>
         </li>`;
     })
     .join('');
