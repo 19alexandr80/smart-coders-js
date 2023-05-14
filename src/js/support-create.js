@@ -10,8 +10,8 @@ const makeSupporItems = supportArr
     <span class="support-number">${addLeadingZero(idx + 1)}</span>
     <img
       class="support-image"
+      srcset=${img}
       src=${img}
-      data-source=${img}
       alt=${title}
     />
   </a>
