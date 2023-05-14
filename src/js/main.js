@@ -1,7 +1,13 @@
 import { axiosApiBooks } from './axiosApi';
+import { openModal } from './modal-w';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { spinner } from './spinner-loader';
 import debounce from 'lodash.debounce';
+
+function onnmodd(id) {
+  openModal(id);
+}
+// onnmodd();
 
 const refs = {
   bestsellersSectionEl: document.querySelector('.bookshelf'),
@@ -25,7 +31,7 @@ function makeMarkupBook(books) {
   const markup = books
     .map(({ _id, book_image, author, title }) => {
       return `<li class="book-item" data-id="${_id}">
-     <a class="bookshelf-bool-link" href="#">
+      <div class="bookshelf-bool-link">
     <div class="book-img-container">
     <div class="book-shoppingcart is-hidden"></div>
      <img class="book-img" loading="lazy" src="${book_image}" alt="${title}"  width="180px" height="256px"/>
@@ -36,7 +42,7 @@ function makeMarkupBook(books) {
      </div>
      <p class="book-title">${title}</p>
         <p class="author-name">${author}</p>
-        </a>
+        </div>
         </li>`;
     })
     .join('');
@@ -50,7 +56,7 @@ async function makeMarkupTopBooksGallery(data) {
     return `
         <div class="bestsellers-category-item">
         <p class="bestsellers-category-name" name="${list_name}">${list_name}</p>
-        <ul class="bestsellers-book-list">
+        <ul class="bestsellers-book-list open-js">
         ${booksMarkup}
         </ul>
         <div class="bestsellers-button-container">
@@ -68,6 +74,13 @@ async function makeMarkupTopBooksGallery(data) {
     )}</h2>
     ${markup}`;
 
+  const openModal = document.querySelector('.bookshelf');
+  openModal.addEventListener('click', e => {
+    if (e.target.closest('li')) {
+      onnmodd(e.target.closest('li').dataset.id);
+    }
+  });
+
   hideBooksWindow();
 }
 
@@ -82,7 +95,6 @@ async function loadTopBooksOnClick() {
       );
       return;
     }
-
     await makeMarkupTopBooksGallery(data);
     spinner.hide();
   } catch (error) {
@@ -166,11 +178,17 @@ function makeMarkupCategoryShelf(data, nameCategory) {
   const shelfMarkup = `
     <h2 class="bestsellers-title">${categoryTitle}</h2>
     <div class="bestsellers-category-item" name="${nameCategory}">
-      <ul class="category-book-list">${booksMarkup}</ul>
+      <ul class="category-book-list open-js">${booksMarkup}</ul>
     </div>
   `;
 
   refs.bestsellersSectionEl.innerHTML = shelfMarkup;
+  const openModal = document.querySelector('.bookshelf');
+  openModal.addEventListener('click', e => {
+    if (e.target.closest('li')) {
+      onnmodd(e.target.closest('li').dataset.id);
+    }
+  });
 }
 
 //Функция ищет элемент списка с именем категории и добавляет этому элементу класс upper-case, который приводит текст в верхний регистр и выделяет его на странице. Если на странице уже есть элементы с классом upper-case, функция удаляет этот класс у всех таких элементов, чтобы только один элемент был выделен верхним регистром в данный момент времени.
