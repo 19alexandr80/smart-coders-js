@@ -9,6 +9,15 @@
   background: $secondary-bgc-light;
   border: 1.5px solid #111111;
   border-radius: 0px 0px 8px 8px;
+  max-width: 375px;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media (min-width: 1440px) {
+    max-width: 1440px;
+  }
 }
 .button-header-home {
   padding: 8px 16px;
@@ -86,4 +95,35 @@
 }
 .header-not-uyth {
   display: none;
+}
+.button-sing-auth-js {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+.burger-menu-header {
+  @media (min-width: 768px) {
+    display: none;
+  }
+  & span {
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #111111;
+    display: block;
+    margin: 2px auto;
+  }
+}
+.modal-burger-menu {
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+  position: fixed;
+  z-index: 100;
+  transition: 0.3s;
+}
+.modal-burger-menu-off {
+  // display: none;
+  transform: translateX(-100%);
+  transition: 0.3s;
 }

@@ -189,7 +189,7 @@ function authUserMarkUp() {
   } else {
     userIn = `<div class="button-sing-auth-js">
       <button class="btn-log-out" type="button">
-        Log out<span class="btn-icn-wrap">
+        Log in<span class="btn-icn-wrap">
           <svg width="20" height="20">
             <use href="${svgRight}#arrow-right"></use>
           </svg>
