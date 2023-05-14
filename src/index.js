@@ -17,3 +17,5 @@ import './js/burgerModal';
 // import { Block } from 'notiflix/build/notiflix-block-aio';
 // ==========================
 // const basicLightbox = require('basiclightbox')
+import './js/support-create';
+
