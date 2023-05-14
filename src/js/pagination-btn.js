@@ -4,9 +4,6 @@ const paginationLeft = document.querySelector('.js-pagination-left');
 const paginationCenter = document.querySelector('.js-pagination-center');
 const paginationRight = document.querySelector('.js-pagination-right');
 
-let pageCurrent = 0;
-let pageLast = 0;
-
 async function getHero(page = 1) {
   const TOKEN = '18aEQHs2_l3sCMmPg1yk';
   const options = {
@@ -15,7 +12,7 @@ async function getHero(page = 1) {
     },
   };
   const resp = await fetch(
-    `https://the-one-api.dev/v2/character?page=${page}&limit=40`,
+    `https://the-one-api.dev/v2/character?page=${page}&limit=100`,
     options
   );
   if (!resp.ok) {
@@ -135,7 +132,7 @@ function createPaginataion(currentPage, lastPage) {
   }
 }
 
-// const currentElement = document.getElementById('.btn-pag--current');//!!
+const currentElement = document.getElementById('.btn-pag--current'); //!!
 // console.log(currentElement);//!!
 // document.getElementById('.btn-pag--current').style.color = 'red';//!!
 
