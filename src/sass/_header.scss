@@ -114,16 +114,3 @@
     margin: 2px auto;
   }
 }
-.modal-burger-menu {
-  width: 100%;
-  height: 100%;
-  background-color: aqua;
-  position: fixed;
-  z-index: 100;
-  transition: 0.3s;
-}
-.modal-burger-menu-off {
-  // display: none;
-  transform: translateX(-100%);
-  transition: 0.3s;
-}
