@@ -12,7 +12,6 @@
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
   width: 356px;
-  // max-height: 490px;
   margin-top: 86px;
 }
 
@@ -38,15 +37,11 @@
 }
 
 .support-list {
+  max-height: 292px;
   padding-left: 40px;
   margin-bottom: 40px;
-}
 
-.support-item {
-  color: $additional-txt-clr-light;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.04em;
+  overflow: hidden;
 }
 
 .support-item:not(:last-child) {
@@ -57,6 +52,13 @@
   height: 32px;
   display: flex;
   align-items: center;
+}
+
+.support-number {
+  color: $additional-txt-clr-light;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.04em;
 }
 
 .support-image {
