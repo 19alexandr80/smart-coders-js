@@ -2,7 +2,6 @@
 
 const refs = {
   shopListContainer: document.querySelector('.container__shopping-list'),
-  shopListBtn: document.querySelector('.button-header-shoping'),
   imgEmptyPage: document.querySelector('.imgEmptyPage'),
   textEmptyPage: document.querySelector('.textEmptyPage'),
   container: document.querySelector('.shop-list__container'),
@@ -20,10 +19,10 @@ const dataBookRender = bookShopKyes.map(kye => {
 console.log(dataBookRender);
 // =========================================================================================
 
-refs.shopListBtn.addEventListener('click', onBtnClick);
+// refs.shopListBtn.addEventListener('click', onBtnClick);
 // refs.btnTrash.addEventListener('click', onBtnTrash);
 console.log(refs.btnTrash);
-
+onBtnClick();
 function onBtnClick() {
   console.log('gooood');
   if (dataBookRender.length >= 1) {
