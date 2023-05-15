@@ -1,0 +1,53 @@
+// CONSTANT COLORS //
+
+/* ACCENT COLORS */
+$primary-accent-color: #4f2ee8; //violet
+$secondary-accent-color: #eac645; //yellow
+
+/* TEXT COLORS */
+$additional-txt-clr-light: #ffffff; //Support UA
+$registration-modal-input-txt-clr-dark: #f6f6f6; //Start
+
+
+/* BG COLORS */
+$backdrop-bgc: rgba(17, 17, 17, 0.4);
+$gradient-bgc: radial-gradient(
+  183.6% 183.01% at 59.76% -23.42%,
+  #4f2ee8 18.03%,
+  #ffffff 100%
+);
+
+/* BORDER COLORS */
+$shop-list-brdr-clr: rgba(79, 46, 232, 0.4); //Shopping List
+$scroll-up-brdr-clr: rgba(79, 46, 232, 0.3); //Scroll up
+
+$registration-modal-brdr-clr-dark: #f6f6f6;
+
+/* SHADOWS */
+$icon-hover-shadow: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// CHANGING COLORS //
+
+/* TEXT COLORS */ 
+$primary-txt-clr-light: #111111; //#ffffff
+
+$sidebar-txt-clr-light: rgba(17, 17, 17, 0.6); //rgba(255, 255, 255, 0.6)
+
+$shop-list-info-txt-clr-light: rgba(0, 0, 0, 0.6); //rgba(255, 255, 255, 0.6) //Shopping List
+
+$book-modal-info-txt-clr-light: rgba(17, 17, 17, 0.5); //rgba(255, 255, 255, 0.5) //Pop up
+
+$registration-modal-btn-txt-clr-light: #f3f3f3; // #202024 //Start
+
+$registration-modal-sign-in-txt-clr-light: rgba(17, 17, 17, 0.5); //rgba(246, 246, 246, 0.5) //Start
+
+/* BG COLORS */ 
+$primary-bgc-light: #f6f6f6; //#202024
+$secondary-bgc-light: #ffffff; //#111111
+
+$scroll-bgc-light: #e0e0e0; //rgba(17, 17, 17, 0.6) //Home
+
+/* BORDER COLORS */
+$primary-brdr-clr-light: #111111; //#ffffff 
