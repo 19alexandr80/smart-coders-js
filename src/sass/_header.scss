@@ -50,6 +50,9 @@
 .header-button-nav {
   margin-left: 40px;
   display: flex;
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 .user-img-auth {
   width: 37px;

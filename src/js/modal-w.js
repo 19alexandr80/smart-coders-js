@@ -1,4 +1,5 @@
 import { booksId } from './axiosApi';
+import { DataFirebase } from './firebaseInteraction';
 import amazon from '../images/shops/amazon@1x.png';
 import amazon2x from '../images/shops/amazon@2x.png';
 import apple from '../images/shops/book@1x.png';
@@ -7,15 +8,15 @@ import bookShop from '../images/shops/books@1x.png';
 import bookShop2x from '../images/shops/books@2x.png';
 
 const LOCAL_KEY = 'booksID';
-// openModal('643282b1e85766588626a0ba');
+const dataFirebase = new DataFirebase();
+let BOOKID = null;
 
 export async function openModal(element) {
+  const validToken = localStorage.getItem('email') !== null;
+  console.log(validToken);
   const bookId = element;
-  console.log(bookId);
-
   const dataBook = await booksId(bookId);
-  console.log(dataBook);
-
+  BOOKID = bookId;
   const backdrop = document.querySelector('.backdrop');
   backdrop.classList.remove('is-hidden');
 
@@ -24,8 +25,13 @@ export async function openModal(element) {
     event.stopPropagation();
   });
 
-  bookInfoMarkup(dataBook);
-  setOrderBtnText(modal, dataBook);
+  // bookInfoMarkup(dataBook);
+  // console.log(localStorage.getItem('tokenResponse'));
+  if (validToken) {
+    console.log(validToken);
+    setOrderBtnText();
+  }
+  // setOrderBtnText();
 
   document.body.style.overflow = 'hidden';
 
@@ -53,33 +59,20 @@ export async function openModal(element) {
     document.body.style.overflow = '';
   }
 
-  function onClick() {
+  function onClick(e) {
+    console.log('oncliiiiiiiiiiiiiiiiik', validToken);
     const textAfterRemoveBtn = document.querySelector('.text-input');
-    const value = localStorage.getItem(LOCAL_KEY);
-    if (value === null) {
-      localStorage.setItem(LOCAL_KEY, JSON.stringify([bookId]));
+    if (!orderBtn.classList.value.includes('order-btn-remove-state')) {
       orderBtn.textContent = 'remove from the shopping list';
       orderBtn.classList.add('order-btn-remove-state');
       textAfterRemoveBtn.innerHTML = `<p class='text-remove-btn'> Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.</p>`;
+      dataFirebase.addBookk(bookId);
     } else {
-      const ids = JSON.parse(value);
-      const hasBookId = ids.includes(bookId);
-
-      if (hasBookId) {
-        const updatedIds = ids.filter(id => id !== bookId);
-        localStorage.setItem(LOCAL_KEY, JSON.stringify(updatedIds));
-        orderBtn.textContent = 'Add to shopping list';
-        orderBtn.classList.add('order-btn');
-        orderBtn.classList.remove('order-btn-remove-state');
-        textAfterRemoveBtn.innerHTML = '';
-      } else {
-        ids.push(bookId);
-        localStorage.setItem(LOCAL_KEY, JSON.stringify(ids));
-        orderBtn.textContent = 'remove from the shopping list';
-        orderBtn.classList.add('order-btn-remove-state');
-        orderBtn.classList.remove('order-btn');
-        textAfterRemoveBtn.innerHTML = `<p class='text-remove-btn'> Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.</p>`;
-      }
+      dataFirebase.deleteBook(bookId);
+      orderBtn.textContent = 'Add to shopping list';
+      orderBtn.classList.add('order-btn');
+      orderBtn.classList.remove('order-btn-remove-state');
+      textAfterRemoveBtn.innerHTML = '';
     }
   }
 }
@@ -108,30 +101,20 @@ function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
        `;
 }
 
-function setOrderBtnText(modal, bookId) {
+function setOrderBtnText() {
   const orderBtn = document.querySelector('[data-name="order-btn"]');
   const textAfterRemoveBtn = document.querySelector('.text-input');
-  const hasLocalStorageID = localStorage.getItem(LOCAL_KEY);
-  console.log(hasLocalStorageID);
-  console.log(bookId);
-  if (hasLocalStorageID === null) {
+  const shopingListBook = JSON.parse(localStorage.getItem('shopingList'));
+  const validBookKey = Object.keys(shopingListBook).includes(BOOKID);
+  if (validBookKey) {
+    orderBtn.textContent = 'remove from the shopping list';
+    orderBtn.classList.add('order-btn-remove-state');
+    orderBtn.classList.remove('order-btn');
+    textAfterRemoveBtn.innerHTML = `<p class='text-remove-btn'> Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.</p>`;
+  } else {
     orderBtn.textContent = 'Add to shopping list';
     orderBtn.classList.add('order-btn');
     orderBtn.classList.remove('order-btn-remove-state');
     textAfterRemoveBtn.innerHTML = '';
-  } else {
-    const bookInStorage = JSON.parse(hasLocalStorageID);
-    const textOnOrderBtn = bookInStorage.includes(bookId._id);
-    if (textOnOrderBtn) {
-      orderBtn.textContent = 'remove from the shopping list';
-      orderBtn.classList.add('order-btn-remove-state');
-      orderBtn.classList.remove('order-btn');
-      textAfterRemoveBtn.innerHTML = `<p class='text-remove-btn'> Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.</p>`;
-    } else {
-      orderBtn.textContent = 'Add to shopping list';
-      orderBtn.classList.add('order-btn');
-      orderBtn.classList.remove('order-btn-remove-state');
-      textAfterRemoveBtn.innerHTML = '';
-    }
   }
 }
