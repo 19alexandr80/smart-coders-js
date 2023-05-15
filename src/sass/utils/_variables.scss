@@ -1,3 +1,7 @@
+:root {
+  --dark: #111111;
+  --wayte: #ffffff;
+}
 /* ACCENT COLORS */
 $primary-accent-color: #4f2ee8; //violet
 $secondary-accent-color: #eac645; //yellow
@@ -7,8 +11,8 @@ $secondary-accent-color: #eac645; //yellow
 $secondary-txt-clr: #b4afaf; //books author і т.і.
 
 /* Text colors Light Theme */
-$primary-txt-clr-light: #111111;
-$additional-txt-clr-light: #ffffff; //Support UA
+$primary-txt-clr-light: var(--dark);
+$additional-txt-clr-light: var(--wayte); //Support UA
 
 $sidebar-txt-clr-light: rgba(17, 17, 17, 0.6);
 
