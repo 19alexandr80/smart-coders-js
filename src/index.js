@@ -9,6 +9,9 @@ import './js/themes';
 // import './js/modal-window';
 // const throttle = require('lodash.throttle');
 // import Notiflix from 'notiflix';
+import './js/gallery-items';
+import './js/local-storage';
+import './js/pagination-btn';
 
 // // one by one
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';

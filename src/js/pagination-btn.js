@@ -1,49 +1,53 @@
 import svgHref from '../images/icons.svg';
 
+import { quantityPages, getNewDataBatch } from './local-storage';
+
 const paginationLeft = document.querySelector('.js-pagination-left');
 const paginationCenter = document.querySelector('.js-pagination-center');
 const paginationRight = document.querySelector('.js-pagination-right');
 
-let pageCurrent = 0;
-let pageLast = 0;
+let pageCurrent = 1; //!!!!!!!!!!!!!!
+const pageLast = 7; //!!!!!!!!!!!!!!
+
+// console.log('zxcvbnm', quantityPages); //!!
 
 // Запит на бекенд
-async function getHero(page = 1) {
-  const TOKEN = '18aEQHs2_l3sCMmPg1yk';
-  const options = {
-    headers: {
-      Authorization: `Bearer ${TOKEN}`,
-    },
-  };
-  const resp = await fetch(
-    `https://the-one-api.dev/v2/character?page=${page}&limit=200`,
-    options
-  );
-  if (!resp.ok) {
-    throw new Error(resp.statusText);
-  }
-  const data = await resp.json();
+// async function getHero(page = 1) {
+//   const TOKEN = '18aEQHs2_l3sCMmPg1yk';
+//   const options = {
+//     headers: {
+//       Authorization: `Bearer ${TOKEN}`,
+//     },
+//   };
+//   const resp = await fetch(
+//     `https://the-one-api.dev/v2/character?page=${page}&limit=200`,
+//     options
+//   );
+//   if (!resp.ok) {
+//     throw new Error(resp.statusText);
+//   }
+//   const data = await resp.json();
 
-  return data;
-}
+//   return data;
+// }
 
 // Обробка запиту на бекенд за замовчуванням (при рендерінгу сторінки)
-getHero()
-  .then(data => {
-    pageCurrent = data.page;
-    pageLast = data.pages;
+// getHero();
+// .then(data => {
+//   pageCurrent = data.page;
+//   pageLast = data.pages;
 
-    createPaginataionBtn(data.pages);
-    createPaginataion(data.page, data.pages);
-  })
-  .catch(err => console.log(err));
+//   createPaginataionBtn(data.pages);
+//   createPaginataion(data.page, data.pages);
+// })
+// .catch(err => console.log(err));
 
 // Рендерінг керівних кнопок пагінації
-function createPaginataionBtn(lastPage) {
+export function createPaginataionBtn(totalPages) {
   let markupBtnLeft = '';
   let markupBtnRight = '';
 
-  if (lastPage > 1) {
+  if (totalPages > 1) {
     markupBtnLeft = `<button class="btn-pag btn-pag--left js-pag-first" type="button">
           <span class="btn-icn-wrap">
             <svg width="24" height="24">
@@ -80,10 +84,10 @@ function createPaginataionBtn(lastPage) {
 }
 
 // Рендерінг маркерів пагінації і додаткових (не статичних) кнопок
-function createPaginataion(currentPage, lastPage) {
+export function createPaginataion(currentPage, totalPages) {
   let markup = '';
 
-  if (lastPage > 1) {
+  if (totalPages > 1) {
     if ((currentPage + 2) % 3 == 0) {
       if (currentPage > 1) {
         if (window.innerWidth > 767.99) {
@@ -93,17 +97,17 @@ function createPaginataion(currentPage, lastPage) {
 
       markup += `<li><button class="btn-pag btn-pag--current js-pag-marker"  data-marker = "current" type="button">${currentPage}</button></li>`;
 
-      if (currentPage !== lastPage) {
+      if (currentPage !== totalPages) {
         markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
-          currentPage + 1
+          Number(currentPage) + 1
         }</button></li>`;
 
-        if (currentPage !== lastPage && currentPage < lastPage - 1) {
+        if (currentPage !== totalPages && currentPage < totalPages - 1) {
           markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
-            currentPage + 2
+            Number(currentPage) + 2
           }</button></li>`;
         }
-        if (currentPage < lastPage - 2) {
+        if (currentPage < totalPages - 2) {
           if (window.innerWidth > 767.99) {
             markup += `<li><button class="btn-pag btn-pag--more-right" type="button">...</button></li>`;
           }
@@ -120,15 +124,15 @@ function createPaginataion(currentPage, lastPage) {
 
       markup +=
         `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
-          currentPage - 1
+          Number(currentPage) - 1
         }</button></li>` +
         `<li><button class="btn-pag btn-pag--current js-pag-marker" data-marker = "current" type="button">${currentPage}</button></li>`;
 
-      if (currentPage !== lastPage) {
+      if (currentPage !== totalPages) {
         markup += `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
-          currentPage + 1
+          Number(currentPage) + 1
         }</button></li>`;
-        if (currentPage <= lastPage - 2) {
+        if (currentPage <= totalPages - 2) {
           if (window.innerWidth > 767.99) {
             markup += `<li><button class="btn-pag btn-pag--more-right" type="button">...</button></li>`;
           }
@@ -144,13 +148,13 @@ function createPaginataion(currentPage, lastPage) {
       }
       markup +=
         `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
-          currentPage - 2
+          Number(currentPage) - 2
         }</button></li>` +
         `<li><button class="btn-pag btn-pag--not-current js-pag-marker" type="button">${
-          currentPage - 1
+          Number(currentPage) - 1
         }</button></li>` +
         `<li><button class="btn-pag btn-pag--current js-pag-marker" data-marker = "current" type="button">${currentPage}</button></li>`;
-      if (currentPage <= lastPage - 2 || currentPage === lastPage - 1) {
+      if (currentPage <= totalPages - 2 || currentPage === totalPages - 1) {
         if (window.innerWidth > 767.99) {
           markup += `<li><button class="btn-pag btn-pag--more-right" type="button">...</button></li>`;
         }
@@ -250,12 +254,19 @@ function handlerPaginationRight(evt) {
 }
 
 // Обробка запиту на бекенд від пагінації
+// function getPaginationPages(page) {
+//   getHero(page)
+//     .then(data => {
+//       createPaginataion(data.page, data.pages);
+//     })
+//     .catch(err => console.log(err));
+
+//   pageCurrent = page;
+// }
+
 function getPaginationPages(page) {
-  getHero(page)
-    .then(data => {
-      createPaginataion(data.page, data.pages);
-    })
-    .catch(err => console.log(err));
+  getNewDataBatch(page);
+  createPaginataion(page, pageLast);
 
   pageCurrent = page;
 }
