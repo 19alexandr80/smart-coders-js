@@ -1,3 +1,26 @@
+:root{
+  --light: #111111;
+  --dark:#ffffff;
+  --light-sidebar: rgba(17, 17, 17, 0.6);
+  --dark-sidebar: rgba(255, 255, 255, 0.6);
+  --light-shoplist: rgba(0, 0, 0, 0.6);
+  --dark-shoplist: rgba(255, 255, 255, 0.6);
+  --light-book-modal: rgba(17, 17, 17, 0.5);
+  --dark-book-modal:rgba(255, 255, 255, 0.5);
+  --light-singup-modal-btn: #f3f3f3;
+  --dark-singup-modal-btn: #202024;
+  --light-singup-modal-singin-txt:rgba(17, 17, 17, 0.5);
+  --dark-singup-modal-singin-txt:rgba(246, 246, 246, 0.5);
+  --light-bgc:#f6f6f6;
+  --dark-bgc:#202024;
+  --light-bgc-second:#ffffff;
+  --dark-bgc-second:#111111;
+  --light-scroll: #e0e0e0;
+  --dark-scroll: rgba(17, 17, 17, 0.6);
+  --light-brdr: #111111;
+  --dark-brdr: #ffffff;
+}
+
 // CONSTANT COLORS //
 
 /* ACCENT COLORS */
@@ -31,23 +54,23 @@ $icon-hover-shadow: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
 // CHANGING COLORS //
 
 /* TEXT COLORS */ 
-$primary-txt-clr-light: #111111; //#ffffff
+$primary-txt-clr-light: var(--light); //#ffffff
 
-$sidebar-txt-clr-light: rgba(17, 17, 17, 0.6); //rgba(255, 255, 255, 0.6)
+$sidebar-txt-clr-light: var(--light-sidebar); //rgba(255, 255, 255, 0.6)
 
-$shop-list-info-txt-clr-light: rgba(0, 0, 0, 0.6); //rgba(255, 255, 255, 0.6)
+$shop-list-info-txt-clr-light: var(--light-shoplist); //rgba(255, 255, 255, 0.6)
 
-$book-modal-info-txt-clr-light: rgba(17, 17, 17, 0.5); //rgba(255, 255, 255, 0.5)
+$book-modal-info-txt-clr-light: var(--light-book-modal); //rgba(255, 255, 255, 0.5)
 
-$registration-modal-btn-txt-clr-light: #f3f3f3; // #202024
+$registration-modal-btn-txt-clr-light: var(--light-singup-modal-btn); // #202024
 
-$registration-modal-sign-in-txt-clr-light: rgba(17, 17, 17, 0.5); //rgba(246, 246, 246, 0.5)
+$registration-modal-sign-in-txt-clr-light: var(--light-singup-modal-singin-txt); //rgba(246, 246, 246, 0.5)
 
 /* BG COLORS */ 
-$primary-bgc-light: #f6f6f6; //#202024
-$secondary-bgc-light: #ffffff; //#111111
+$primary-bgc-light: var(--light-bgc); //#202024
+$secondary-bgc-light: var(--light-bgc-second); //#111111
 
-$scroll-bgc-light: #e0e0e0; //rgba(17, 17, 17, 0.6)
+$scroll-bgc-light: var(--light-scroll); //rgba(17, 17, 17, 0.6)
 
 /* BORDER COLORS */
-$primary-brdr-clr-light: #111111; //#ffffff 
+$primary-brdr-clr-light: var(--light-brdr); //#ffffff 
