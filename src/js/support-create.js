@@ -6,7 +6,7 @@ const makeSupporItems = supportArr
   .map(
     ({ title, url, img }, idx) =>
       `<li class="support-item">
-  <a class="support-link" href=${url}>
+  <a class="support-link" href=${url} target="_blank" rel="nofollow noopener noreferrer">
     <span class="support-number">${addLeadingZero(idx + 1)}</span>
     <img
       class="support-image"
