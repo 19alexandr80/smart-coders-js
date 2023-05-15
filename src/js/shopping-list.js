@@ -1,4 +1,4 @@
-import { axiosApiBooks } from './axiosApi';
+// import { axiosApiBooks } from './axiosApi';
 
 const refs = {
   shopListContainer: document.querySelector('.container__shopping-list'),
@@ -9,6 +9,15 @@ const refs = {
 };
 refs.shopListBtn.addEventListener('click', onBtnClick);
 // LOCALSTORAGE_KEY = 'booksStorage';
+// =========================================================================================
+const dataBookShop = JSON.parse(localStorage.getItem('shopingList'));
+const bookShopKyes = Object.keys(dataBookShop);
+const dataBookRender = bookShopKyes.map(kye => {
+  return dataBookShop[kye];
+});
+console.log(dataBookRender);
+
+// =========================================================================================
 
 const books = {
   _id: 1,
