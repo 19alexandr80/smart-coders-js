@@ -3,9 +3,9 @@ import './js/authmodal';
 import './js/main';
 import './js/categories';
 import './js/scroll-up';
-import { openModal } from './js/modal-w';
+
 import './js/burgerModal';
-import './js/shopping-list';
+// import './js/shopping-list';
 // import './js/modal-window';
 // const throttle = require('lodash.throttle');
 // import Notiflix from 'notiflix';
