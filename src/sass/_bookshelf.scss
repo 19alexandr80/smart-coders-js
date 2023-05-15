@@ -6,7 +6,7 @@
   // flex-wrap: wrap;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .left_part {
     display: flex;
     width: 704px;
@@ -34,7 +34,7 @@
     display: flex;
     flex-direction: column;
   }
-}
+} */
 
 /*-----------------------------------MOBILE------------------------*/
 
@@ -89,7 +89,7 @@
   background-position: 123px 205px;
   background-size: 88px 80px;
   position: relative;
-  width: 335px;
+  width: 100%;
   height: 485px;
   border-radius: 8px;
   overflow: hidden;
