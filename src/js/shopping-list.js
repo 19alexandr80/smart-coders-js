@@ -7,7 +7,7 @@ const refs = {
   textEmptyPage: document.querySelector('.textEmptyPage'),
   container: document.querySelector('.shopping-list__container'),
 };
-refs.shopListBtn.addEventListener('click', onBtnClick);
+// refs.shopListBtn.addEventListener('click', onBtnClick);
 // LOCALSTORAGE_KEY = 'booksStorage';
 // =========================================================================================
 const dataBookShop = JSON.parse(localStorage.getItem('shopingList'));
