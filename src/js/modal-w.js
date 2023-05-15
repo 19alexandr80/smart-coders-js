@@ -1,4 +1,5 @@
 import { booksId } from './axiosApi';
+import { DataFirebase } from './firebaseInteraction';
 import amazon from '../images/shops/amazon@1x.png';
 import amazon2x from '../images/shops/amazon@2x.png';
 import apple from '../images/shops/book@1x.png';
@@ -8,6 +9,7 @@ import bookShop2x from '../images/shops/books@2x.png';
 
 const LOCAL_KEY = 'booksID';
 // openModal('643282b1e85766588626a0ba');
+const dataFirebase = new DataFirebase();
 
 export async function openModal(element) {
   const bookId = element;
@@ -109,6 +111,8 @@ function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
 }
 
 function setOrderBtnText(modal, bookId) {
+  console.log('vvbvbv', modal);
+  console.log('vvbvbvID', bookId);
   const orderBtn = document.querySelector('[data-name="order-btn"]');
   const textAfterRemoveBtn = document.querySelector('.text-input');
   const hasLocalStorageID = localStorage.getItem(LOCAL_KEY);
