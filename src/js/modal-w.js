@@ -12,6 +12,8 @@ const dataFirebase = new DataFirebase();
 let BOOKID = null;
 
 export async function openModal(element) {
+  const validToken = localStorage.getItem('email') !== null;
+  console.log(validToken);
   const bookId = element;
   const dataBook = await booksId(bookId);
   BOOKID = bookId;
@@ -23,8 +25,13 @@ export async function openModal(element) {
     event.stopPropagation();
   });
 
-  bookInfoMarkup(dataBook);
-  setOrderBtnText(modal, dataBook);
+  // bookInfoMarkup(dataBook);
+  // console.log(localStorage.getItem('tokenResponse'));
+  if (validToken) {
+    console.log(validToken);
+    setOrderBtnText();
+  }
+  // setOrderBtnText();
 
   document.body.style.overflow = 'hidden';
 
@@ -53,6 +60,7 @@ export async function openModal(element) {
   }
 
   function onClick(e) {
+    console.log('oncliiiiiiiiiiiiiiiiik', validToken);
     const textAfterRemoveBtn = document.querySelector('.text-input');
     if (!orderBtn.classList.value.includes('order-btn-remove-state')) {
       orderBtn.textContent = 'remove from the shopping list';
@@ -93,10 +101,9 @@ function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
        `;
 }
 
-function setOrderBtnText(modal, bookId) {
+function setOrderBtnText() {
   const orderBtn = document.querySelector('[data-name="order-btn"]');
   const textAfterRemoveBtn = document.querySelector('.text-input');
-  const hasLocalStorageID = localStorage.getItem(LOCAL_KEY);
   const shopingListBook = JSON.parse(localStorage.getItem('shopingList'));
   const validBookKey = Object.keys(shopingListBook).includes(BOOKID);
   if (validBookKey) {
