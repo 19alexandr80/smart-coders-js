@@ -12,7 +12,7 @@ import './js/themes';
 import './js/gallery-items';
 import './js/local-storage';
 import './js/pagination-btn';
-
+import './js/pagination';
 // // one by one
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import { Report } from 'notiflix/build/notiflix-report-aio';

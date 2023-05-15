@@ -1,46 +1,46 @@
 import svgHref from '../images/icons.svg';
 
-import { quantityPages, getNewDataBatch } from './local-storage';
+// import { quantityPages, getNewDataBatch } from './local-storage';
 
 const paginationLeft = document.querySelector('.js-pagination-left');
 const paginationCenter = document.querySelector('.js-pagination-center');
 const paginationRight = document.querySelector('.js-pagination-right');
 
-let pageCurrent = 1; //!!!!!!!!!!!!!!
-const pageLast = 7; //!!!!!!!!!!!!!!
+// let pageCurrent = 1; //!!!!!!!!!!!!!!
+// const pageLast = 7; //!!!!!!!!!!!!!!
 
-// console.log('zxcvbnm', quantityPages); //!!
+// // console.log('zxcvbnm-10', quantityPages); //!!
 
-// Запит на бекенд
-// async function getHero(page = 1) {
-//   const TOKEN = '18aEQHs2_l3sCMmPg1yk';
-//   const options = {
-//     headers: {
-//       Authorization: `Bearer ${TOKEN}`,
-//     },
-//   };
-//   const resp = await fetch(
-//     `https://the-one-api.dev/v2/character?page=${page}&limit=200`,
-//     options
-//   );
-//   if (!resp.ok) {
-//     throw new Error(resp.statusText);
-//   }
-//   const data = await resp.json();
+// // Запит на бекенд
+// // async function getHero(page = 1) {
+// //   const TOKEN = '18aEQHs2_l3sCMmPg1yk';
+// //   const options = {
+// //     headers: {
+// //       Authorization: `Bearer ${TOKEN}`,
+// //     },
+// //   };
+// //   const resp = await fetch(
+// //     `https://the-one-api.dev/v2/character?page=${page}&limit=200`,
+// //     options
+// //   );
+// //   if (!resp.ok) {
+// //     throw new Error(resp.statusText);
+// //   }
+// //   const data = await resp.json();
 
-//   return data;
-// }
+// //   return data;
+// // }
 
-// Обробка запиту на бекенд за замовчуванням (при рендерінгу сторінки)
-// getHero();
-// .then(data => {
-//   pageCurrent = data.page;
-//   pageLast = data.pages;
+// // Обробка запиту на бекенд за замовчуванням (при рендерінгу сторінки)
+// // getHero();
+// // .then(data => {
+// //   pageCurrent = data.page;
+// //   pageLast = data.pages;
 
-//   createPaginataionBtn(data.pages);
-//   createPaginataion(data.page, data.pages);
-// })
-// .catch(err => console.log(err));
+// //   createPaginataionBtn(data.pages);
+// //   createPaginataion(data.page, data.pages);
+// // })
+// // .catch(err => console.log(err));
 
 // Рендерінг керівних кнопок пагінації
 export function createPaginataionBtn(totalPages) {
@@ -164,109 +164,109 @@ export function createPaginataion(currentPage, totalPages) {
     paginationCenter.innerHTML = markup;
   }
 }
-//! =====================================================
-// const currentElement = document.querySelector(
-//   'button[data-marker = "current"]'
-// ); //!!
-// console.log(currentElement.dataset.marker); //!!
-// document.getElementById('.btn-pag--current').style.color = 'red';//!!
-//! =====================================================
+// //! =====================================================
+// // const currentElement = document.querySelector(
+// //   'button[data-marker = "current"]'
+// // ); //!!
+// // console.log(currentElement.dataset.marker); //!!
+// // document.getElementById('.btn-pag--current').style.color = 'red';//!!
+// //! =====================================================
 
-// Прослуховувач маркерів пагінації і додаткових (не статичних) кнопок
-paginationCenter.addEventListener('click', handlerPaginationCenter);
+// // Прослуховувач маркерів пагінації і додаткових (не статичних) кнопок
+// paginationCenter.addEventListener('click', handlerPaginationCenter);
 
-function handlerPaginationCenter(evt) {
-  if (!evt.target.classList.contains('js-pag-marker')) {
-    if (evt.target.classList.contains('btn-pag--more-left')) {
-      const page = Number(pageCurrent) - 3; //! textContent ?
-      getPaginationPages(page);
-    }
+// function handlerPaginationCenter(evt) {
+//   if (!evt.target.classList.contains('js-pag-marker')) {
+//     if (evt.target.classList.contains('btn-pag--more-left')) {
+//       const page = Number(pageCurrent) - 3; //! textContent ?
+//       getPaginationPages(page);
+//     }
 
-    if (evt.target.classList.contains('btn-pag--more-right')) {
-      if (pageCurrent <= pageLast - 3) {
-        const page = Number(pageCurrent) + 3; //! textContent ?
-        getPaginationPages(page);
-      } else {
-        const page = pageLast;
-        getPaginationPages(page);
-      }
-    }
+//     if (evt.target.classList.contains('btn-pag--more-right')) {
+//       if (pageCurrent <= pageLast - 3) {
+//         const page = Number(pageCurrent) + 3; //! textContent ?
+//         getPaginationPages(page);
+//       } else {
+//         const page = pageLast;
+//         getPaginationPages(page);
+//       }
+//     }
 
-    return;
-  }
+//     return;
+//   }
 
-  const page = evt.target.textContent;
-  getPaginationPages(page);
-}
+//   const page = evt.target.textContent;
+//   getPaginationPages(page);
+// }
 
-// Прослуховувач лівих керівних кнопок пагінації
-paginationLeft.addEventListener('click', handlerPaginationLeft);
+// // Прослуховувач лівих керівних кнопок пагінації
+// paginationLeft.addEventListener('click', handlerPaginationLeft);
 
-function handlerPaginationLeft(evt) {
-  if (!evt.target.closest('.js-pagination-left')) {
-    return;
-  }
+// function handlerPaginationLeft(evt) {
+//   if (!evt.target.closest('.js-pagination-left')) {
+//     return;
+//   }
 
-  if (evt.target.closest('.js-pag-first')) {
-    if (pageCurrent === 1) {
-      return;
-    }
+//   if (evt.target.closest('.js-pag-first')) {
+//     if (pageCurrent === 1) {
+//       return;
+//     }
 
-    const page = 1;
-    getPaginationPages(page);
-  }
+//     const page = 1;
+//     getPaginationPages(page);
+//   }
 
-  if (evt.target.closest('.js-pag-prev')) {
-    if (pageCurrent === 1) {
-      return;
-    }
+//   if (evt.target.closest('.js-pag-prev')) {
+//     if (pageCurrent === 1) {
+//       return;
+//     }
 
-    const page = Number(pageCurrent) - 1; //! textContent ?
-    getPaginationPages(page);
-  }
-}
+//     const page = Number(pageCurrent) - 1; //! textContent ?
+//     getPaginationPages(page);
+//   }
+// }
 
-// Прослуховувач правих керівних кнопок пагінації
-paginationRight.addEventListener('click', handlerPaginationRight);
+// // Прослуховувач правих керівних кнопок пагінації
+// paginationRight.addEventListener('click', handlerPaginationRight);
 
-function handlerPaginationRight(evt) {
-  if (!evt.target.closest('.js-pagination-right')) {
-    return;
-  }
+// function handlerPaginationRight(evt) {
+//   if (!evt.target.closest('.js-pagination-right')) {
+//     return;
+//   }
 
-  if (evt.target.closest('.js-pag-last')) {
-    if (pageCurrent === pageLast) {
-      return;
-    }
+//   if (evt.target.closest('.js-pag-last')) {
+//     if (pageCurrent === pageLast) {
+//       return;
+//     }
 
-    const page = pageLast;
-    getPaginationPages(page);
-  }
+//     const page = pageLast;
+//     getPaginationPages(page);
+//   }
 
-  if (evt.target.closest('.js-pag-next')) {
-    if (pageCurrent === pageLast) {
-      return;
-    }
+//   if (evt.target.closest('.js-pag-next')) {
+//     if (pageCurrent === pageLast) {
+//       return;
+//     }
 
-    const page = Number(pageCurrent) + 1; //! textContent ?
-    getPaginationPages(page);
-  }
-}
+//     const page = Number(pageCurrent) + 1; //! textContent ?
+//     getPaginationPages(page);
+//   }
+// }
 
-// Обробка запиту на бекенд від пагінації
+// // Обробка запиту на бекенд від пагінації
+// // function getPaginationPages(page) {
+// //   getHero(page)
+// //     .then(data => {
+// //       createPaginataion(data.page, data.pages);
+// //     })
+// //     .catch(err => console.log(err));
+
+// //   pageCurrent = page;
+// // }
+
 // function getPaginationPages(page) {
-//   getHero(page)
-//     .then(data => {
-//       createPaginataion(data.page, data.pages);
-//     })
-//     .catch(err => console.log(err));
+//   getNewDataBatch(page);
+//   createPaginataion(page, pageLast);
 
 //   pageCurrent = page;
 // }
-
-function getPaginationPages(page) {
-  getNewDataBatch(page);
-  createPaginataion(page, pageLast);
-
-  pageCurrent = page;
-}

@@ -6,8 +6,8 @@ import { createPaginataionBtn, createPaginataion } from './pagination-btn.js';
 // let options = null;
 let subarray = [];
 let quantityItems = 0;
-// export let quantityPages = 0;
-let quantityPages = 0;
+export let quantityPages = 0;
+// let quantityPages = 0;
 let pageCurrent = 1;
 
 // const paginOptions = {
@@ -131,9 +131,9 @@ export function getData() {
   createPaginataionBtn(quantityPages);
   createPaginataion(pageCurrent, quantityPages);
 
-  console.log('zxcvbnm', quantityPages); //!!!
+  console.log('zxcvbnm-11', quantityPages); //!!!
 }
-console.log('zxcvbnm', quantityPages); //!!!
+console.log('zxcvbnm-12', quantityPages); //!!!
 
 export function getNewDataBatch(page) {
   const currentPage = page; //10
@@ -165,4 +165,4 @@ export function makeImageGallery(galleryItems) {
     .join('');
 }
 
-export { quantityPages };
+// export { quantityPages };
