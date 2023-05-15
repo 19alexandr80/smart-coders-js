@@ -6,7 +6,7 @@ const refs = {
   imgEmptyPage: document.querySelector('.imgEmptyPage'),
   textEmptyPage: document.querySelector('.textEmptyPage'),
   container: document.querySelector('.shop-list__container'),
-  containerEmptyPage: document.querySelector('shop-list__empty-page'),
+  containerEmptyPage: document.querySelector('.shop-list__empty-page'),
   btnTrash: document.querySelector('.btn-trash-box'),
 };
 
@@ -26,7 +26,7 @@ console.log(refs.btnTrash);
 
 function onBtnClick() {
   console.log('gooood');
-  if (dataBookRender.length < 1) {
+  if (dataBookRender.length >= 1) {
     refs.imgEmptyPage.remove('.imgEmptyPage');
     refs.textEmptyPage.remove('.textEmptyPage');
     makeMarkupBook(dataBookRender);
