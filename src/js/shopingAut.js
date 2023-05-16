@@ -115,7 +115,7 @@ function modalAuth() {
     <button type="submit">sign up</button>
     <div class='button-sing-group'>
     <p class='button-sing'>Sign up</p>
-    <p class="button-sign-in">Si in</p>
+    <p class="button-sign-in">Sign in</p>
     <p class='button-google'>google</p>
     </div>
   </form>
