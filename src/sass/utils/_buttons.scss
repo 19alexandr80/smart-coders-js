@@ -3,8 +3,8 @@
   @extend %btn;
   @extend %btn-base-action;
 
-  border: 2px solid $primary-brdr-clr-light;
-  background-color: $primary-brdr-clr-light;
+  border: 2px solid $registration-modal-brdr-clr-light;
+  background-color: $registration-modal-brdr-clr-light;
 
   color: $registration-modal-btn-txt-clr-light;
 
@@ -131,7 +131,7 @@
   width: 184px;
   height: 48px;
   border-radius: 17px;
-  border-color: $primary-txt-clr-light;
+  border-color: $secondary-bgc-dark;
   background-color: $additional-txt-clr-light;
 
   font-weight: 500;
@@ -139,6 +139,7 @@
   line-height: calc(18 / 14);
   text-transform: none;
   letter-spacing: -0.04em;
+  color: $secondary-bgc-dark;
 
   &:hover,
   &:focus {
@@ -261,7 +262,7 @@
 
   &:hover,
   &:focus {
-    color: $primary-accent-color;
+    color: $primary-accent-color-btn;
   }
 
   // &.dark-theme {

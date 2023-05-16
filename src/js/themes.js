@@ -21,6 +21,10 @@ function onThemLocal() {
     document.body.style.setProperty('--light-bgc-second', '#ffffff');
     document.body.style.setProperty('--light-scroll', '#e0e0e0');
     document.body.style.setProperty('--light-brdr', '#111111');
+
+    //---------------add
+    document.body.style.setProperty('--light-accent', '#4f2ee8');
+    document.body.style.setProperty('--light-brdr-reg', '#111111');
   } else {
     localStorage.setItem('them', 'dark');
     document.body.style.setProperty('--wayte', '#111111');
@@ -47,6 +51,10 @@ function onThemLocal() {
     document.body.style.setProperty('--light-bgc-second', '#111111');
     document.body.style.setProperty('--light-scroll', 'rgba(17, 17, 17, 0.6)');
     document.body.style.setProperty('--light-brdr', '#ffffff');
+
+    //---------------add
+    document.body.style.setProperty('--light-accent', '#eac645');
+    document.body.style.setProperty('--light-brdr-reg', '#f6f6f6');
   }
   console.log('nnnnnnnn', localStorage.getItem('them'));
 }
