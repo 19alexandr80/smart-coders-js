@@ -48,7 +48,6 @@ function onThemLocal() {
     document.body.style.setProperty('--light-scroll', 'rgba(17, 17, 17, 0.6)');
     document.body.style.setProperty('--light-brdr', '#ffffff');
   }
-  console.log('nnnnnnnn', localStorage.getItem('them'));
 }
 function localThem() {
   if (localStorage.getItem('them')) {

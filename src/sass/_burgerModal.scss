@@ -4,16 +4,9 @@
   position: absolute;
   z-index: 100;
   transition: 0.3s;
-  //   display: flex;
-  //   flex-flow: column;
-  //   justify-content: space-around;
-  //   align-items: center;
-  //   margin-left: auto;
-  //   margin-right: auto;
   background: $gradient-bgc;
 }
 .modal-burger-menu-off {
-  // display: none;
   transform: translateX(-100%);
   transition: 0.3s;
 }
@@ -43,14 +36,22 @@
   align-self: flex-start;
 }
 .active .burger-menu-span1 {
-  transform: translateY(5.5px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
+  transition: 0.3s;
+}
+.active .burger-menu-span5 {
+  transform: translateY(-6px) rotate(-45deg);
   transition: 0.3s;
 }
 .active .burger-menu-span3 {
-  transform: translateY(-5.5px) rotate(-45deg);
-  transition: 0.3s;
+  opacity: 0;
+  transition: 0.1s;
 }
 .active .burger-menu-span2 {
+  opacity: 0;
+  transition: 0.1s;
+}
+.active .burger-menu-span4 {
   opacity: 0;
   transition: 0.1s;
 }
