@@ -7,13 +7,12 @@ let quantityItems = 0;
 let currentPage = 1;
 export let quantityPages = 0;
 
-if (window.screen.width <= 375) {
-  //!!!!
-  // options = paginOptionsLess;
-  // pagination.setItemsPerPage(4);
+// Кількість карток на сторінці відносно window.screen.width
+let cards = 0;
+if (window.screen.width < 768) {
+  cards = 4;
 } else {
-  // options = paginOptions;
-  // pagination.setItemsPerPage(3);
+  cards = 3;
 }
 
 const gallery = document.querySelector('.gallery');
@@ -26,16 +25,10 @@ getData();
 // get data from local storage by key
 function getData() {
   const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  // console.log(typeof storageData); //!!!!
-
   const items = Object.values(storageData);
-  // console.log('Items:', items); //!!!!
 
   quantityItems = items.length;
-  quantityPages = Math.ceil(quantityItems / 3); // кол-во страниц
-
-  // console.log('Total items:', quantityItems); //!!!
-  // console.log('Total Pages:', quantityPages); //!!!
+  quantityPages = Math.ceil(quantityItems / cards);
 
   let i = 0;
   for (const item of items) {
@@ -45,25 +38,15 @@ function getData() {
     }
   }
 
-  // gallery.insertAdjacentHTML(
-  //   'beforeend',
-  //   makeImageGallery(subarray.slice(0, 3))
-  // ); //!
-
-  gallery.innerHTML = makeImageGallery(subarray.slice(0, 3));
+  gallery.innerHTML = makeImageGallery(subarray.slice(0, cards));
 
   createPaginataionBtn(quantityPages);
   createPaginataion(currentPage, quantityPages);
 }
 
 export function getNewDataBatch(currentPage) {
-  // const currentPage = page; //10
-  // console.log('Current page', currentPage); //!!!
-
-  const minIndex = currentPage * 3 - 3; // 0 27
-  const maxIndex = currentPage * 3; // 2 //???
-  // console.log('Min index', minIndex); //!!!!
-  // console.log('Max index', maxIndex); //!!!!
+  const minIndex = currentPage * cards - cards;
+  const maxIndex = currentPage * cards;
 
   gallery.innerHTML = makeImageGallery(subarray.slice(minIndex, maxIndex));
 }

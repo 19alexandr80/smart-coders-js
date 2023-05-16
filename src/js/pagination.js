@@ -1,35 +1,38 @@
-// import svgHref from '../images/icons.svg';
 import { createPaginataion } from './pagination-btn.js';
 import { quantityPages, getNewDataBatch } from './local-storage';
 
 export const paginationLeft = document.querySelector('.js-pagination-left');
 export const paginationCenter = document.querySelector('.js-pagination-center');
 export const paginationRight = document.querySelector('.js-pagination-right');
+const currentPageElement = document.getElementById('current');
 
-let currentPage = 1; //!!!!!!!!!!!!!!
-const lastPage = quantityPages; //!!!!!!!!!!!!!!
+let currentPage = Number(currentPageElement.textContent);
+const lastPage = quantityPages;
 let page = 1;
 
 //! =====================================================
-const currentPageElement = document.getElementById('current');
-// const myDataValue = element.getAttribute('data-mydata');
-const textContent = element.textContent;
+// Mutation Observer для відслідковування зміни currentPageElement
+const callback = function (mutationsList) {
+  for (const mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      // Получение текстового содержимого измененного элемента
+      const element = document.getElementById('current');
 
-console.log(textContent);
+      currentPage = Number(element.textContent);
+    }
+  }
+};
 
-// const currentPageElement = document.querySelector(
-//   'button[data-marker = "current"]'
-// ); //!!
-console.log(currentPageElement); //!!
-// document.getElementById('.btn-pag--current').style.color = 'red';//!!
+const observer = new MutationObserver(callback);
+
+const config = { childList: true, subtree: true };
+observer.observe(paginationCenter, config);
 //! =====================================================
 
 // Прослуховувач маркерів пагінації і додаткових (не статичних) кнопок
 paginationCenter.addEventListener('click', handlerPaginationCenter);
 
 function handlerPaginationCenter(evt) {
-  // let page = 1;
-
   if (!evt.target.classList.contains('js-pag-marker')) {
     if (evt.target.classList.contains('btn-pag--more-left')) {
       page = currentPage - 3; //! textContent ?
@@ -112,5 +115,5 @@ function getPaginationPages(page) {
   getNewDataBatch(page);
   createPaginataion(page, lastPage);
 
-  currentPage = page;
+  // currentPage = page; //застаріле (необхідне без MutationObserver)
 }
