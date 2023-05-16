@@ -4,7 +4,6 @@
   padding-top: 40px;
 }
 
-
 /*-----------------------------------MOBILE------------------------*/
 
 .bookshelf {
@@ -41,7 +40,7 @@
   padding-top: 0px;
 }
 
-.category-book-list>li:not(:last-child) {
+.category-book-list > li:not(:last-child) {
   margin-bottom: 40px;
 }
 
@@ -71,7 +70,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-  transition: transform .35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
 }
 
 .books-overlay {
@@ -156,8 +155,8 @@
 .bestsellers-button:hover,
 .bestsellers-button:focus {
   background-color: $primary-accent-color;
-  color: $primary-brdr-clr-dark;
-  transition: background-color .35s ease-in-out;
+  color: $additional-txt-clr-light;
+  transition: background-color 0.35s ease-in-out;
 }
 
 /*---------------------------TAB--------------------*/
@@ -223,12 +222,12 @@
     margin-top: 18px;
   }
 
-  .category-book-list>li.book-item {
+  .category-book-list > li.book-item {
     margin-bottom: 0px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1399px) {
-    .category-book-list>li.book-item {
+    .category-book-list > li.book-item {
       flex-basis: calc((100% - 30px) / 3);
     }
   }
@@ -257,8 +256,8 @@
   .bestsellers-button:hover,
   .bestsellers-button:focus {
     background-color: $primary-accent-color;
-    color: $primary-brdr-clr-dark;
-    transition: background-color .35s ease-in-out;
+    color: $additional-txt-clr-light;
+    transition: background-color 0.35s ease-in-out;
   }
 }
 
@@ -330,7 +329,7 @@
   .bestsellers-button:hover,
   .bestsellers-button:focus {
     background-color: $primary-accent-color;
-    color: $primary-brdr-clr-dark;
-    transition: background-color .35s ease-in-out;
+    color: $additional-txt-clr-light;
+    transition: background-color 0.35s ease-in-out;
   }
 }

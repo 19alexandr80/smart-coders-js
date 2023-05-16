@@ -14,19 +14,19 @@
     background-color: $primary-accent-color;
   }
 
-  &.dark-theme {
-    border: 2px solid $registration-modal-brdr-clr-dark;
-    background-color: $registration-modal-brdr-clr-dark;
+  // &.dark-theme {
+  //   border: 2px solid $registration-modal-brdr-clr-dark;
+  //   background-color: $registration-modal-brdr-clr-dark;
 
-    color: $registration-modal-btn-txt-clr-dark;
+  //   color: $registration-modal-btn-txt-clr-dark;
 
-    &:hover,
-    &:focus {
-      border: 2px solid $primary-accent-color;
-      background-color: $primary-accent-color;
-      color: $registration-modal-btn-txt-clr-light;
-    }
-  }
+  //   &:hover,
+  //   &:focus {
+  //     border: 2px solid $primary-accent-color;
+  //     background-color: $primary-accent-color;
+  //     color: $registration-modal-btn-txt-clr-light;
+  //   }
+  // }
 
   // mobile
   @media screen and (max-width: 767.99px) {
@@ -264,14 +264,14 @@
     color: $primary-accent-color;
   }
 
-  &.dark-theme {
-    color: $primary-txt-clr-dark;
+  // &.dark-theme {
+  //   color: $primary-txt-clr-dark;
 
-    &:hover,
-    &:focus {
-      color: $secondary-accent-color;
-    }
-  }
+  //   &:hover,
+  //   &:focus {
+  //     color: $secondary-accent-color;
+  //   }
+  // }
 }
 
 .btn-close-icn {
@@ -292,7 +292,7 @@
 
   border-radius: 50%;
 
-  background-color: $secondary-bgc-light;
+  background-color: $secondary-bgc;
   color: $primary-accent-color;
 
   @include transition(background-color);

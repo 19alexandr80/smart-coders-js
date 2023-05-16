@@ -13,7 +13,7 @@ const refs = {
   bestsellersSectionEl: document.querySelector('.bookshelf'),
   categoriesListEl: document.querySelector('.categories-list'),
   allCategoriesTitleEl: document.querySelector('.cat-list'),
-  bestsellersButton: document.querySelector('.bestsellers-button'),
+  bestsellersButton: document.querySelector('.btn-see-more'),
 };
 
 // Загружает топовые книги и отображает их на странице (по умолчанию при зангрузке страницы).
@@ -60,7 +60,7 @@ async function makeMarkupTopBooksGallery(data) {
         ${booksMarkup}
         </ul>
         <div class="bestsellers-button-container">
-        <button type="button" class="bestsellers-button" name="${list_name}">see more</button>
+        <button type="button" class="btn-see-more" name="${list_name}">see more</button>
         </div>
         </div>`;
   });
@@ -104,7 +104,7 @@ async function loadTopBooksOnClick() {
 
 // обработка кликов на кнопках категорий книг на странице SEE MORE
 async function onCattegoryButtonElClick(event) {
-  if (!event.target.classList.contains('bestsellers-button')) {
+  if (!event.target.classList.contains('btn-see-more')) {
     return;
   }
   const { name: categoryName } = event.target;
