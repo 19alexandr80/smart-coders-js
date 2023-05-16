@@ -6,7 +6,6 @@
 
 .sidebar {
   padding-top: 40px;
-  margin-right: 40px;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -26,16 +25,18 @@
   border-radius: 16px;
   width: 335px;
   max-height: 490px;
+
   @media screen and (min-width: 768px) {
     width: 356px;
   }
 }
 
 .support--main {
-  // margin-top: 40px;
+
   @media screen and (min-width: 768px) {
     margin-top: 0;
   }
+
   @media screen and (min-width: 1440px) {
     margin-top: 86px;
   }
@@ -89,10 +90,6 @@
     max-height: 292px;
   }
 }
-
-// .support-item:not(:last-child) {
-//   margin-bottom: 20px;
-// }
 
 .support-link {
   height: 32px;
