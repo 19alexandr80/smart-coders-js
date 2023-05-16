@@ -2,39 +2,8 @@
 
 .home_page_main {
   padding-top: 40px;
-  // display: flex;
-  // flex-wrap: wrap;
 }
 
-@media screen and (min-width: 768px) {
-  .left_part {
-    display: flex;
-    width: 704px;
-    row-gap: 32px;
-    justify-content: space-between;
-  }
-
-  .home_page_main {
-    padding-top: 40px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .home_page_main {
-    display: flex;
-    padding-top: 40px;
-    flex-wrap: inherit;
-  }
-
-  .left_part {
-    justify-content: flex-start;
-    width: 356px;
-    display: flex;
-    flex-direction: column;
-  }
-}
 
 /*-----------------------------------MOBILE------------------------*/
 
@@ -48,7 +17,8 @@
   font-size: 32px;
   line-height: 1.18;
   letter-spacing: 0.04;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 40px;
 }
 
 .bestsellers-category-name {
@@ -68,7 +38,7 @@
 .category-book-list {
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .category-book-list>li:not(:last-child) {
@@ -89,7 +59,7 @@
   background-position: 123px 205px;
   background-size: 88px 80px;
   position: relative;
-  width: 335px;
+  width: 100%;
   height: 485px;
   border-radius: 8px;
   overflow: hidden;
@@ -170,7 +140,7 @@
   padding-right: 28px;
   padding-bottom: 14px;
   padding-left: 28px;
-  margin-top: 6px;
+  margin-top: 8px;
   display: flex;
   border-radius: 40px;
   border: 2px solid $primary-accent-color;
@@ -207,7 +177,6 @@
 
   .bestsellers-category-item {
     overflow: hidden;
-    padding-left: 10px;
   }
 
   .category-book-list {
@@ -230,7 +199,6 @@
   .book-img-container {
     background-position: 79px 133px;
     background-size: 60px 54px;
-    width: 218px;
     height: 316px;
   }
 
@@ -259,6 +227,12 @@
     margin-bottom: 0px;
   }
 
+  @media screen and (min-width: 768px) and (max-width: 1399px) {
+    .category-book-list>li.book-item {
+      flex-basis: calc((100% - 30px) / 3);
+    }
+  }
+
   .bestsellers-button-container {
     padding-right: 24px;
   }
@@ -268,7 +242,7 @@
     padding-right: 28px;
     padding-bottom: 14px;
     padding-left: 28px;
-    margin-top: 6px;
+    margin-top: 20px;
     display: flex;
     border-radius: 40px;
     border: 2px solid $primary-accent-color;
@@ -292,7 +266,6 @@
 
 @media screen and (min-width: 1440px) {
   .bookshelf {
-    //padding-left: 40px;
     padding-top: 40px;
   }
 
@@ -342,7 +315,7 @@
     padding-right: 28px;
     padding-bottom: 14px;
     padding-left: 28px;
-    margin-top: 6px;
+    margin-top: 32px;
     display: flex;
     border-radius: 40px;
     border: 2px solid $primary-accent-color;

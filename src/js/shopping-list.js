@@ -1,10 +1,15 @@
 // import { axiosApiBooks } from './axiosApi';
+
 import amazon from '../images/shops/amazon@1x.png';
 import amazon2x from '../images/shops/amazon@2x.png';
 import apple from '../images/shops/book@1x.png';
 import apple2x from '../images/shops/book@2x.png';
 import bookShop from '../images/shops/books@1x.png';
 import bookShop2x from '../images/shops/books@2x.png';
+
+
+import { DataFirebase } from './firebaseInteraction.js';
+const dataFirebase = new DataFirebase();
 
 const refs = {
   shopListContainer: document.querySelector('.shop-list__container'),
@@ -90,7 +95,7 @@ function makeMarkupBook(dataBookRender) {
         
        
       <div>
-    <button class="btn-trash-box" type="button" data-name="btn-trash">
+    <button class="btn-trash-box" type="button" data-name="btn-trash" data-id=${id}>
       <span class="btn-icn-wrap">
         <svg width="18" height="18">
           <use href="/icons.adfc4680.svg#trash"></use>
@@ -100,6 +105,7 @@ function makeMarkupBook(dataBookRender) {
   </div>
   </li>
     `;
+
     }
   );
   //     .join('');
@@ -146,6 +152,25 @@ function onRemoveCard(evt) {
       <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />
     `;
   }
+=======
+    })
+    .join('');
+
+  refs.cards.insertAdjacentHTML('beforeend', markup);
+}
+const btnTrash = document.querySelector('.shop-list__cards');
+btnTrash.addEventListener('click', onBtnTrash);
+
+async function onBtnTrash(e) {
+  if (e.target.closest('button').tagName) {
+    const id = e.target.closest('button').dataset.id;
+    await dataFirebase.deleteBook(id);
+    window.location.reload();
+  }
+  const id = e.target.closest('li').dataset.id;
+  await dataFirebase.deleteBook(id);
+  window.location.reload();
+
 }
 
 // const card = document.querySelector('.shop-list__one-card');

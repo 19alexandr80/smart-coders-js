@@ -1,8 +1,6 @@
 .categories {
   height: 228px;
-  width: 335px;
   margin-bottom: 40px;
-  padding-right: 28px;
   overflow: hidden;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -62,8 +60,6 @@
 @media screen and (min-width: 768px) {
   .categories {
     height: 472px;
-    width: 337px;
-    // margin-right: 32px;
     margin-bottom: 0;
   }
 

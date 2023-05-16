@@ -1,0 +1,78 @@
+:root {
+  --light: #111111;
+  --dark: #ffffff;
+  --light-sidebar: rgba(17, 17, 17, 0.6);
+  --dark-sidebar: rgba(255, 255, 255, 0.6);
+  --light-shoplist: rgba(0, 0, 0, 0.6);
+  --dark-shoplist: rgba(255, 255, 255, 0.6);
+  --light-book-modal: rgba(17, 17, 17, 0.5);
+  --dark-book-modal: rgba(255, 255, 255, 0.5);
+  --light-singup-modal-btn: #f3f3f3;
+  --dark-singup-modal-btn: #202024;
+  --light-singup-modal-singin-txt: rgba(17, 17, 17, 0.5);
+  --dark-singup-modal-singin-txt: rgba(246, 246, 246, 0.5);
+  --light-bgc: #f6f6f6;
+  --dark-bgc: #202024;
+  --light-bgc-second: #ffffff;
+  --dark-bgc-second: #111111;
+  --light-scroll: #e0e0e0;
+  --dark-scroll: rgba(17, 17, 17, 0.6);
+  --light-brdr: #111111;
+  --dark-brdr: #ffffff;
+}
+
+// CONSTANT COLORS //
+
+/* ACCENT COLORS */
+$primary-accent-color: #4f2ee8;
+$secondary-accent-color: #eac645;
+
+/* TEXT COLORS */
+$additional-txt-clr-light: #ffffff;
+$registration-modal-input-txt-clr-dark: #f6f6f6;
+
+/* BG COLORS */
+$backdrop-bgc: rgba(17, 17, 17, 0.4);
+$gradient-bgc: radial-gradient(
+  183.6% 183.01% at 59.76% -23.42%,
+  #4f2ee8 18.03%,
+  #ffffff 100%
+);
+
+/* BORDER COLORS */
+$shop-list-brdr-clr: rgba(79, 46, 232, 0.4);
+$scroll-up-brdr-clr: rgba(79, 46, 232, 0.3);
+
+$registration-modal-brdr-clr-dark: #f6f6f6;
+
+/* SHADOWS */
+$icon-hover-shadow: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+
+// ----------------------------------------------------------------------------------------------------------------------------------
+// CHANGING COLORS //
+
+/* TEXT COLORS */
+$primary-txt-clr-light: var(--light); //#ffffff
+
+$sidebar-txt-clr-light: var(--light-sidebar); //rgba(255, 255, 255, 0.6)
+
+$shop-list-info-txt-clr-light: var(--light-shoplist); //rgba(255, 255, 255, 0.6)
+
+$book-modal-info-txt-clr-light: var(
+  --light-book-modal
+); //rgba(255, 255, 255, 0.5)
+
+$registration-modal-btn-txt-clr-light: var(--light-singup-modal-btn); // #202024
+
+$registration-modal-sign-in-txt-clr-light: var(
+  --light-singup-modal-singin-txt
+); //rgba(246, 246, 246, 0.5)
+
+/* BG COLORS */
+$primary-bgc-light: var(--light-bgc); //#202024
+$secondary-bgc-light: var(--light-bgc-second); //#111111
+
+$scroll-bgc-light: var(--light-scroll); //rgba(17, 17, 17, 0.6)
+
+/* BORDER COLORS */
+$primary-brdr-clr-light: var(--light-brdr); //#ffffff

@@ -6,10 +6,16 @@
 
 .sidebar {
   padding-top: 40px;
-  margin-right: 40px;
 
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
+  @media screen and (min-width: 768px) {
     display: flex;
+    gap: 32px;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: block;
+    margin-right: 40px;
   }
 }
 
@@ -17,27 +23,34 @@
   background: $gradient-bgc;
   box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
   border-radius: 16px;
-  width: 335px;
+  width: 100%;
   max-height: 490px;
+
+  @media screen and (min-width: 375px) {
+    width: 335px;
+  }
+
   @media screen and (min-width: 768px) {
     width: 356px;
   }
 }
 
 .support--main {
-  margin-top: 40px;
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
+  @media screen and (min-width: 768px) {
     margin-top: 0;
   }
+
   @media screen and (min-width: 1440px) {
     margin-top: 86px;
   }
 }
 
 .support--listshop {
-  margin-top: 40px;
-  @media screen and (max-width: 1440px) {
-    display: none;
+  display: none;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 40px;
+    display: block;
   }
 }
 
@@ -67,15 +80,9 @@
   padding-left: 40px;
   margin-bottom: 40px;
 
-  overflow: hidden;
-
   @media screen and (min-width: 768px) {
     max-height: 292px;
   }
-}
-
-.support-item:not(:last-child) {
-  margin-bottom: 20px;
 }
 
 .support-link {
@@ -98,4 +105,8 @@
 .support-slider {
   padding-bottom: 24px;
   text-align: center;
+}
+
+.swiper-thumb {
+  overflow: hidden;
 }
