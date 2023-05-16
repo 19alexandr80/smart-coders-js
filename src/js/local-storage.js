@@ -1,4 +1,4 @@
-import { galleryItems } from './gallery-items.js';
+// import { galleryItems } from './gallery-items.js'; //!!!
 
 import { createPaginataionBtn, createPaginataion } from './pagination-btn.js';
 
