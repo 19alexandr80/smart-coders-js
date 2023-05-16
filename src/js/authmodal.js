@@ -172,7 +172,6 @@ async function onDataFormAuth(e) {
 const headerNav = document.querySelector('.header-button-nav');
 const authInterfase = document.querySelector('.button-sing-auth-js');
 function authUserMarkUp() {
-  console.log('wwwwwwwwwwwwwwwwwww');
   let userIn = '';
   if (localStorage.getItem('tokenResponse')) {
     const avatar = localStorage.getItem('userAvatar')
