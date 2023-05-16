@@ -1,0 +1,157 @@
+.container__shop-list-page {
+  display: flex;
+}
+.is-hidden {
+  opacity: 0%;
+  pointer-events: none;
+}
+
+.shop-list__title {
+  margin-left: 40px;
+  margin-top: 40px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+
+  color: $primary-brdr-clr-light;
+}
+
+.shop-list__span {
+  color: $primary-accent-color;
+}
+.shop-list__cards {
+  margin-top: 40px;
+}
+.shop-list__one-card {
+  position: relative;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  width: 996px;
+  height: 213px;
+
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  border-radius: 16px;
+  background: #ffff;
+}
+
+.shop-list__title-book {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+
+  color: $primary-brdr-clr-light;
+}
+.shop-list__img {
+  margin: 24px;
+  width: 116px;
+  height: 165px;
+
+  border-radius: 8px;
+}
+.shop-list__text-container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 24px 0;
+  max-width: 808px;
+}
+
+.shop-list__category-name {
+  margin-top: 4px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.28;
+  letter-spacing: 0.03;
+  text-transform: uppercase;
+
+  color: $secondary-txt-clr;
+}
+.shop-list__descr {
+  margin-top: 14px;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: 0.03;
+
+  color: $primary-brdr-clr-light;
+}
+
+.shop-list__author {
+  margin-top: 48px;
+  text-overflow: ellipsis;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.17;
+  letter-spacing: 0.04;
+
+  color: $secondary-txt-clr;
+}
+
+.btn-trash-box {
+  @extend %btn;
+  @extend %btn-icon;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background-color: $primary-accent-color;
+  color: $primary-accent-color;
+
+  @include transition(background-color, color);
+
+  &:hover,
+  &:focus {
+    background-color: $secondary-accent-color;
+    color: $secondary-accent-color;
+  }
+
+  // mobile
+  @media screen and (max-width: 767.99px) {
+    width: 28px;
+    height: 28px;
+  }
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+// сторінка без доданих книг(порожня)
+
+.shop-list__empty-page {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin-left: 355px;
+  margin-top: 140px;
+
+  max-width: 418px;
+}
+
+.textEmptyPage {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.3;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.6);
+}
+.imgEmptyPage {
+  height: auto;
+  max-width: 322px;
+  justify-content: center;
+}
