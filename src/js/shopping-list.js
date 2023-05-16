@@ -1,5 +1,6 @@
 // import { axiosApiBooks } from './axiosApi';
-
+import { DataFirebase } from './firebaseInteraction.js';
+const dataFirebase = new DataFirebase();
 const refs = {
   shopListContainer: document.querySelector('.container__shopping-list'),
   imgEmptyPage: document.querySelector('.imgEmptyPage'),
@@ -69,7 +70,7 @@ function makeMarkupBook(dataBookRender) {
     <button class="btn-trash-box" type="button" data-name="btn-trash">
       <span class="btn-icn-wrap">
         <svg width="18" height="18">
-          <use href="/icons.adfc4680.svg#trash"></use>
+          <use href="/icons.adfc4680.svg#trash" data-id=${id}></use>
         </svg>
       </span>
     </button>
@@ -87,14 +88,10 @@ function makeMarkupBook(dataBookRender) {
 }
 const itemShopList = document.querySelector('.shop-list__one-card');
 
-function onBtnTrash(e) {
-  itemShopList.classList.add('is-hidden');
-  console.log('hbkhbj');
-  // refs.container.innerHTML = `
-  // // <p class="textEmptyPage">
-  // //   This page is empty, add some books and proceed to order.
-  // // </p>
-  // // <img class="imgEmptyPage" src="./images/is-empty@1x.png" alt="" />`;
+async function onBtnTrash(e) {
+  const id = e.target.closest('li').dataset.id;
+  await dataFirebase.deleteBook(id);
+  window.location.reload();
 }
 
 // const books = {
