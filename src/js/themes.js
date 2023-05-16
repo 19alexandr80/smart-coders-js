@@ -1,7 +1,8 @@
 const buttonThemes = document.querySelector('.button-themes');
-buttonThemes.addEventListener('click', () => {
-  console.log(document.body.style.getPropertyValue('--light-sidebar'));
-  if (document.body.style.getPropertyValue('--light') !== '#111111') {
+buttonThemes.addEventListener('click', onThemLocal);
+function onThemLocal() {
+  if (document.body.style.getPropertyValue('--light') === '#ffffff') {
+    localStorage.removeItem('them');
     document.body.style.setProperty('--dark', '#111111');
     document.body.style.setProperty('--wayte', '#ffffff');
     document.body.style.setProperty('--light', '#111111');
@@ -21,6 +22,7 @@ buttonThemes.addEventListener('click', () => {
     document.body.style.setProperty('--light-scroll', '#e0e0e0');
     document.body.style.setProperty('--light-brdr', '#111111');
   } else {
+    localStorage.setItem('them', 'dark');
     document.body.style.setProperty('--wayte', '#111111');
     document.body.style.setProperty('--dark', '#ffffff');
     document.body.style.setProperty('--light', '#ffffff');
@@ -46,4 +48,11 @@ buttonThemes.addEventListener('click', () => {
     document.body.style.setProperty('--light-scroll', 'rgba(17, 17, 17, 0.6)');
     document.body.style.setProperty('--light-brdr', '#ffffff');
   }
-});
+  console.log('nnnnnnnn', localStorage.getItem('them'));
+}
+function localThem() {
+  if (localStorage.getItem('them')) {
+    onThemLocal();
+  }
+}
+localThem();
