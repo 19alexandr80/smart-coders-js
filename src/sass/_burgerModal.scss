@@ -26,6 +26,8 @@
 .burger-window {
   height: 100%;
   max-width: 375px;
+  padding-left: 16px;
+  padding-right: 16px;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
@@ -35,20 +37,44 @@
   background-image: url('../images/group-books@1x.png');
   background-repeat: no-repeat;
   background-position: 50% 100%;
-  background-size: cover;
+  background-size: initial;
 }
-.btn-log-out {
+.burger-button-auth {
   align-self: flex-start;
 }
 .active .burger-menu-span1 {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(5.5px) rotate(45deg);
   transition: 0.3s;
 }
 .active .burger-menu-span3 {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(-5.5px) rotate(-45deg);
   transition: 0.3s;
 }
 .active .burger-menu-span2 {
   opacity: 0;
   transition: 0.1s;
+}
+.button-burger-home {
+  padding: 8px 16px;
+  width: 72px;
+  height: 34px;
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: $primary-txt-clr-light;
+  cursor: pointer;
+  background-color: #eac645;
+  border-radius: 36px;
+}
+.button-burger-shoping {
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: $primary-txt-clr-light;
+  cursor: pointer;
+  margin-left: 24px;
+  display: flex;
+  align-items: center;
 }

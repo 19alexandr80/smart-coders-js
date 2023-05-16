@@ -5,22 +5,19 @@ import {
 } from 'firebase/auth';
 import svgRight from '../images/icons.svg';
 
-//======================================================================
 const buttonAutnSing = document.querySelector('.button-sing-auth-js');
 buttonAutnSing.addEventListener('click', modalSignIn);
-// =====================================================================
 
 const dataFirebase = new DataFirebase();
 
-// ========================================================
 async function onAuthGoogle() {
   await dataFirebase.authGoogle();
   modalBox.innerHTML = '';
   document.body.classList.remove('scroll-off');
 
   authUserMarkUp();
+  window.location.reload();
 }
-// =========================================================
 const auth = dataFirebase.auth;
 const modalBox = document.querySelector('.modalWindow');
 
@@ -31,6 +28,7 @@ function modalSignIn() {
     localStorage.removeItem('email');
     localStorage.removeItem('shopingList');
     authUserMarkUp();
+    window.location.reload();
     return;
   }
   const formHtml = `
@@ -56,12 +54,10 @@ function modalSignIn() {
   </form>
   </div>`;
   modalBox.innerHTML = formHtml;
-  // ====================================================== body
   const modalForm = modalBox.querySelector('.modal-form-auth');
   const buttonSingUp = modalForm.querySelector('.button-sign-up');
   const buttonSingGoogle = modalForm.querySelector('.button-google');
   const clousButton = modalForm.querySelector('.clousModalAuth');
-  // ========================================================
   buttonSingUp.addEventListener('click', modalAuth);
   buttonSingGoogle.addEventListener('click', onAuthGoogle);
   modalForm.addEventListener('submit', onDataFormIn);
@@ -94,8 +90,8 @@ async function onDataFormIn(e) {
     alert(error.message);
   }
   authUserMarkUp();
+  window.location.reload();
 }
-// =========================================================
 function modalAuth() {
   const formHtml = `
     <div class="modal-bakc">
@@ -129,7 +125,6 @@ function modalAuth() {
   const buttonSingIn = modalForm.querySelector('.button-sign-in');
   const buttonSingGoogle = modalForm.querySelector('.button-google');
   const clousButton = modalForm.querySelector('.clousModalAuth');
-  // ====================================================================
   modalBox.classList.add('trans-modal');
   buttonSingIn.addEventListener('click', modalSignIn);
   modalForm.addEventListener('submit', onDataFormAuth);
@@ -168,6 +163,7 @@ async function onDataFormAuth(e) {
     alert('Check the password');
   }
   authUserMarkUp();
+  window.location.reload();
 }
 const headerNav = document.querySelector('.header-button-nav');
 const authInterfase = document.querySelector('.button-sing-auth-js');
