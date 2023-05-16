@@ -8,8 +8,15 @@
   padding-top: 40px;
   margin-right: 40px;
 
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
+  @media screen and (min-width: 768px) {
     display: flex;
+    gap: 32px;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: block;
+    margin-right: 40px;
   }
 }
 
@@ -25,8 +32,8 @@
 }
 
 .support--main {
-  margin-top: 40px;
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
+  // margin-top: 40px;
+  @media screen and (min-width: 768px) {
     margin-top: 0;
   }
   @media screen and (min-width: 1440px) {
@@ -35,9 +42,18 @@
 }
 
 .support--listshop {
-  margin-top: 40px;
-  @media screen and (max-width: 1440px) {
-    display: none;
+  display: none;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 40px;
+    display: block;
+  }
+}
+
+.container--listshop {
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
@@ -74,9 +90,9 @@
   }
 }
 
-.support-item:not(:last-child) {
-  margin-bottom: 20px;
-}
+// .support-item:not(:last-child) {
+//   margin-bottom: 20px;
+// }
 
 .support-link {
   height: 32px;
