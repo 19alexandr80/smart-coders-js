@@ -16,8 +16,8 @@ const dataFirebase = new DataFirebase();
 async function onAuthGoogle() {
   await dataFirebase.authGoogle();
   modalBox.innerHTML = '';
-  authUserMarkUp();
   document.body.classList.remove('scroll-off');
+  authUserMarkUp();
 }
 // =========================================================
 const auth = dataFirebase.auth;
@@ -80,10 +80,13 @@ async function onDataFormIn(e) {
     localStorage.setItem('tokenResponse', fire._tokenResponse.idToken);
     localStorage.setItem('email', email);
     modalBox.innerHTML = '';
+    document.body.classList.remove('scroll-off');
     const basketFire = await dataFirebase.getRequest(email);
     if (basketFire) {
       const bookJson = JSON.stringify(basketFire);
       localStorage.setItem('shopingList', bookJson);
+    } else {
+      localStorage.setItem('shopingList', JSON.stringify({}));
     }
   } catch (error) {
     console.error('fire.data-error', error);
@@ -149,14 +152,16 @@ async function onDataFormAuth(e) {
   if (password && password === passwordConfirmation) {
     console.log(email, password);
     modalBox.innerHTML = '';
+    document.body.classList.remove('scroll-off');
     try {
       const fire = await createUserWithEmailAndPassword(auth, email, password);
       localStorage.setItem('tokenResponse', fire._tokenResponse.idToken);
       localStorage.setItem('email', email);
+
+      localStorage.setItem('shopingList', JSON.stringify({}));
     } catch (error) {
-      console.error('jjjjjjjj-error', error);
-      const errorMessage = error.message;
-      alert(errorMessage);
+      console.error(error.message);
+      alert(error.message);
     }
   } else {
     alert('Check the password');
@@ -168,7 +173,9 @@ const authInterfase = document.querySelector('.button-sing-auth-js');
 function authUserMarkUp() {
   let userIn = '';
   if (localStorage.getItem('tokenResponse')) {
-    const avatar = localStorage.getItem('userAvatar');
+    const avatar = localStorage.getItem('userAvatar')
+      ? localStorage.getItem('userAvatar')
+      : 'https://bootstraptema.ru/snippets/icons/2016/mia/1.png';
     const email = localStorage.getItem('email');
     const nikEmail = email.substring(0, email.indexOf('@'));
     userIn = `<div class='user-auth-zone'>
