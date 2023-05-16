@@ -152,7 +152,7 @@ function onRemoveCard(evt) {
       <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />
     `;
   }
-=======
+
     })
     .join('');
 
