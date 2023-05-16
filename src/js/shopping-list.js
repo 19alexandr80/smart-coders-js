@@ -1,4 +1,10 @@
 // import { axiosApiBooks } from './axiosApi';
+import amazon from '../images/shops/amazon@1x.png';
+import amazon2x from '../images/shops/amazon@2x.png';
+import apple from '../images/shops/book@1x.png';
+import apple2x from '../images/shops/book@2x.png';
+import bookShop from '../images/shops/books@1x.png';
+import bookShop2x from '../images/shops/books@2x.png';
 
 const refs = {
   shopListContainer: document.querySelector('.container__shopping-list'),
@@ -24,7 +30,7 @@ if (!dataBookShop) {
     return dataBookShop[kye];
   });
 }
-
+console.log(dataBookRender);
 // =========================================================================================
 
 // при відкритті сторінки, викликається функція
@@ -47,23 +53,43 @@ function onOpenPage() {
   }
 }
 
+console.log(dataBookRender);
 function makeMarkupBook(dataBookRender) {
   const markup = dataBookRender
-    .map(({ id, bookImg, author, title, description, listName }) => {
+    .map(({ id, bookImg, author, title, description, listName, buyLinks }) => {
+      console.log(buyLinks);
+
+      let amazonLink = '';
+      let appleBookLink = '';
+      let bookShopLink = '';
+
+      buyLinks.forEach(link => {
+        if (link.name === 'Amazon') {
+          amazonLink = link.url;
+        }
+        if (link.name === 'Apple Books') {
+          appleBookLink = link.url;
+        }
+        if (link.name === 'Bookshop') {
+          bookShopLink = link.url;
+        }
+      });
       return ` 
       <li class="shop-list__one-card" data-id=${id}>
         <img class="shop-list__img" src=${bookImg} alt="${title}" />
         <div class="shop-list__text-container">
         <h2 class="shop-list__title-book">${title}</h2>
         <h3 class="shop-list__category-name">${listName}</h3>
-        <p class="shop-list__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum blanditiis quo similique placeat aut a.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum blanditiis quo similique placeat aut a.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum blanditiis quo similique placeat aut a.</p>
+        <p class="shop-list__descr">David Burroughs was once a devoted father to his three-year-old son Matthew, living a dream life just a short drive away from the working-class suburb where he and his wife, Cheryl, first fell in love--until one fateful night when David woke suddenly to discover Matthew had been murdered while David was asleep just down the hall.</p>
         <h3 class="shop-list__author">${author}</h3>
         </div>
-        <ul>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
+        
+        <ul class='shop-list__links-group'>
+        <li class='shop-list__links'><a href=${amazonLink} target="_blank"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" alt ='Amazon Icon'></a></li>
+        <li class='shop-list__links'><a href=${appleBookLink} target="_blank"> <img  src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" alt ='Apple Icon'></a></li>
+        <li class='shop-list__links'><a href=${bookShopLink} target="_blank"> <img  src='${bookShop}' srcset="${bookShop} 1x, ${bookShop2x} 2x" alt ='Book Shop Icon'></a></li>
         </ul>
+        
        
       <div>
     <button class="btn-trash-box" type="button" data-name="btn-trash">
@@ -114,7 +140,7 @@ function onBtnTrash(e) {
 //   book_image,
 //   // description,
 //   list_name,
-//   //   buy_links,
+//   //   buyLinks,
 // }) {
 //   // let amazonLink = '';
 //   // let appleBookLink = '';
