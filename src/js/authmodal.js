@@ -84,6 +84,8 @@ async function onDataFormIn(e) {
     if (basketFire) {
       const bookJson = JSON.stringify(basketFire);
       localStorage.setItem('shopingList', bookJson);
+    } else {
+      localStorage.setItem('shopingList', JSON.stringify({}));
     }
   } catch (error) {
     console.error('fire.data-error', error);
@@ -171,7 +173,7 @@ function authUserMarkUp() {
   if (localStorage.getItem('tokenResponse')) {
     const avatar = localStorage.getItem('userAvatar')
       ? localStorage.getItem('userAvatar')
-      : './images/stopper116@1x.png';
+      : 'https://bootstraptema.ru/snippets/icons/2016/mia/1.png';
     const email = localStorage.getItem('email');
     const nikEmail = email.substring(0, email.indexOf('@'));
     userIn = `<div class='user-auth-zone'>
