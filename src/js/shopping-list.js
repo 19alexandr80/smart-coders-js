@@ -7,14 +7,12 @@ import bookShop from '../images/shops/books@1x.png';
 import bookShop2x from '../images/shops/books@2x.png';
 
 const refs = {
-  shopListContainer: document.querySelector('.container__shopping-list'),
+  shopListContainer: document.querySelector('.shop-list__container'),
   imgEmptyPage: document.querySelector('.imgEmptyPage'),
   textEmptyPage: document.querySelector('.textEmptyPage'),
   container: document.querySelector('.shop-list__container'),
-  // btnTrash: document.querySelector('[data-name="btn-trash"]'),
   cards: document.querySelector('.shop-list__cards'),
 };
-// const btnTrash = document.querySelector('.btn-trash-box');
 
 // =========================================================================================
 
@@ -55,14 +53,14 @@ function onOpenPage() {
 
 console.log(dataBookRender);
 function makeMarkupBook(dataBookRender) {
-  const markup = dataBookRender
-    .map(({ id, bookImg, author, title, description, listName, buyLinks }) => {
-      console.log(buyLinks);
+  refs.cards.classList.remove('is-hidden');
 
+  const markup = dataBookRender.map(
+    ({ id, bookImg, author, title, description, listName, buyLinks }) => {
       let amazonLink = '';
       let appleBookLink = '';
       let bookShopLink = '';
-
+      // David Burroughs was once a devoted father to his three-year-old son Matthew, living a dream life just a short drive away from the working-class suburb where he and his wife, Cheryl, first fell in love--until one fateful night when David woke suddenly to discover Matthew had been murdered while David was asleep just down the hall
       buyLinks.forEach(link => {
         if (link.name === 'Amazon') {
           amazonLink = link.url;
@@ -80,14 +78,14 @@ function makeMarkupBook(dataBookRender) {
         <div class="shop-list__text-container">
         <h2 class="shop-list__title-book">${title}</h2>
         <h3 class="shop-list__category-name">${listName}</h3>
-        <p class="shop-list__descr">David Burroughs was once a devoted father to his three-year-old son Matthew, living a dream life just a short drive away from the working-class suburb where he and his wife, Cheryl, first fell in love--until one fateful night when David woke suddenly to discover Matthew had been murdered while David was asleep just down the hall.</p>
+        <p class="shop-list__descr">${description}</p>
         <h3 class="shop-list__author">${author}</h3>
         </div>
         
         <ul class='shop-list__links-group'>
-        <li class='shop-list__links'><a href=${amazonLink} target="_blank"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" alt ='Amazon Icon'></a></li>
-        <li class='shop-list__links'><a href=${appleBookLink} target="_blank"> <img  src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" alt ='Apple Icon'></a></li>
-        <li class='shop-list__links'><a href=${bookShopLink} target="_blank"> <img  src='${bookShop}' srcset="${bookShop} 1x, ${bookShop2x} 2x" alt ='Book Shop Icon'></a></li>
+        <li class='shop-list__links'><a href=${amazonLink} target="_blank"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" rel="noopener noreferrer nofollow" aria-label="Amazon link"></a></li>
+        <li class='shop-list__links'><a href=${appleBookLink} target="_blank"> <img  src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" rel="noopener noreferrer nofollow" aria-label="Apple Books link"'></a></li>
+        <li class='shop-list__links'><a href=${bookShopLink} target="_blank"> <img  src='${bookShop}' srcset="${bookShop} 1x, ${bookShop2x} 2x" rel="noopener noreferrer nofollow" aria-label="Amazon link"></a></li>
         </ul>
         
        
@@ -99,92 +97,76 @@ function makeMarkupBook(dataBookRender) {
         </svg>
       </span>
     </button>
-   
   </div>
   </li>
     `;
-    })
-    .join('');
+    }
+  );
+  //     .join('');
 
-  refs.cards.insertAdjacentHTML('beforeend', markup);
-  const btnTrash = document.querySelector('[data-name="btn-trash"]');
-
-  btnTrash.addEventListener('click', onBtnTrash);
-}
-const itemShopList = document.querySelector('.shop-list__one-card');
-
-function onBtnTrash(e) {
-  itemShopList.classList.add('is-hidden');
-  console.log('hbkhbj');
-  // refs.container.innerHTML = `
-  // // <p class="textEmptyPage">
-  // //   This page is empty, add some books and proceed to order.
-  // // </p>
-  // // <img class="imgEmptyPage" src="./images/is-empty@1x.png" alt="" />`;
+  //   refs.cards.insertAdjacentHTML('beforeend', markup);
+  // }
+  // вставляємо отриману розмітку до контейнера
+  refs.cards.innerHTML = markup.join('');
 }
 
-// const books = {
-//   _id: 1,
-//   book_image: './src/images/stopper116@1x.png',
-//   author: 'bla Bla',
-//   title: 'I will find you',
-//   category: 'Hardcover fiction',
-//   description:
-//     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.',
-// };
+// видаляємо книгу з localStorage та з розмітки сторінки
+refs.shopListContainer.addEventListener('click', onRemoveCard);
 
-// function makeMarkupBook({
-//   _id,
-//   title,
-//   author,
-//   book_image,
-//   // description,
-//   list_name,
-//   //   buyLinks,
-// }) {
-//   // let amazonLink = '';
-//   // let appleBookLink = '';
-//   // let bookShopLink = '';
+function onRemoveCard(evt) {
+  console.log(evt.target);
+  if (evt.target.nodeName !== 'use') {
+    return;
+  }
 
-//   // buy_links.forEach(link => {
-//   //   if (link.name === 'Amazon') {
-//   //     amazonLink = link.url;
-//   //   }
-//   //   if (link.name === 'Apple Books') {
-//   //     appleBookLink = link.url;
-//   //   }
-//   //   if (link.name === 'Bookshop') {
-//   //     bookShopLink = link.url;
-//   //   }
-//   // });
+  const card = evt.target.closest('.shop-list__one-card');
+  const id = card.dataset.id;
 
-//   const markup = `<ul class="shop-list__cards">
-//             <li class="shop-list__one-card" data-id=${_id}>
-//               <img class="shop-list__img" src="${book_image}" alt="${title}" />
-//               <div class="shop-list__text-container">
-//               <h2 class="shop-list__title-book">${title}</h2>
-//               <h3 class="shop-list__category-name">${list_name}</h3>
-//               <p class="shop-list__descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, soluta.</p>
-//               <h3 class="shop-list__author">${author}</h3>
-//               </div>
-//               <ul>
-//                 <li><a href=""></a></li>
-//                 <li><a href=""></a></li>
-//                 <li><a href=""></a></li>
-//               </ul>
-//               <button></button>
+  // видаляємо книгу з localStorage
+  const bookShopKeys = Object.keys(dataBookShop);
 
-//             <div style="padding: 20px; background-color: #f6f6f6">
-//           <button class="btn-trash-box" type="button">
-//             <span class="btn-icn-wrap">
-//               <svg width="18" height="18">
-//                 <use href="./images/icons.svg#trash"></use>
-//               </svg>
-//             </span>
-//           </button>
-//           </li>
-//         </div>
-//           </ul>`;
-//   console.log(markup);
-//   refs.container.insertAdjacentHTML('beforeend', markup);
+  bookShopKeys.forEach(key => {
+    if (dataBookShop[key].id === id) {
+      delete dataBookShop[key];
+    }
+  });
+
+  localStorage.setItem('shopingList', JSON.stringify(dataBookShop));
+
+  // видаляємо книгу з розмітки сторінки
+  event.target.closest('.shop-list__one-card').remove();
+
+  // якщо всі книги видалено, генерується розмітка пустої сторінки
+  if (!refs.cards.children.length) {
+    refs.cards.classList.add('is-hidden');
+    refs.container.innerHTML = `
+      <p class="textEmptyPage">
+        This page is empty, add some books and proceed to order.
+      </p>
+      <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />
+    `;
+  }
+}
+
+// const card = document.querySelector('.shop-list__one-card');
+// const btnTrash = document.querySelector('[data-name="btn-trash"]');
+
+// refs.cards.addEventListener('click', onBtnTrash);
+
+// function onBtnTrash(e) {
+//   if (e.target.classList.contains('btn-trash-box')) {
+//     console.log(e.target);
+//     card.remove();
+//   }
 // }
+
+// modal.addEventListener('click', event => {
+//   event.stopPropagation();
+// });
+
+// console.log(oneCard);
+// refs.container.innerHTML = `
+// // <p class="textEmptyPage">
+// //   This page is empty, add some books and proceed to order.
+// // </p>
+// // <img class="imgEmptyPage" src="./images/is-empty@1x.png" alt="" />`;
