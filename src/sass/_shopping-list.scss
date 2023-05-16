@@ -1,6 +1,11 @@
 .container__shop-list-page {
   display: flex;
 }
+.is-hidden {
+  opacity: 0%;
+  pointer-events: none;
+}
+
 .shop-list__title {
   margin-left: 40px;
   margin-top: 40px;
@@ -8,7 +13,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
-  line-height: 52px;
+  line-height: 0.92;
   letter-spacing: -0.04em;
 
   color: $primary-brdr-clr-light;
@@ -17,14 +22,17 @@
 .shop-list__span {
   color: $primary-accent-color;
 }
+.shop-list__cards {
+  margin-top: 40px;
+}
 .shop-list__one-card {
   position: relative;
 
   margin-bottom: 20px;
 
   display: flex;
-  max-width: 996px;
-  max-height: 213px;
+  width: 996px;
+  height: 213px;
 
   border: 2px solid rgba(79, 46, 232, 0.4);
   border-radius: 16px;
@@ -32,34 +40,33 @@
 }
 
 .shop-list__title-book {
-  padding-bottom: 4px;
-
   font-family: 'DM Sans';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.12;
 
-  letter-spacing: 0.04em;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
 
   color: $primary-brdr-clr-light;
 }
 .shop-list__img {
+  margin: 24px;
   width: 116px;
   height: 165px;
 
-  border: 2px solid #1111;
+  border-radius: 8px;
 }
 .shop-list__text-container {
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 24px 24px 24px 0;
   max-width: 808px;
 }
 
 .shop-list__category-name {
-  margin-bottom: 48px;
+  margin-top: 4px;
 
   font-weight: 400;
   font-size: 12px;
@@ -70,7 +77,7 @@
   color: $secondary-txt-clr;
 }
 .shop-list__descr {
-  margin-bottom: 14px;
+  margin-top: 14px;
 
   font-weight: 400;
   font-size: 14px;
@@ -81,6 +88,7 @@
 }
 
 .shop-list__author {
+  margin-top: 48px;
   text-overflow: ellipsis;
   font-style: italic;
   font-size: 14px;
