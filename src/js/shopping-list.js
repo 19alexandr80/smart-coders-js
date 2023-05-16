@@ -1,5 +1,5 @@
 // import { axiosApiBooks } from './axiosApi';
-
+import svgHref from '../images/icons.svg';
 import amazon from '../images/shops/amazon@1x.png';
 import amazon2x from '../images/shops/amazon@2x.png';
 import apple from '../images/shops/book@1x.png';
@@ -98,7 +98,7 @@ function makeMarkupBook(dataBookRender) {
     <button class="btn-trash-box" type="button" data-name="btn-trash" data-id=${id}>
       <span class="btn-icn-wrap">
         <svg width="18" height="18">
-          <use href="/icons.adfc4680.svg#trash"></use>
+          <use href="${svgHref}#trash"></use>
         </svg>
       </span>
     </button>
@@ -140,7 +140,7 @@ function onRemoveCard(evt) {
   localStorage.setItem('shopingList', JSON.stringify(dataBookShop));
 
   // видаляємо книгу з розмітки сторінки
-  event.target.closest('.shop-list__one-card').remove();
+  evt.target.closest('.shop-list__one-card').remove();
 
   // якщо всі книги видалено, генерується розмітка пустої сторінки
   if (!refs.cards.children.length) {
@@ -166,6 +166,15 @@ async function onBtnTrash(e) {
   window.location.reload();
 
 }
+
+
+
+
+
+
+
+
+
 
 // const card = document.querySelector('.shop-list__one-card');
 // const btnTrash = document.querySelector('[data-name="btn-trash"]');
