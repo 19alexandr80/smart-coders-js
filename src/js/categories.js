@@ -27,6 +27,9 @@ async function onCategoryNameClick(event) {
   }
 
   await axiosApiBooks.fetchSelectedCategory(currentName);
+  if (window.innerWidth < 768) {
+    handleScrollToElement(refs.bestsellersSectionEl);
+  }
 }
 
 // рендеринг списка категорий на странице
@@ -43,3 +46,10 @@ async function renderCategories() {
 }
 
 renderCategories();
+
+function handleScrollToElement(element, position = 'start') {
+  element.scrollIntoView({
+    behavior: 'smooth',
+    position,
+  });
+}
