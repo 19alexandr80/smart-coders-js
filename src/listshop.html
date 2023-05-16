@@ -15,7 +15,34 @@
     <script type="module" src="./indexListshop.js"></script>
   </head>
   <body>
-    <include src="./partials/header.html"></include>
+    <header>
+      <div class="modalWindow"></div>
+      <div class="conteiner-header">
+        <div class="logo-group">
+          <a href="./index.html">
+            <svg width="109px" height="28px" class="logo-span-header">
+              <use href="./images/icons.svg#logo-light"></use>
+            </svg>
+          </a>
+          <div class="header-button-nav">
+            <a href="./index.html" class="button-header-home">Home</a>
+            <a href="./listshop.html" class="button-header-shoping color-page">
+              <span>Shopping list</span>
+              <svg width="26px" height="28px" class="contakts-list-icon">
+                <use href="./images/icons.svg#handbag"></use>
+              </svg>
+            </a>
+          </div>
+          <button class="button-themes">themes</button>
+        </div>
+        <div class="button-sing-auth-js"></div>
+        <div class="burger-menu-header">
+          <span class="burger-menu-span1"></span>
+          <span class="burger-menu-span2"></span>
+          <span class="burger-menu-span3"></span>
+        </div>
+      </div>
+    </header>
     <div class="container container__shop-list-page">
       <include src="./partials/mainListshop.html"></include>
       <include src="./partials/shopping-list.html"></include>
