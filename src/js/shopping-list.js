@@ -149,13 +149,7 @@ function onRemoveCard(evt) {
       <p class="textEmptyPage">
         This page is empty, add some books and proceed to order.
       </p>
-      <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />
-    `;
-  }
-
-    })
-    .join('');
-
+      <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />`;
   refs.cards.insertAdjacentHTML('beforeend', markup);
 }
 const btnTrash = document.querySelector('.shop-list__cards');
