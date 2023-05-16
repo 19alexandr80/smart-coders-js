@@ -32,10 +32,13 @@ function addLeadingZero(value) {
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
   loop: true,
-  slidesPerView: 6,
+  spaceBetween: 20,
   breakpoints: {
-    480: {
+    320: {
       slidesPerView: 4,
+    },
+    640: {
+      slidesPerView: 6,
     },
   },
   modules: [Navigation],
