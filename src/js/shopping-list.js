@@ -20,18 +20,14 @@ const dataBookRender = bookShopKyes.map(kye => {
   return dataBookShop[kye];
 });
 console.log(dataBookRender);
+
 // =========================================================================================
 
 // при відкритті сторінки, викликається функція
 onOpenPage();
 function onOpenPage() {
   console.log('gooood');
-  // якщо в local storage є хоча б одна книга, стираєтьсч розмітка пустої сторінки і малюється розмітка книги
-  if (dataBookRender.length >= 1) {
-    refs.imgEmptyPage.remove('.imgEmptyPage');
-    refs.textEmptyPage.remove('.textEmptyPage');
-    makeMarkupBook(dataBookRender);
-  }
+
   // якщо в local storage немає жодної книги, малюється розмітка пустої сторінки
   if (!dataBookRender) {
     refs.containerEmptyPage.innerHTML = `
@@ -40,10 +36,16 @@ function onOpenPage() {
     </p>
     <img class="imgEmptyPage" src="./images/is-empty@1x.png" alt="" />`;
   }
+
+  // якщо в local storage є хоча б одна книга, стираєтьсч розмітка пустої сторінки і малюється розмітка книги
+  if (dataBookRender.length >= 1) {
+    refs.imgEmptyPage.remove('.imgEmptyPage');
+    refs.textEmptyPage.remove('.textEmptyPage');
+    makeMarkupBook(dataBookRender);
+  }
 }
 
-async function makeMarkupBook(dataBookRender) {
-  console.log('bla bla');
+function makeMarkupBook(dataBookRender) {
   const markup = dataBookRender
     .map(({ id, bookImg, author, title, description, listName }) => {
       return ` 
