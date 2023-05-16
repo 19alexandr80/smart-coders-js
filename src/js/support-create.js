@@ -24,6 +24,9 @@ const makeSupporItems = supportArr
   .join('');
 
 supportItemsEl.insertAdjacentHTML('beforeend', makeSupporItems);
+// Через особливості роботи опції "loop", загальна кількість слайдів має бути >= slidesPerView * 2
+// тому повторно рендеримо той же список фондів (бо у нас slidesPerView = 6 на таблет та десктопі, а фондів всього 9шт.)
+supportItemsEl.insertAdjacentHTML('beforeend', makeSupporItems);
 
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
