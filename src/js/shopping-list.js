@@ -13,29 +13,31 @@ const refs = {
 // =========================================================================================
 
 const dataBookShop = JSON.parse(localStorage.getItem('shopingList'));
-console.log(dataBookShop);
-const bookShopKyes = Object.keys(dataBookShop);
+let dataBookRender = [];
 
-const dataBookRender = bookShopKyes.map(kye => {
-  return dataBookShop[kye];
-});
-console.log(dataBookRender);
+if (!dataBookShop) {
+  return;
+} else {
+  const bookShopKyes = Object.keys(dataBookShop);
+
+  dataBookRender = bookShopKyes.map(kye => {
+    return dataBookShop[kye];
+  });
+}
 
 // =========================================================================================
 
 // при відкритті сторінки, викликається функція
 onOpenPage();
 function onOpenPage() {
-  console.log('gooood');
-
   // якщо в local storage немає жодної книги, малюється розмітка пустої сторінки
-  if (!dataBookRender) {
-    refs.containerEmptyPage.innerHTML = `
-    <p class="textEmptyPage">
-      This page is empty, add some books and proceed to order.
-    </p>
-    <img class="imgEmptyPage" src="./images/is-empty@1x.png" alt="" />`;
-  }
+  // if (!dataBookRender) {
+  //   refs.containerEmptyPage.innerHTML = `
+  //   <p class="textEmptyPage">
+  //     This page is empty, add some books and proceed to order.
+  //   </p>
+  //   <img class="imgEmptyPage" src="./images/is-empty@1x.png" alt="" />`;
+  // }
 
   // якщо в local storage є хоча б одна книга, стираєтьсч розмітка пустої сторінки і малюється розмітка книги
   if (dataBookRender.length >= 1) {
