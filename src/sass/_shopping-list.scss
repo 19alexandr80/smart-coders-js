@@ -155,3 +155,27 @@
   max-width: 322px;
   justify-content: center;
 }
+
+// Лінки
+
+.shop-list__links-group {
+  display: flex;
+
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+}
+
+.shop-list__links {
+  height: 36px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  filter: grayscale(100%);
+  object-fit: contain;
+  align-items: center;
+}
+
+.shop-list__links:hover {
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+}
