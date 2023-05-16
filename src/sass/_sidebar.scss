@@ -1,3 +1,9 @@
+.container--home-page {
+  @media screen and (min-width: 1440px) {
+    display: flex;
+  }
+}
+
 .sidebar {
   padding-top: 40px;
   margin-right: 40px;
@@ -26,7 +32,6 @@
 }
 
 .support--main {
-  // margin-top: 40px;
   @media screen and (min-width: 768px) {
     margin-top: 0;
   }
@@ -41,13 +46,6 @@
   @media screen and (min-width: 1440px) {
     margin-top: 40px;
     display: block;
-  }
-}
-
-.container--listshop {
-  @media screen and (min-width: 1440px) {
-    display: flex;
-    justify-content: space-between;
   }
 }
 
