@@ -60,7 +60,6 @@ export async function openModal(element) {
   }
 
   function onClick(e) {
-    console.log('oncliiiiiiiiiiiiiiiiik', validToken);
     const textAfterRemoveBtn = document.querySelector('.text-input');
     if (!orderBtn.classList.value.includes('order-btn-remove-state')) {
       orderBtn.textContent = 'remove from the shopping list';
