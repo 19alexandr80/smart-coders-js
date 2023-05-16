@@ -117,7 +117,7 @@ export function createPaginataion(currentPage, totalPages) {
         }</button></li>` +
         `<li><button id = "current" class="btn-pag btn-pag--current js-pag-marker"  type="button">${currentPage}</button></li>`;
       if (currentPage <= totalPages - 2 || currentPage === totalPages - 1) {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! === > ==
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! === > == if string
         if (window.innerWidth > 767.99) {
           markup += `<li><button class="btn-pag btn-pag--more-right" type="button">...</button></li>`;
         }
