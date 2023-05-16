@@ -153,10 +153,11 @@ async function onDataFormAuth(e) {
       const fire = await createUserWithEmailAndPassword(auth, email, password);
       localStorage.setItem('tokenResponse', fire._tokenResponse.idToken);
       localStorage.setItem('email', email);
+
+      localStorage.setItem('shopingList', JSON.stringify({}));
     } catch (error) {
-      console.error('jjjjjjjj-error', error);
-      const errorMessage = error.message;
-      alert(errorMessage);
+      console.error(error.message);
+      alert(error.message);
     }
   } else {
     alert('Check the password');
@@ -168,7 +169,9 @@ const authInterfase = document.querySelector('.button-sing-auth-js');
 function authUserMarkUp() {
   let userIn = '';
   if (localStorage.getItem('tokenResponse')) {
-    const avatar = localStorage.getItem('userAvatar');
+    const avatar = localStorage.getItem('userAvatar')
+      ? localStorage.getItem('userAvatar')
+      : './images/stopper116@1x.png';
     const email = localStorage.getItem('email');
     const nikEmail = email.substring(0, email.indexOf('@'));
     userIn = `<div class='user-auth-zone'>
