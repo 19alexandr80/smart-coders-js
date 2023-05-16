@@ -123,6 +123,7 @@ function onRemoveCard(evt) {
       <p class="textEmptyPage">
         This page is empty, add some books and proceed to order.
       </p>
+
       <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />
     `;
   }
@@ -130,6 +131,9 @@ function onRemoveCard(evt) {
 
     })
     .join('');
+
+
+      <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />`;
 
   refs.cards.insertAdjacentHTML('beforeend', markup);
 }
