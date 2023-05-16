@@ -18,7 +18,6 @@ async function onAuthGoogle() {
   modalBox.innerHTML = '';
   document.body.classList.remove('scroll-off');
   authUserMarkUp();
-  document.body.classList.remove('scroll-off');
 }
 // =========================================================
 const auth = dataFirebase.auth;
