@@ -13,7 +13,6 @@ let BOOKID = null;
 
 export async function openModal(element) {
   const validToken = localStorage.getItem('email') !== null;
-  console.log(validToken);
   const bookId = element;
   const dataBook = await booksId(bookId);
   BOOKID = bookId;
@@ -25,13 +24,9 @@ export async function openModal(element) {
     event.stopPropagation();
   });
 
-  // bookInfoMarkup(dataBook);
-  // console.log(localStorage.getItem('tokenResponse'));
   if (validToken) {
-    console.log(validToken);
     setOrderBtnText();
   }
-  // setOrderBtnText();
 
   document.body.style.overflow = 'hidden';
 

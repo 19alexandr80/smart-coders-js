@@ -122,6 +122,7 @@ export class DataFirebase {
   async addBookk(id) {
     const email = localStorage.getItem('email');
     const boo = await axiosApiBooks.fetchBookInfo(id);
+    console.log(boo);
     const bookData = {
       buyLinks: boo.buy_links,
       title: boo.title,
@@ -129,7 +130,9 @@ export class DataFirebase {
       listName: boo.list_name,
       bookImg: boo.book_image,
       author: boo.author,
+      description: boo.description,
     };
+    console.log(bookData);
 
     if (localStorage.getItem('shopingList')) {
       const basket = JSON.parse(localStorage.getItem('shopingList'));
@@ -149,9 +152,4 @@ export class DataFirebase {
     const idBookShop = await this.patchRequest(booking, nikEmail);
   }
 }
-
-const firefire = new DataFirebase();
-
-// firefire.addBookk('643282b2e85766588626a10a');
-
-// firefire.deleteBook('643282b1e85766588626a07b');
+// =================================================================================
