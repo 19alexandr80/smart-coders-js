@@ -56,7 +56,6 @@ function onThemLocal() {
     document.body.style.setProperty('--light-accent', '#eac645');
     document.body.style.setProperty('--light-brdr-reg', '#f6f6f6');
   }
-  console.log('nnnnnnnn', localStorage.getItem('them'));
 }
 function localThem() {
   if (localStorage.getItem('them')) {
