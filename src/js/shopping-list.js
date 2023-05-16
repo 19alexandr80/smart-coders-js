@@ -78,6 +78,56 @@ function makeMarkupBook(dataBookRender) {
   </div>
   </li>
     `;
+
+
+    }
+  );
+  //     .join('');
+
+  //   refs.cards.insertAdjacentHTML('beforeend', markup);
+  // }
+  // вставляємо отриману розмітку до контейнера
+  refs.cards.innerHTML = markup.join('');
+}
+
+// видаляємо книгу з localStorage та з розмітки сторінки
+refs.shopListContainer.addEventListener('click', onRemoveCard);
+
+function onRemoveCard(evt) {
+  console.log(evt.target);
+  if (evt.target.nodeName !== 'use') {
+    return;
+  }
+
+  const card = evt.target.closest('.shop-list__one-card');
+  const id = card.dataset.id;
+
+  // видаляємо книгу з localStorage
+  const bookShopKeys = Object.keys(dataBookShop);
+
+  bookShopKeys.forEach(key => {
+    if (dataBookShop[key].id === id) {
+      delete dataBookShop[key];
+    }
+  });
+
+  localStorage.setItem('shopingList', JSON.stringify(dataBookShop));
+
+  // видаляємо книгу з розмітки сторінки
+  event.target.closest('.shop-list__one-card').remove();
+
+  // якщо всі книги видалено, генерується розмітка пустої сторінки
+  if (!refs.cards.children.length) {
+    refs.cards.classList.add('is-hidden');
+    refs.container.innerHTML = `
+      <p class="textEmptyPage">
+        This page is empty, add some books and proceed to order.
+      </p>
+      <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />
+    `;
+  }
+
+
     })
     .join('');
 
