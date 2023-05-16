@@ -16,6 +16,7 @@ const dataFirebase = new DataFirebase();
 async function onAuthGoogle() {
   await dataFirebase.authGoogle();
   modalBox.innerHTML = '';
+  document.body.classList.remove('scroll-off');
   authUserMarkUp();
   document.body.classList.remove('scroll-off');
 }
@@ -80,6 +81,7 @@ async function onDataFormIn(e) {
     localStorage.setItem('tokenResponse', fire._tokenResponse.idToken);
     localStorage.setItem('email', email);
     modalBox.innerHTML = '';
+    document.body.classList.remove('scroll-off');
     const basketFire = await dataFirebase.getRequest(email);
     if (basketFire) {
       const bookJson = JSON.stringify(basketFire);
@@ -151,6 +153,7 @@ async function onDataFormAuth(e) {
   if (password && password === passwordConfirmation) {
     console.log(email, password);
     modalBox.innerHTML = '';
+    document.body.classList.remove('scroll-off');
     try {
       const fire = await createUserWithEmailAndPassword(auth, email, password);
       localStorage.setItem('tokenResponse', fire._tokenResponse.idToken);
