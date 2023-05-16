@@ -1,8 +1,7 @@
 import { supportArr } from './support-arr';
-// import Swiper from 'swiper';
+// import Swiper from 'swiper/swiper-bundle';
 import Swiper, { Navigation } from 'swiper';
 
-// import 'swiper/swiper.min.css';
 import 'swiper/modules/navigation/navigation.min.css';
 
 const supportItemsEl = document.querySelector('.support-list');
@@ -30,20 +29,12 @@ function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
 
-// const swiper = new Swiper('.mySwiper', {
-//   loop: true,
-//   navigation: {
-//     nextEl: '.swiper-btn-next',
-//     // prevEl: '.swiper-btn-next',
-//   },
-// });
-
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
   loop: true,
   slidesPerView: 6,
   rewind: true,
-  spaceBetween: 20,
+  // spaceBetween: 20,
   effect: 'slide',
   breakpoints: {
     480: {
@@ -52,7 +43,6 @@ const swiper = new Swiper('.swiper', {
   },
   modules: [Navigation],
   navigation: {
-    // nextEl: '.swiper-btn-next',
     prevEl: '.swiper-btn-next',
   },
 });
