@@ -33,9 +33,6 @@ const swiper = new Swiper('.swiper', {
   direction: 'vertical',
   loop: true,
   slidesPerView: 6,
-  rewind: true,
-  // spaceBetween: 20,
-  effect: 'slide',
   breakpoints: {
     480: {
       slidesPerView: 4,
@@ -43,6 +40,6 @@ const swiper = new Swiper('.swiper', {
   },
   modules: [Navigation],
   navigation: {
-    prevEl: '.swiper-btn-next',
+    nextEl: '.swiper-btn-next',
   },
 });
