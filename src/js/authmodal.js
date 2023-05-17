@@ -41,7 +41,7 @@ function onAuthBBurger(e) {
   document.body.classList.toggle('scroll-off');
   // buttonSingAutBurger();
   modalSignIn();
-  buttonSingAutBurger();
+  // buttonSingAutBurger();
 }
 buttonSingAutBurger();
 function buttonSingAutBurger() {
@@ -100,6 +100,7 @@ function modalSignIn() {
   clousButton.addEventListener('click', onCloseModalAuth);
   modalBox.classList.add('trans-modal');
   document.body.classList.add('scroll-off');
+  buttonSingAutBurger();
 }
 
 async function onDataFormIn(e) {
