@@ -3,7 +3,7 @@ import { openModal } from './modal-w';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { spinner } from './spinner-loader';
 import debounce from 'lodash.debounce';
-
+const openModalEl = document.querySelector('.bookshelf');
 function onnmodd(id) {
   openModal(id);
 }
@@ -73,15 +73,17 @@ async function makeMarkupTopBooksGallery(data) {
     )}</h2>
     ${markup}`;
 
-  const openModal = document.querySelector('.bookshelf');
-  openModal.addEventListener('click', e => {
-    if (e.target.closest('li')) {
-      onnmodd(e.target.closest('li').dataset.id);
-    }
-  });
+  openModalEl.addEventListener('click', openModalEvent);
 
   hideBooksWindow();
 }
+function openModalEvent(e) {
+  if (e.target.closest('li')) {
+    console.log('11111111111111111111111111111111111111111');
+    onnmodd(e.target.closest('li').dataset.id);
+  }
+}
+openModalEl.addEventListener('click', openModalEvent);
 
 // загружает топовые книги
 async function loadTopBooksOnClick() {
@@ -185,11 +187,7 @@ function makeMarkupCategoryShelf(data, nameCategory) {
 
   refs.bestsellersSectionEl.innerHTML = shelfMarkup;
   const openModal = document.querySelector('.bookshelf');
-  openModal.addEventListener('click', e => {
-    if (e.target.closest('li')) {
-      onnmodd(e.target.closest('li').dataset.id);
-    }
-  });
+  openModalEl.addEventListener('click', openModalEvent);
 }
 
 //Функция ищет элемент списка с именем категории и добавляет этому элементу класс upper-case, который приводит текст в верхний регистр и выделяет его на странице. Если на странице уже есть элементы с классом upper-case, функция удаляет этот класс у всех таких элементов, чтобы только один элемент был выделен верхним регистром в данный момент времени.
