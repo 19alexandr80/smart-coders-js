@@ -39,12 +39,18 @@ function onAuthBBurger(e) {
   burgerEl.classList.toggle('active');
   burgerModalEl.classList.toggle('modal-burger-menu-off');
   document.body.classList.toggle('scroll-off');
-  burgerButtonFilling.innerHTML = 'Log aut';
+  // buttonSingAutBurger();
+  modalSignIn();
+  buttonSingAutBurger();
+}
+buttonSingAutBurger();
+function buttonSingAutBurger() {
   console.log(localStorage.getItem('tokenResponse'));
   if (localStorage.getItem('tokenResponse')) {
+    burgerButtonFilling.innerHTML = 'Log aut';
+  } else {
     burgerButtonFilling.innerHTML = 'Log in';
   }
-  modalSignIn();
 }
 
 // =============================================================================
