@@ -28,7 +28,7 @@ async function onCategoryNameClick(event) {
   }
 
   await axiosApiBooks.fetchSelectedCategory(currentName);
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 1440) {
     handleScrollToElement(refs.bestsellersSectionEl);
   }
 }
