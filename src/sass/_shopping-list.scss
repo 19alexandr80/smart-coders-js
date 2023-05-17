@@ -37,6 +37,9 @@
   @media screen and (min-width: 768px) {
     padding-top: 40px;
   }
+  // @media screen and (min-width: 1440px) {
+  //   min-height: 679px;
+  // }
 }
 .shop-list__one-card {
   position: relative;
@@ -261,7 +264,7 @@
 
   position: absolute;
   bottom: 21px;
-  right: 19;
+  right: 14;
 
   width: 80px;
   height: 16px;
@@ -269,8 +272,8 @@
     width: 140px;
     height: 30px;
 
-    bottom: 21px;
-    right: 19;
+    bottom: 24px;
+    right: 24px;
   }
 }
 
