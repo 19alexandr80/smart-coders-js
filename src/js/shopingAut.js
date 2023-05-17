@@ -47,8 +47,8 @@ function modalSignIn() {
     />
     <button type="submit">Sign in</button>
     <div class='button-sing-group'>
-    <p class="button-sign-up">Sing up</p>
-    <p class='button-sing'>Sing in</p>
+    <p class="button-sign-up">Sign up</p>
+    <p class='button-sing'>Sign in</p>
     <p class='button-google'>google</p>
     </div>
   </form>
@@ -114,8 +114,8 @@ function modalAuth() {
     />
     <button type="submit">sign up</button>
     <div class='button-sing-group'>
-    <p class='button-sing'>Sing up</p>
-    <p class="button-sign-in">Sing in</p>
+    <p class='button-sing'>Sign up</p>
+    <p class="button-sign-in">Sign in</p>
     <p class='button-google'>google</p>
     </div>
   </form>
@@ -205,3 +205,33 @@ function authUserMarkUp() {
   authInterfase.innerHTML = userIn;
 }
 authUserMarkUp();
+// =================================================
+const burgerButtonAuth = document.querySelector('.burger-button-auth');
+const burgerButtonFilling = document.querySelector('.burger-button-span');
+const burgerModalEl = document.querySelector('.modal-burger-menu');
+const burgerEl = document.querySelector('.burger-menu-header');
+burgerEl.addEventListener('click', () => {
+  burgerModalEl.classList.toggle('modal-burger-menu-off');
+  burgerEl.classList.toggle('active');
+  document.body.classList.toggle('scroll-off');
+});
+console.log(burgerButtonAuth);
+burgerButtonAuth.addEventListener('click', onAuthBBurger);
+function onAuthBBurger(e) {
+  burgerEl.classList.toggle('active');
+  burgerModalEl.classList.toggle('modal-burger-menu-off');
+  document.body.classList.toggle('scroll-off');
+  buttonSingAutBurger();
+  modalSignIn();
+  // buttonSingAutBurger();
+}
+buttonSingAutBurger();
+buttonSingAutBurger();
+function buttonSingAutBurger() {
+  console.log(localStorage.getItem('tokenResponse'));
+  if (localStorage.getItem('tokenResponse')) {
+    burgerButtonFilling.innerHTML = 'Log aut';
+  } else {
+    burgerButtonFilling.innerHTML = 'Log in';
+  }
+}

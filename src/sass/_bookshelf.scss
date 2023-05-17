@@ -4,7 +4,6 @@
   padding-top: 40px;
 }
 
-
 /*-----------------------------------MOBILE------------------------*/
 
 .bookshelf {
@@ -71,7 +70,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-  transition: transform .35s ease-in-out;
+  transition: transform 0.35s ease-in-out;
 }
 
 .books-overlay {
@@ -148,7 +147,7 @@
   font-weight: 700;
   line-height: 1.29;
   letter-spacing: 0.01;
-  color: $primary-brdr-clr-light;
+  color: $primary-txt-clr-light;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -156,8 +155,8 @@
 .bestsellers-button:hover,
 .bestsellers-button:focus {
   background-color: $primary-accent-color;
-  color: $primary-brdr-clr-dark;
-  transition: background-color .35s ease-in-out;
+  color: $additional-txt-clr-light;
+  transition: background-color 0.35s ease-in-out;
 }
 
 /*---------------------------TAB--------------------*/
@@ -183,7 +182,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    column-gap: 15px;
+    column-gap: 25px;
     row-gap: 40px;
   }
 
@@ -193,7 +192,7 @@
 
   .bestsellers-book-list {
     display: flex;
-    gap: 15px;
+    gap: 25px;
   }
 
   .book-img-container {
@@ -228,8 +227,8 @@
   }
 
   @media screen and (min-width: 768px) and (max-width: 1399px) {
-    .category-book-list>li.book-item {
-      flex-basis: calc((100% - 30px) / 3);
+    .book-item {
+      flex-basis: calc((100% - 50px) / 3);
     }
   }
 
@@ -250,15 +249,16 @@
     font-weight: 700;
     line-height: 1.29;
     letter-spacing: 0.01;
-    color: $primary-brdr-clr-light;
+    color: $primary-txt-clr-light;
     text-transform: uppercase;
+    background-color: transparent;
   }
 
   .bestsellers-button:hover,
   .bestsellers-button:focus {
     background-color: $primary-accent-color;
-    color: $primary-brdr-clr-dark;
-    transition: background-color .35s ease-in-out;
+    color: $additional-txt-clr-light;
+    transition: background-color 0.35s ease-in-out;
   }
 }
 
@@ -323,14 +323,14 @@
     font-weight: 700;
     line-height: 1.29;
     letter-spacing: 0.01;
-    color: $primary-brdr-clr-light;
+    color: $primary-txt-clr-light;
     text-transform: uppercase;
   }
 
   .bestsellers-button:hover,
   .bestsellers-button:focus {
     background-color: $primary-accent-color;
-    color: $primary-brdr-clr-dark;
-    transition: background-color .35s ease-in-out;
+    color: $additional-txt-clr-light;
+    transition: background-color 0.35s ease-in-out;
   }
 }

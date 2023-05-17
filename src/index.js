@@ -10,7 +10,6 @@ import './js/burgerModal';
 
 import './js/themes';
 
-// import './js/modal-window';
 // const throttle = require('lodash.throttle');
 // import Notiflix from 'notiflix';
 

@@ -2,9 +2,14 @@
   <div class="modalWindow"></div>
   <div class="conteiner-header">
     <div class="logo-group">
-      <svg width="109px" height="28px" class="logo-span-header">
-        <use href="./images/icons.svg#logo-light"></use>
-      </svg>
+      <a href="./index.html" class="logo-a">
+        <svg width="109px" height="28px">
+          <use
+            href="./images/icons.svg#logo-light"
+            class="logo-span-header"
+          ></use>
+        </svg>
+      </a>
       <div class="header-button-nav">
         <a href="./index.html" class="button-header-home color-page">Home</a>
         <a href="./listshop.html" class="button-header-shoping">
@@ -13,14 +18,16 @@
             <use href="./images/icons.svg#handbag"></use>
           </svg>
         </a>
-      </div>
-      <button class="button-themes">themes</button>
-    </div>
+        <div class="button-themes" id="toggle">
+          <i class="indicator"></i>
+        </div>
     <div class="button-sing-auth-js"></div>
     <div class="burger-menu-header">
       <span class="burger-menu-span1"></span>
       <span class="burger-menu-span2"></span>
       <span class="burger-menu-span3"></span>
+      <span class="burger-menu-span4"></span>
+      <span class="burger-menu-span5"></span>
     </div>
   </div>
 </header>

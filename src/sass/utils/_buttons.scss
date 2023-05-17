@@ -3,8 +3,8 @@
   @extend %btn;
   @extend %btn-base-action;
 
-  border: 2px solid $primary-brdr-clr-light;
-  background-color: $primary-brdr-clr-light;
+  border: 2px solid $registration-modal-brdr-clr-light;
+  background-color: $registration-modal-brdr-clr-light;
 
   color: $registration-modal-btn-txt-clr-light;
 
@@ -14,19 +14,19 @@
     background-color: $primary-accent-color;
   }
 
-  &.dark-theme {
-    border: 2px solid $registration-modal-brdr-clr-dark;
-    background-color: $registration-modal-brdr-clr-dark;
+  // &.dark-theme {
+  //   border: 2px solid $registration-modal-brdr-clr-dark;
+  //   background-color: $registration-modal-brdr-clr-dark;
 
-    color: $registration-modal-btn-txt-clr-dark;
+  //   color: $registration-modal-btn-txt-clr-dark;
 
-    &:hover,
-    &:focus {
-      border: 2px solid $primary-accent-color;
-      background-color: $primary-accent-color;
-      color: $registration-modal-btn-txt-clr-light;
-    }
-  }
+  //   &:hover,
+  //   &:focus {
+  //     border: 2px solid $primary-accent-color;
+  //     background-color: $primary-accent-color;
+  //     color: $registration-modal-btn-txt-clr-light;
+  //   }
+  // }
 
   // mobile
   @media screen and (max-width: 767.99px) {
@@ -131,7 +131,8 @@
   width: 184px;
   height: 48px;
   border-radius: 17px;
-  border-color: $primary-txt-clr-light;
+
+  border-color: $secondary-bgc-dark;
   background-color: $additional-txt-clr-light;
 
   font-weight: 500;
@@ -139,6 +140,7 @@
   line-height: calc(18 / 14);
   text-transform: none;
   letter-spacing: -0.04em;
+  color: $secondary-bgc-dark;
 
   &:hover,
   &:focus {
@@ -261,17 +263,17 @@
 
   &:hover,
   &:focus {
-    color: $primary-accent-color;
+    color: $primary-accent-color-btn;
   }
 
-  &.dark-theme {
-    color: $primary-txt-clr-dark;
+  // &.dark-theme {
+  //   color: $primary-txt-clr-dark;
 
-    &:hover,
-    &:focus {
-      color: $secondary-accent-color;
-    }
-  }
+  //   &:hover,
+  //   &:focus {
+  //     color: $secondary-accent-color;
+  //   }
+  // }
 }
 
 .btn-close-icn {
@@ -292,7 +294,7 @@
 
   border-radius: 50%;
 
-  background-color: $secondary-bgc-light;
+  background-color: $secondary-bgc;
   color: $primary-accent-color;
 
   @include transition(background-color);
@@ -336,15 +338,17 @@
     height: 30px;
   }
 
-  &--left {
+  &--left,
+  &--right {
     border: 1px solid $primary-brdr-clr-light;
     background-color: $secondary-bgc-dark;
     color: $secondary-txt-clr;
 
     &:hover,
     &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
+      border-color: $primary-brdr-clr-light;
+      background-color: $secondary-accent-color;
+      color: $primary-txt-clr-light;
     }
   }
 
@@ -352,46 +356,28 @@
     border: 1px solid $primary-brdr-clr-light;
     background-color: $secondary-bgc-dark;
     color: $additional-txt-clr-light;
-
-    &:hover,
-    &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
-    }
   }
 
-  &--next {
+  &--not-current {
     border: 1px solid $primary-brdr-clr-light;
     color: $primary-txt-clr-light;
 
     &:hover,
     &:focus {
       border-color: $primary-accent-color;
-      color: $primary-accent-color;
+      background-color: $primary-accent-color;
+      color: $primary-txt-clr-dark;
     }
   }
 
-  // TODO: дублює --next
-  &--more {
+  &--more-left,
+  &--more-right {
     border: 1px solid $primary-brdr-clr-light;
     color: $primary-txt-clr-light;
 
     &:hover,
     &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
-    }
-  }
-
-  &--right {
-    border: 1px solid $primary-brdr-clr-light;
-    background-color: $secondary-accent-color;
-    color: $primary-txt-clr-light;
-
-    &:hover,
-    &:focus {
-      border-color: $primary-accent-color;
-      color: $primary-accent-color;
+      background-color: $secondary-accent-color;
     }
   }
 }
