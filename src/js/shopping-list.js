@@ -7,7 +7,6 @@ import apple2x from '../images/shops/book@2x.png';
 import bookShop from '../images/shops/books@1x.png';
 import bookShop2x from '../images/shops/books@2x.png';
 
-
 import { DataFirebase } from './firebaseInteraction.js';
 const dataFirebase = new DataFirebase();
 
@@ -105,7 +104,6 @@ function makeMarkupBook(dataBookRender) {
   </div>
   </li>
     `;
-
     }
   );
   //     .join('');
@@ -150,7 +148,8 @@ function onRemoveCard(evt) {
         This page is empty, add some books and proceed to order.
       </p>
       <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />`;
-  refs.cards.insertAdjacentHTML('beforeend', markup);
+    refs.cards.insertAdjacentHTML('beforeend', markup);
+  }
 }
 const btnTrash = document.querySelector('.shop-list__cards');
 btnTrash.addEventListener('click', onBtnTrash);
@@ -164,17 +163,7 @@ async function onBtnTrash(e) {
   const id = e.target.closest('li').dataset.id;
   await dataFirebase.deleteBook(id);
   window.location.reload();
-
 }
-
-
-
-
-
-
-
-
-
 
 // const card = document.querySelector('.shop-list__one-card');
 // const btnTrash = document.querySelector('[data-name="btn-trash"]');
