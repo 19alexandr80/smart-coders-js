@@ -44,6 +44,7 @@ function onAuthBBurger(e) {
   // buttonSingAutBurger();
 }
 buttonSingAutBurger();
+buttonSingAutBurger();
 function buttonSingAutBurger() {
   console.log(localStorage.getItem('tokenResponse'));
   if (localStorage.getItem('tokenResponse')) {
