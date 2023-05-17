@@ -1,8 +1,7 @@
 import { supportArr } from './support-arr';
-// import Swiper from 'swiper';
+// import Swiper from 'swiper/swiper-bundle';
 import Swiper, { Navigation } from 'swiper';
 
-// import 'swiper/swiper.min.css';
 import 'swiper/modules/navigation/navigation.min.css';
 
 const supportItemsEl = document.querySelector('.support-list');
@@ -25,34 +24,28 @@ const makeSupporItems = supportArr
   .join('');
 
 supportItemsEl.insertAdjacentHTML('beforeend', makeSupporItems);
+// Через особливості роботи опції "loop", загальна кількість слайдів має бути >= slidesPerView * 2
+// тому повторно рендеримо той же список фондів (бо у нас slidesPerView = 6 на таблет та десктопі, а фондів всього 9шт.)
+supportItemsEl.insertAdjacentHTML('beforeend', makeSupporItems);
 
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
 
-// const swiper = new Swiper('.mySwiper', {
-//   loop: true,
-//   navigation: {
-//     nextEl: '.swiper-btn-next',
-//     // prevEl: '.swiper-btn-next',
-//   },
-// });
-
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
   loop: true,
-  slidesPerView: 6,
-  rewind: true,
   spaceBetween: 20,
-  effect: 'slide',
   breakpoints: {
-    480: {
+    320: {
       slidesPerView: 4,
+    },
+    640: {
+      slidesPerView: 6,
     },
   },
   modules: [Navigation],
   navigation: {
-    // nextEl: '.swiper-btn-next',
-    prevEl: '.swiper-btn-next',
+    nextEl: '.swiper-btn-next',
   },
 });

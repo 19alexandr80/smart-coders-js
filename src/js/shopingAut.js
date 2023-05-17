@@ -47,8 +47,8 @@ function modalSignIn() {
     />
     <button type="submit">Sign in</button>
     <div class='button-sing-group'>
-    <p class="button-sign-up">Sing up</p>
-    <p class='button-sing'>Sing in</p>
+    <p class="button-sign-up">Sign up</p>
+    <p class='button-sing'>Sign in</p>
     <p class='button-google'>google</p>
     </div>
   </form>
@@ -114,8 +114,8 @@ function modalAuth() {
     />
     <button type="submit">sign up</button>
     <div class='button-sing-group'>
-    <p class='button-sing'>Sing up</p>
-    <p class="button-sign-in">Sing in</p>
+    <p class='button-sing'>Sign up</p>
+    <p class="button-sign-in">Sign in</p>
     <p class='button-google'>google</p>
     </div>
   </form>
