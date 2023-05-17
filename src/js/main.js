@@ -108,7 +108,7 @@ async function onCattegoryButtonElClick(event) {
   }
   const { name: categoryName } = event.target;
   spinner.show();
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 1440) {
     handleScrollToElement(refs.bestsellersSectionEl);
   }
   try {
