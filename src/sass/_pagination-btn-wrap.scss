@@ -1,0 +1,37 @@
+.pag-wrap {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 6px;
+
+  &__left,
+  &__right {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__center {
+    display: flex;
+    gap: 8px;
+  }
+
+  // tablet
+  @media screen and (min-width: 768px) {
+    padding: 0 80px;
+    &__left,
+    &__right {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__center {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  // desktop
+  @media screen and (min-width: 1440px) {
+    padding: 0 120px;
+  }
+}

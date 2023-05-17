@@ -12,8 +12,12 @@ import './js/themes';
 
 // const throttle = require('lodash.throttle');
 // import Notiflix from 'notiflix';
-
-// // one by one
+// ==================
+// import './js/gallery-items';
+// import './js/local-storage';
+// import './js/pagination-btn';
+// import './js/pagination';
+// ==================
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // import { Report } from 'notiflix/build/notiflix-report-aio';
 // import { Confirm } from 'notiflix/build/notiflix-confirm-aio';
