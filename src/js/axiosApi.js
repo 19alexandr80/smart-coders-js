@@ -1,10 +1,5 @@
 import axios from 'axios';
 
-export async function booksId(id) {
-    const responsive = await axios.get(`https://books-backend.p.goit.global/books/${id}`)
-    return responsive.data
-  }
-
 class AxiosApiBooks {
   constructor() {
     this.baseUrl = 'https://books-backend.p.goit.global';

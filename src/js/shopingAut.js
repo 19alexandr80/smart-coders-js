@@ -205,3 +205,23 @@ function authUserMarkUp() {
   authInterfase.innerHTML = userIn;
 }
 authUserMarkUp();
+// =================================================
+const burgerButtonAuth = document.querySelector('.burger-button-auth');
+const burgerButtonFilling = document.querySelector('.burger-button-span');
+const burgerModalEl = document.querySelector('.modal-burger-menu');
+const burgerEl = document.querySelector('.burger-menu-header');
+burgerEl.addEventListener('click', () => {
+  burgerModalEl.classList.toggle('modal-burger-menu-off');
+  burgerEl.classList.toggle('active');
+  document.body.classList.toggle('scroll-off');
+});
+console.log(burgerButtonAuth);
+// burgerButtonAuth.addEventListener('click', onAuthBBurger);
+// function onAuthBBurger(e) {
+//   burgerEl.classList.toggle('active');
+//   burgerModalEl.classList.toggle('modal-burger-menu-off');
+//   document.body.classList.toggle('scroll-off');
+//   // buttonSingAutBurger();
+//   modalSignIn();
+//   // buttonSingAutBurger();
+// }
