@@ -1,16 +1,16 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Report } from 'notiflix/build/notiflix-report-aio';
+// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+// import { Report } from 'notiflix/build/notiflix-report-aio';
 
 import { createPaginataion } from './pagination-btn.js';
 import { quantityPages, getNewDataBatch } from './local-storage';
 
-Notify.init({
-  fontSize: '24px',
-});
-Report.init({
-  titleFontSize: '24px',
-  messageFontSize: '18px',
-});
+// Notify.init({
+//   fontSize: '24px',
+// });
+// Report.init({
+//   titleFontSize: '24px',
+//   messageFontSize: '18px',
+// });
 
 export const paginationLeft = document.querySelector('.js-pagination-left');
 export const paginationCenter = document.querySelector('.js-pagination-center');
@@ -78,9 +78,10 @@ function handlerPaginationLeft(evt) {
 
   if (evt.target.closest('.js-pag-first')) {
     if (currentPage === 1) {
-      Notify.info(
-        'Congratulations! You are at the very beginning of the list!'
-      );
+      Notify
+        .info
+        // 'Congratulations! You are at the very beginning of the list!'
+        ();
 
       return;
     }
@@ -91,9 +92,10 @@ function handlerPaginationLeft(evt) {
 
   if (evt.target.closest('.js-pag-prev')) {
     if (currentPage === 1) {
-      Notify.info(
-        'Congratulations! You are at the very beginning of the list!'
-      );
+      Notify
+        .info
+        // 'Congratulations! You are at the very beginning of the list!'
+        ();
 
       return;
     }
@@ -113,7 +115,7 @@ function handlerPaginationRight(evt) {
 
   if (evt.target.closest('.js-pag-last')) {
     if (currentPage === lastPage) {
-      Report.info('SORRY', 'This is the last page.', 'Ok');
+      // Report.info('SORRY', 'This is the last page.', 'Ok');
 
       return;
     }
@@ -124,7 +126,7 @@ function handlerPaginationRight(evt) {
 
   if (evt.target.closest('.js-pag-next')) {
     if (currentPage === lastPage) {
-      Report.info('SORRY', 'This is the last page.', 'Ok');
+      // Report.info('SORRY', 'This is the last page.', 'Ok');
 
       return;
     }
