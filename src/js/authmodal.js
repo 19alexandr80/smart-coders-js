@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import svgRight from '../images/icons.svg';
+import mail from '../images/icons.svg';
+import lock from '../images/icons.svg';
 
 //======================================================================
 const buttonAutnSing = document.querySelector('.button-sing-auth-js');
@@ -69,16 +71,26 @@ function modalSignIn() {
     <div class="modal-bakc">
     <form class="modal-form-auth"">
     <div class='clousModalAuth'>&times;</div>
+    <div class="input-wrapper">
     <input
       type="email"
       name="email"
       placeholder="email"
     />
+    <svg class="input-icons">
+          <use href="${mail}#mail"></use>
+        </svg>
+        </div>
+        <div class="input-wrapper">
     <input
       type="password"
       name="password"
       placeholder="password"
     />
+    <svg class="input-icons">
+          <use href="${lock}#lock"></use>
+        </svg>
+        </div>
     <button type="submit">Sign in</button>
     <div class='button-sing-group'>
     <p class="button-sign-up">Sign up</p>
@@ -134,21 +146,27 @@ function modalAuth() {
     <div class="modal-bakc">
     <form class="modal-form-auth">
     <div class='clousModalAuth'>&times;</div>
+    <div class="input-wrapper">
     <input
       type="email"
       name="email"
-      placeholder="email"
-    />
+      placeholder="email"/>
+    <svg class="input-icons"><use href="${mail}#mail"></use></svg>
+    </div>
+    <div class="input-wrapper">
     <input
       type="password"
       name="password"
-      placeholder="password"
-    />
+      placeholder="password"/>
+    <svg class="input-icons"><use href="${lock}#lock"></use></svg>
+    </div>
+    <div class="input-wrapper">
     <input
       type="password"
       name="passwordConfirmation"
-      placeholder="password"
-    />
+      placeholder="password"/>
+    <svg class="input-icons"><use href="${lock}#lock"></use></svg>
+    </div>
     <button type="submit">sign up</button>
     <div class='button-sing-group'>
     <p class='button-sing'>Sign up</p>
