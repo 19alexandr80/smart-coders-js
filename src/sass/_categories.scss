@@ -81,3 +81,9 @@
     margin-right: 0;
   }
 }
+
+.cat-list--fixed {
+  background-color: $primary-bgc-light;
+  position: sticky;
+  top: 0;
+}
