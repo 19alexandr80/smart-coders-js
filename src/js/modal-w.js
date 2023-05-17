@@ -87,9 +87,9 @@ function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
       description ? description : 'No description.'
     }</p>
     <ul class='book_modal-links-group'>
-    <li class='book_modal-links'><a href=${amazonUrl} target="_blank"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" alt ='Amazon Icon'></a></li>
-    <li class='book_modal-links'><a href=${appleUrl} target="_blank"> <img  src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" alt ='Apple Icon'></a></li>
-    <li class='book_modal-links'><a href=${bookShopUrl} target="_blank"> <img  src='${bookShop}' srcset="${bookShop} 1x, ${bookShop2x} 2x" alt ='Book Shop Icon'></a></li>
+    <li class='book_modal-links'><a href=${amazonUrl} target="_blank" rel="nofollow noopener noreferrer"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" alt ='Amazon Icon'></a></li>
+    <li class='book_modal-links'><a href=${appleUrl} target="_blank" rel="nofollow noopener noreferrer"> <img  src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" alt ='Apple Icon'></a></li>
+    <li class='book_modal-links'><a href=${bookShopUrl} target="_blank" rel="nofollow noopener noreferrer"> <img  src='${bookShop}' srcset="${bookShop} 1x, ${bookShop2x} 2x" alt ='Book Shop Icon'></a></li>
     </ul>
     </div>
        `;
