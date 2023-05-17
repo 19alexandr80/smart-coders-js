@@ -49,7 +49,7 @@
 
   border: 2px solid rgba(79, 46, 232, 0.4);
   border-radius: 16px;
-  background: #ffff;
+  background: $secondary-bgc-light;
   @media screen and (min-width: 768px) {
     width: 704px;
     height: 213px;
@@ -166,6 +166,7 @@
   color: $secondary-txt-clr;
   @media screen and (min-width: 768px) {
     bottom: 24px;
+    width: 300px;
   }
 }
 
@@ -259,8 +260,8 @@
   display: flex;
 
   position: absolute;
-  right: 0;
-  bottom: 14px;
+  bottom: 21px;
+  right: 19;
 
   width: 80px;
   height: 16px;
@@ -274,9 +275,6 @@
 }
 
 .shop-list__links {
-  position: absolute;
-  bottom: 21px;
-  right: 19;
   height: 16px;
 
   display: flex;
@@ -285,8 +283,8 @@
   object-fit: contain;
   align-items: center;
 
-  // height: 36px;
-  // margin-right: 20px;
+  height: 36px;
+  margin-right: 20px;
   &:not(:last-child) {
     margin-right: 8px;
   }
