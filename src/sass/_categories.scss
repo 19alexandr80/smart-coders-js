@@ -20,7 +20,7 @@
 }
 
 .cat-list:hover {
-  color: $primary-accent-color;
+  color: $primary-accent-color-btn;
 }
 
 .cat-text {
@@ -42,7 +42,7 @@
   line-height: 112%;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: $primary-accent-color;
+  color: $primary-accent-color-btn;
 }
 
 .categories::-webkit-scrollbar {
