@@ -21,7 +21,7 @@ export async function openModal(element) {
 
   const modal = document.querySelector('.modal');
   modal.addEventListener('click', event => {
-    // event.stopPropagation();
+    event.stopPropagation();
   });
   console.log('validBookKey');
   if (validToken) {
