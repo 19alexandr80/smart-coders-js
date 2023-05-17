@@ -9,7 +9,7 @@ import bookShop2x from '../images/shops/books@2x.png';
 import { DataFirebase } from './firebaseInteraction.js';
 const dataFirebase = new DataFirebase();
 
-const refs = {
+export const refs = {
   shopListContainer: document.querySelector('.shop-list__container'),
   container: document.querySelector('.shop-list__empty-page'),
   cards: document.querySelector('.shop-list__cards'),
@@ -109,7 +109,7 @@ export function makeMarkupBook(dataBookRender) {
   );
 
   // вставляємо отриману розмітку до контейнера
-  refs.cards.innerHTML = markup.join('');
+  return (refs.cards.innerHTML = markup.join(''));
 }
 
 // видаляємо книгу з localStorage та з розмітки сторінки
