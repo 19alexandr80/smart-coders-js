@@ -7,7 +7,6 @@ import apple2x from '../images/shops/book@2x.png';
 import bookShop from '../images/shops/books@1x.png';
 import bookShop2x from '../images/shops/books@2x.png';
 
-
 import { DataFirebase } from './firebaseInteraction.js';
 const dataFirebase = new DataFirebase();
 
@@ -84,8 +83,12 @@ export function makeMarkupBook(dataBookRender) {
         }" alt="${title ? title : 'No title.'}" />
         <div class="shop-list__text-container">
           <h4 class="shop-list__title-book">${title ? title : 'No title.'}</h4>
-          <h5 class="shop-list__category-name">${title ? title : 'No title.'}</h5>
-          <p class="shop-list__descr">${description ? description : 'No description.'}</p>
+          <h5 class="shop-list__category-name">${
+            title ? title : 'No title.'
+          }</h5>
+          <p class="shop-list__descr">${
+            description ? description : 'No description.'
+          }</p>
           <h5 class="shop-list__author">${author ? author : 'No author.'}</h5>
         </div>
 
@@ -175,8 +178,10 @@ function onRemoveCard(evt) {
         This page is empty, add some books and proceed to order.
       </p>
       <img class="imgEmptyPage" src="./src/images/is-empty@1x.png" alt="" />`;
-  refs.cards.insertAdjacentHTML('beforeend', markup);
+    refs.cards.insertAdjacentHTML('beforeend', markup);
+  }
 }
+
 const btnTrash = document.querySelector('.shop-list__cards');
 btnTrash.addEventListener('click', onBtnTrash);
 
@@ -189,17 +194,7 @@ async function onBtnTrash(e) {
   const id = e.target.closest('li').dataset.id;
   await dataFirebase.deleteBook(id);
   window.location.reload();
-
 }
-
-
-
-
-
-
-
-
-
 
 // const card = document.querySelector('.shop-list__one-card');
 // const btnTrash = document.querySelector('[data-name="btn-trash"]');
