@@ -36,6 +36,7 @@ const swiper = new Swiper('.swiper', {
   direction: 'vertical',
   loop: true,
   spaceBetween: 20,
+  slidesPerView: 4,
   breakpoints: {
     320: {
       slidesPerView: 4,
