@@ -1678,7 +1678,7 @@ body {
 }
 
 .text-remove-btn {
-  color: #111111;
+  color: var(--light);
 }
 
 .modal-burger-menu {
