@@ -25,6 +25,7 @@
     border: 2px solid $secondary-bgc-dark;
     border-radius: 18px;
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid $primary-txt-clr-light;
     
     @media screen and (min-width: 768px) {
         width: 579px;
@@ -37,7 +38,8 @@
     width: 28px;
     height: 28px;
 
-    stroke: $secondary-bgc-dark;
+    // stroke: $secondary-bgc-dark;
+    fill: $primary-txt-clr-light;
     cursor: pointer;
 
     &:hover {
@@ -97,7 +99,7 @@
     font-size: 16px;
     line-height: 18px;
     letter-spacing: -0.04em;
-    color: $secondary-bgc-dark;
+    color: $primary-txt-clr-light;
     margin-bottom: 4px;
 
     @media screen and (min-width: 768px) {
@@ -132,7 +134,7 @@
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.04em;
-    color: $secondary-bgc-dark;
+    color: $primary-txt-clr-light;
     margin-bottom: 22px;
 }
 
