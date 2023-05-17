@@ -33,18 +33,23 @@ burgerEl.addEventListener('click', () => {
   document.body.classList.toggle('scroll-off');
 });
 const burgerButtonAuth = document.querySelector('.burger-button-auth');
+const burgerButtonFilling = document.querySelector('.burger-button-span');
 burgerButtonAuth.addEventListener('click', onAuthBBurger);
 function onAuthBBurger(e) {
   burgerEl.classList.toggle('active');
   burgerModalEl.classList.toggle('modal-burger-menu-off');
   document.body.classList.toggle('scroll-off');
+  burgerButtonFilling.innerHTML = 'Log aut';
+  console.log(localStorage.getItem('tokenResponse'));
+  if (localStorage.getItem('tokenResponse')) {
+    burgerButtonFilling.innerHTML = 'Log in';
+  }
   modalSignIn();
 }
 
 // =============================================================================
 
 function modalSignIn() {
-  console.log('kjhg');
   if (localStorage.getItem('tokenResponse')) {
     localStorage.removeItem('tokenResponse');
     localStorage.removeItem('userAvatar');
