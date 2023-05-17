@@ -7,7 +7,6 @@ import debounce from 'lodash.debounce';
 function onnmodd(id) {
   openModal(id);
 }
-// onnmodd();
 
 const refs = {
   bestsellersSectionEl: document.querySelector('.bookshelf'),
@@ -109,7 +108,9 @@ async function onCattegoryButtonElClick(event) {
   }
   const { name: categoryName } = event.target;
   spinner.show();
-
+  if (window.innerWidth < 768) {
+    handleScrollToElement(refs.bestsellersSectionEl);
+  }
   try {
     const booksData = await axiosApiBooks.fetchSelectedCategory(categoryName);
     if (!booksData || booksData.length === 0) {
@@ -234,4 +235,13 @@ function hideBooksWindow() {
   });
 }
 
+// Функция предназначена для прокрутки элемента к определенной позиции на странице с использованием плавного скроллинга
+function handleScrollToElement(element, position = 'start') {
+  element.scrollIntoView({
+    behavior: 'smooth',
+    position,
+  });
+}
+
+export { handleScrollToElement };
 export { refs };

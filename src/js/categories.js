@@ -1,5 +1,6 @@
 import { axiosApiBooks } from './axiosApi';
 import { refs } from './main';
+import { handleScrollToElement } from './main';
 
 //Если клик был произведен на элементе списка категорий, то код получает название категории, которую кликнули, находит элемент списка с этой категорией, и добавляет ему класс upper-case. Затем он проверяет, является ли категория "All categories", и если да, то вызывает функцию fetchTopBooks()
 refs.categoriesListEl.addEventListener('click', onCategoryNameClick);
@@ -46,10 +47,3 @@ async function renderCategories() {
 }
 
 renderCategories();
-
-function handleScrollToElement(element, position = 'start') {
-  element.scrollIntoView({
-    behavior: 'smooth',
-    position,
-  });
-}
