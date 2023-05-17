@@ -79,7 +79,6 @@ async function makeMarkupTopBooksGallery(data) {
 }
 function openModalEvent(e) {
   if (e.target.closest('li')) {
-    console.log('11111111111111111111111111111111111111111');
     onnmodd(e.target.closest('li').dataset.id);
   }
 }
