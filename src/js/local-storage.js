@@ -1,5 +1,5 @@
 // import { galleryItems } from './gallery-items.js'; //!!!
-
+import { makeMarkupBook } from './shopping-list.js';
 import { createPaginataionBtn, createPaginataion } from './pagination-btn.js';
 
 let subarray = [];
@@ -39,7 +39,7 @@ function getData() {
     }
   }
 
-  gallery.innerHTML = makeImageGallery(subarray.slice(0, cards));
+  gallery.innerHTML = makeMarkupBook(subarray.slice(0, cards));
 
   createPaginataionBtn(quantityPages);
   createPaginataion(currentPage, quantityPages);
@@ -49,50 +49,50 @@ export function getNewDataBatch(currentPage) {
   const minIndex = currentPage * cards - cards;
   const maxIndex = currentPage * cards;
 
-  gallery.innerHTML = makeImageGallery(subarray.slice(minIndex, maxIndex));
+  gallery.innerHTML = makeMarkupBook(subarray.slice(minIndex, maxIndex));
 }
 
-export function makeImageGallery(galleryItems) {
-  return galleryItems
-    .map(({ id, bookImg, author, title, description, listName, buy_links }) => {
-      return ` 
-      <li class="shop-list__one-card" data-id="${id}">
-        <img class="shop-list__img" src=${
-          bookImg ? bookImg : './src/images/stopper335@1x.png'
-        } alt="${title}" />
-        <div class="shop-list__text-container">
-          <h4 class="shop-list__title-book">${title ? title : 'No title.'}</h4>
-          <h5 class="shop-list__category-name">
-            ${listName ? listName : 'No list name.'}
-          </h5>
-          <p class="shop-list__descr">
-            ${description ? description : 'No description.'}
-          </p>
-          <h5 class="shop-list__author">${author ? author : 'No author.'}</h5>
-        </div>
-        <ul>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-        </ul>
+// export function makeImageGallery(galleryItems) {
+//   return galleryItems
+//     .map(({ id, bookImg, author, title, description, listName, buy_links }) => {
+//       return `
+//       <li class="shop-list__one-card" data-id="${id}">
+//         <img class="shop-list__img" src=${
+//           bookImg ? bookImg : './src/images/stopper335@1x.png'
+//         } alt="${title}" />
+//         <div class="shop-list__text-container">
+//           <h4 class="shop-list__title-book">${title ? title : 'No title.'}</h4>
+//           <h5 class="shop-list__category-name">
+//             ${title ? title : 'No title.'}
+//           </h5>
+//           <p class="shop-list__descr">
+//             ${description ? description : 'No description.'}
+//           </p>
+//           <h5 class="shop-list__author">${author ? author : 'No author.'}</h5>
+//         </div>
+//         <ul>
+//           <li><a href=""></a></li>
+//           <li><a href=""></a></li>
+//           <li><a href=""></a></li>
+//         </ul>
 
-        <div>
-          <button
-            class="btn-trash-box"
-            type="button"
-            data-name="btn-trash"
-            data-id="${id}">
-            <span class="btn-icn-wrap">
-              <svg width="18" height="18">
-                <use href="/icons.adfc4680.svg#trash"></use>
-              </svg>
-            </span>
-          </button>
-        </div>
-      </li>`;
-    })
-    .join('');
-}
+//         <div>
+//           <button
+//             class="btn-trash-box"
+//             type="button"
+//             data-name="btn-trash"
+//             data-id="${id}">
+//             <span class="btn-icn-wrap">
+//               <svg width="18" height="18">
+//                 <use href="/icons.adfc4680.svg#trash"></use>
+//               </svg>
+//             </span>
+//           </button>
+//         </div>
+//       </li>`;
+//     })
+//     .join('');
+// }
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // author

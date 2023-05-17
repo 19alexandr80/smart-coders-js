@@ -57,7 +57,7 @@ function onOpenPage() {
 }
 
 console.log(dataBookRender);
-function makeMarkupBook(dataBookRender) {
+export function makeMarkupBook(dataBookRender) {
   refs.cards.classList.remove('is-hidden');
 
   const markup = dataBookRender.map(
@@ -78,34 +78,59 @@ function makeMarkupBook(dataBookRender) {
         }
       });
       return ` 
-      <li class="shop-list__one-card" data-id=${id}>
-        <img class="shop-list__img" src=${bookImg} alt="${title}" />
+      <li class="shop-list__one-card" data-id="${id}">
+        <img class="shop-list__img" src="${
+          bookImg ? bookImg : './src/images/stopper335@1x.png'
+        }" alt="${title ? title : 'No title.'}" />
         <div class="shop-list__text-container">
-        <h2 class="shop-list__title-book">${title}</h2>
-        <h3 class="shop-list__category-name">${listName}</h3>
-        <p class="shop-list__descr">${description}</p>
-        <h3 class="shop-list__author">${author}</h3>
+          <h4 class="shop-list__title-book">${title ? title : 'No title.'}</h4>
+          <h5 class="shop-list__category-name">${title ? title : 'No title.'}</h5>
+          <p class="shop-list__descr">${description ? description : 'No description.'}</p>
+          <h5 class="shop-list__author">${author ? author : 'No author.'}</h5>
         </div>
-        
-        <ul class='shop-list__links-group'>
-        <li class='shop-list__links'><a href=${amazonLink} target="_blank"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" rel="noopener noreferrer nofollow" aria-label="Amazon link"></a></li>
-        <li class='shop-list__links'><a href=${appleBookLink} target="_blank"> <img  src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" rel="noopener noreferrer nofollow" aria-label="Apple Books link"'></a></li>
-        <li class='shop-list__links'><a href=${bookShopLink} target="_blank"> <img  src='${bookShop}' srcset="${bookShop} 1x, ${bookShop2x} 2x" rel="noopener noreferrer nofollow" aria-label="Amazon link"></a></li>
-        </ul>
-        
-       
-      <div>
-    <button class="btn-trash-box" type="button" data-name="btn-trash" data-id=${id}>
-      <span class="btn-icn-wrap">
-        <svg width="18" height="18">
-          <use href="${svgHref}#trash"></use>
-        </svg>
-      </span>
-    </button>
-  </div>
-  </li>
-    `;
 
+        <ul class="shop-list__links-group">
+          <li class="shop-list__links">
+            <a href="${amazonLink}" target="_blank">
+              <img
+                src="${amazon}"
+                srcset="${amazon} 1x, ${amazon2x} 2x"
+                rel="noopener noreferrer nofollow"
+                aria-label="Amazon link"
+            /></a>
+          </li>
+          <li class="shop-list__links">
+            <a href="${appleBookLink}" target="_blank">
+              <img src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" rel="noopener
+              noreferrer nofollow" aria-label="Apple Books link"'></a
+            >
+          </li>
+          <li class="shop-list__links">
+            <a href="${bookShopLink}" target="_blank">
+              <img
+                src="${bookShop}"
+                srcset="${bookShop} 1x, ${bookShop2x} 2x"
+                rel="noopener noreferrer nofollow"
+                aria-label="Amazon link"
+            /></a>
+          </li>
+        </ul>
+
+        <div>
+          <button
+            class="btn-trash-box"
+            type="button"
+            data-name="btn-trash"
+            data-id="${id}"
+          >
+            <span class="btn-icn-wrap">
+              <svg width="18" height="18">
+                <use href="${svgHref}#trash"></use>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </li>`;
     }
   );
   //     .join('');
