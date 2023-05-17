@@ -1,43 +1,64 @@
-.container__shop-list-page {
-  display: flex;
+@media screen and (min-width: 1440px) {
+  .container__shop-list-page {
+    display: flex;
+  }
 }
-.is-hidden {
-  opacity: 0%;
-  pointer-events: none;
+
+@media screen and (min-width: 1440px) {
+  .shop-list__container {
+    padding-left: 40px;
+  }
 }
 
 .shop-list__title {
-  margin-left: 40px;
-  margin-top: 40px;
+  // margin-left: 20px;
+  padding-top: 40px;
 
   font-style: normal;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 0.92;
+  font-size: 32px;
+  line-height: 0.84;
   letter-spacing: -0.04em;
 
   color: $primary-brdr-clr-light;
+
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+    line-height: 0.92;
+  }
 }
 
 .shop-list__span {
   color: $primary-accent-color;
 }
 .shop-list__cards {
-  margin-top: 40px;
-  margin-left: 40px;
+  padding-top: 40px;
+  // margin-left: 40px;
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+  }
 }
 .shop-list__one-card {
   position: relative;
 
+  padding: 14px;
   margin-bottom: 20px;
 
   display: flex;
-  width: 996px;
-  height: 213px;
+  height: 170px;
 
   border: 2px solid rgba(79, 46, 232, 0.4);
   border-radius: 16px;
-  background: #ffff;
+  background: $secondary-bgc-light;
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 213px;
+    padding: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 996px;
+    height: 213px;
+  }
 }
 
 .shop-list__title-book {
@@ -47,23 +68,44 @@
   font-size: 16px;
   line-height: 1.12;
 
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 144px;
+  height: 18px;
+
   letter-spacing: -0.04em;
   text-transform: uppercase;
 
   color: $primary-brdr-clr-light;
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
 }
 .shop-list__img {
-  margin: 24px;
-  width: 116px;
-  height: 165px;
-
+  width: 100px;
+  height: 142px;
   border-radius: 8px;
+
+  // margin: 24px;
+  // width: 116px;
+  // height: 165px;
+  @media screen and (min-width: 768px) {
+    width: 116px;
+    height: 165px;
+  }
 }
 .shop-list__text-container {
   display: flex;
   flex-direction: column;
-  padding: 24px 24px 24px 0;
-  max-width: 808px;
+  padding-left: 14px;
+  max-width: 193px;
+  @media screen and (min-width: 768px) {
+    padding-left: 24px;
+    max-width: 508px;
+  }
+
+  // max-width: 808px;
 }
 
 .shop-list__category-name {
@@ -71,37 +113,70 @@
 
   font-weight: 400;
   font-size: 12px;
-  line-height: 1.28;
+  line-height: 0.86;
   letter-spacing: 0.03;
-  text-transform: uppercase;
 
   color: $secondary-txt-clr;
 }
+
 .shop-list__descr {
-  margin-top: 14px;
+  margin-top: 8px;
+  width: 193px;
+  height: 68px;
 
   font-weight: 400;
   font-size: 14px;
   line-height: 1.28;
-  letter-spacing: 0.03;
+  letter-spacing: -0.04;
 
   color: $primary-brdr-clr-light;
+  @media screen and (max-width: 767px) {
+    margin-top: 14px;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 508px;
+    height: 53px;
+  }
+
+  // margin-top: 14px;
 }
 
 .shop-list__author {
-  margin-top: 48px;
+  position: absolute;
+  bottom: 14px;
+
+  width: 115px;
+  height: 14px;
+
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  font-family: 'DM Sans';
   font-style: italic;
-  font-size: 14px;
-  line-height: 1.17;
-  letter-spacing: 0.04;
+  font-size: 12px;
+  line-height: 0.86;
+  letter-spacing: -0.04;
 
   color: $secondary-txt-clr;
+  @media screen and (min-width: 768px) {
+    bottom: 24px;
+    width: 300px;
+  }
 }
 
 .btn-trash-box {
   @extend %btn;
   @extend %btn-icon;
+
+  position: absolute;
+  top: 24px;
+  right: 24px;
 
   width: 34px;
   height: 34px;
@@ -123,10 +198,10 @@
   @media screen and (max-width: 767.99px) {
     width: 28px;
     height: 28px;
+
+    top: 14px;
+    right: 14px;
   }
-  position: absolute;
-  top: 24px;
-  right: 24px;
 }
 
 // сторінка без доданих книг(порожня)
@@ -137,24 +212,46 @@
   align-items: center;
   flex-direction: column;
 
-  margin-left: 355px;
-  margin-top: 140px;
+  padding: 120px 35px 0 35px;
 
-  max-width: 418px;
+  @media screen and (min-width: 768px) {
+    padding: 140px 209px;
+  }
+
+  // margin-left: 355px;
+  // margin-top: 140px;
+
+  // max-width: 418px;
 }
 
 .textEmptyPage {
+  font-family: 'DM Sans';
   font-weight: 400;
-  font-size: 18px;
-  line-height: 1.3;
+  font-size: 14px;
+  line-height: 1.29;
   text-align: center;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.02em;
   color: rgba(0, 0, 0, 0.6);
+
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    width: 349px;
+  }
+  // font-weight: 400;
+  // font-size: 18px;
+  // line-height: 1.3;
+  // text-align: center;
+  // letter-spacing: 0.02em;
+  // color: rgba(0, 0, 0, 0.6);
 }
 .imgEmptyPage {
   height: auto;
+  margin-top: 14px;
   max-width: 322px;
   justify-content: center;
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 }
 
 // Лінки
@@ -163,18 +260,34 @@
   display: flex;
 
   position: absolute;
-  right: 0;
-  bottom: 24px;
+  bottom: 21px;
+  right: 19;
+
+  width: 80px;
+  height: 16px;
+  @media screen and (min-width: 768px) {
+    width: 140px;
+    height: 30px;
+
+    bottom: 21px;
+    right: 19;
+  }
 }
 
 .shop-list__links {
-  height: 36px;
-  margin-right: 20px;
+  height: 16px;
+
   display: flex;
   justify-content: center;
   filter: grayscale(100%);
   object-fit: contain;
   align-items: center;
+
+  height: 36px;
+  margin-right: 20px;
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
 }
 
 .shop-list__links:hover {

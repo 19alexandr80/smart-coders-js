@@ -216,12 +216,22 @@ burgerEl.addEventListener('click', () => {
   document.body.classList.toggle('scroll-off');
 });
 console.log(burgerButtonAuth);
-// burgerButtonAuth.addEventListener('click', onAuthBBurger);
-// function onAuthBBurger(e) {
-//   burgerEl.classList.toggle('active');
-//   burgerModalEl.classList.toggle('modal-burger-menu-off');
-//   document.body.classList.toggle('scroll-off');
-//   // buttonSingAutBurger();
-//   modalSignIn();
-//   // buttonSingAutBurger();
-// }
+burgerButtonAuth.addEventListener('click', onAuthBBurger);
+function onAuthBBurger(e) {
+  burgerEl.classList.toggle('active');
+  burgerModalEl.classList.toggle('modal-burger-menu-off');
+  document.body.classList.toggle('scroll-off');
+  buttonSingAutBurger();
+  modalSignIn();
+  // buttonSingAutBurger();
+}
+buttonSingAutBurger();
+buttonSingAutBurger();
+function buttonSingAutBurger() {
+  console.log(localStorage.getItem('tokenResponse'));
+  if (localStorage.getItem('tokenResponse')) {
+    burgerButtonFilling.innerHTML = 'Log aut';
+  } else {
+    burgerButtonFilling.innerHTML = 'Log in';
+  }
+}

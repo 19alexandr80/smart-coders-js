@@ -1,0 +1,37 @@
+body {
+  transition: 0.5s;
+}
+
+#toggle {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 20px;
+  border-radius: 40px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: linear-gradient(180deg, #4f2ee8 0%, #dcdcdc 100%);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+#toggle.active {
+  background: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+#toggle .indicator {
+  position: absolute;
+  top: 0.5;
+  left: 0.5;
+  width: 19px;
+  height: 19px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+  border-radius: 50%;
+  transform: scale(0.9);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
+}
+#toggle.active .indicator {
+  left: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 2px rgba(0, 0, 0, 0.1),
+    1px 2px 4px rgba(0, 0, 0, 0.1);
+}
