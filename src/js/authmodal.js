@@ -33,18 +33,29 @@ burgerEl.addEventListener('click', () => {
   document.body.classList.toggle('scroll-off');
 });
 const burgerButtonAuth = document.querySelector('.burger-button-auth');
+const burgerButtonFilling = document.querySelector('.burger-button-span');
 burgerButtonAuth.addEventListener('click', onAuthBBurger);
 function onAuthBBurger(e) {
   burgerEl.classList.toggle('active');
   burgerModalEl.classList.toggle('modal-burger-menu-off');
   document.body.classList.toggle('scroll-off');
+  // buttonSingAutBurger();
   modalSignIn();
+  // buttonSingAutBurger();
+}
+buttonSingAutBurger();
+function buttonSingAutBurger() {
+  console.log(localStorage.getItem('tokenResponse'));
+  if (localStorage.getItem('tokenResponse')) {
+    burgerButtonFilling.innerHTML = 'Log aut';
+  } else {
+    burgerButtonFilling.innerHTML = 'Log in';
+  }
 }
 
 // =============================================================================
 
 function modalSignIn() {
-  console.log('kjhg');
   if (localStorage.getItem('tokenResponse')) {
     localStorage.removeItem('tokenResponse');
     localStorage.removeItem('userAvatar');
@@ -89,6 +100,7 @@ function modalSignIn() {
   clousButton.addEventListener('click', onCloseModalAuth);
   modalBox.classList.add('trans-modal');
   document.body.classList.add('scroll-off');
+  buttonSingAutBurger();
 }
 
 async function onDataFormIn(e) {

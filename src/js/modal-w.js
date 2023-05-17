@@ -1,4 +1,4 @@
-import { booksId } from './axiosApi';
+import { axiosApiBooks } from './axiosApi';
 import { DataFirebase } from './firebaseInteraction';
 import amazon from '../images/shops/amazon@1x.png';
 import amazon2x from '../images/shops/amazon@2x.png';
@@ -14,7 +14,7 @@ let BOOKID = null;
 export async function openModal(element) {
   const validToken = localStorage.getItem('email') !== null;
   const bookId = element;
-  const dataBook = await booksId(bookId);
+  const dataBook = await axiosApiBooks.fetchBookInfo(bookId);
   BOOKID = bookId;
   const backdrop = document.querySelector('.backdrop');
   backdrop.classList.remove('is-hidden');
@@ -56,16 +56,16 @@ export async function openModal(element) {
 
   function onClick(e) {
     const textAfterRemoveBtn = document.querySelector('.text-input');
-    if (!orderBtn.classList.value.includes('order-btn-remove-state')) {
+    if (!orderBtn.classList.value.includes('btn-shop-list-modal-remove')) {
       orderBtn.textContent = 'remove from the shopping list';
-      orderBtn.classList.add('order-btn-remove-state');
+      orderBtn.classList.add('btn-shop-list-modal-remove');
       textAfterRemoveBtn.innerHTML = `<p class='text-remove-btn'> Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.</p>`;
       dataFirebase.addBookk(bookId);
     } else {
       dataFirebase.deleteBook(bookId);
       orderBtn.textContent = 'Add to shopping list';
-      orderBtn.classList.add('order-btn');
-      orderBtn.classList.remove('order-btn-remove-state');
+      orderBtn.classList.add('btn-shop-list-modal-add');
+      orderBtn.classList.remove('btn-shop-list-modal-remove');
       textAfterRemoveBtn.innerHTML = '';
     }
   }
@@ -102,13 +102,13 @@ function setOrderBtnText() {
   const validBookKey = Object.keys(shopingListBook).includes(BOOKID);
   if (validBookKey) {
     orderBtn.textContent = 'remove from the shopping list';
-    orderBtn.classList.add('order-btn-remove-state');
-    orderBtn.classList.remove('order-btn');
+    orderBtn.classList.add('btn-shop-list-modal-remove');
+    orderBtn.classList.remove('btn-shop-list-modal-add');
     textAfterRemoveBtn.innerHTML = `<p class='text-remove-btn'> Congratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.</p>`;
   } else {
     orderBtn.textContent = 'Add to shopping list';
-    orderBtn.classList.add('order-btn');
-    orderBtn.classList.remove('order-btn-remove-state');
+    orderBtn.classList.add('btn-shop-list-modal-add');
+    orderBtn.classList.remove('btn-shop-list-modal-remove');
     textAfterRemoveBtn.innerHTML = '';
   }
 }
