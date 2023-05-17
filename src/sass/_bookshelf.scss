@@ -40,7 +40,7 @@
   padding-top: 0px;
 }
 
-.category-book-list > li:not(:last-child) {
+.category-book-list>li:not(:last-child) {
   margin-bottom: 40px;
 }
 
@@ -182,7 +182,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    column-gap: 15px;
+    column-gap: 25px;
     row-gap: 40px;
   }
 
@@ -192,7 +192,7 @@
 
   .bestsellers-book-list {
     display: flex;
-    gap: 15px;
+    gap: 25px;
   }
 
   .book-img-container {
@@ -222,13 +222,13 @@
     margin-top: 18px;
   }
 
-  .category-book-list > li.book-item {
+  .category-book-list>li.book-item {
     margin-bottom: 0px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1399px) {
     .book-item {
-      flex-basis: calc((100% - 30px) / 3);
+      flex-basis: calc((100% - 50px) / 3);
     }
   }
 

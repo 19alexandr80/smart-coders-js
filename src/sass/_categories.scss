@@ -20,7 +20,7 @@
 }
 
 .cat-list:hover {
-  color: $primary-accent-color;
+  color: $primary-accent-color-btn;
 }
 
 .cat-text {
@@ -42,7 +42,7 @@
   line-height: 112%;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  color: $primary-accent-color;
+  color: $primary-accent-color-btn;
 }
 
 .categories::-webkit-scrollbar {
@@ -80,4 +80,10 @@
     width: 356px;
     margin-right: 0;
   }
+}
+
+.cat-list--fixed {
+  background-color: $primary-bgc-light;
+  position: sticky;
+  top: 0;
 }
