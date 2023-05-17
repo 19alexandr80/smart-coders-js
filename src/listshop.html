@@ -15,36 +15,38 @@
     <script type="module" src="./indexListshop.js"></script>
   </head>
   <body>
-    <header>
-      <div class="modalWindow"></div>
-      <div class="conteiner-header">
-        <div class="logo-group">
-          <a href="./index.html">
-            <svg width="109px" height="28px" class="logo-span-header">
-              <use href="./images/icons.svg#logo-light"></use>
-            </svg>
-          </a>
-          <div class="header-button-nav">
-            <a href="./index.html" class="button-header-home">Home</a>
-            <a href="./listshop.html" class="button-header-shoping color-page">
-              <span>Shopping list</span>
-              <svg width="26px" height="28px" class="contakts-list-icon">
-                <use href="./images/icons.svg#handbag"></use>
-              </svg>
-            </a>
-          </div>
-          <button class="button-themes">themes</button>
-        </div>
-        <div class="button-sing-auth-js"></div>
-        <div class="burger-menu-header">
-          <span class="burger-menu-span1"></span>
-          <span class="burger-menu-span2"></span>
-          <span class="burger-menu-span3"></span>
-          <span class="burger-menu-span4"></span>
-          <span class="burger-menu-span5"></span>
-        </div>
+    <div class="modalWindow"></div>
+  <div class="conteiner-header">
+    <div class="logo-group">
+      <a href="./index.html" class="logo-a">
+        <svg width="109px" height="28px">
+          <use
+            href="./images/icons.svg#logo-light"
+            class="logo-span-header"
+          ></use>
+        </svg>
+      </a>
+      <div class="header-button-nav">
+        <a href="./index.html" class="button-header-home color-page">Home</a>
+        <a href="./listshop.html" class="button-header-shoping">
+          <span>Shopping list</span>
+          <svg width="26px" height="28px" class="contakts-list-icon">
+            <use href="./images/icons.svg#handbag"></use>
+          </svg>
+        </a>
       </div>
-    </header>
+        <div class="button-themes" id="toggle">
+          <i class="indicator"></i>
+        </div>
+    <div class="button-sing-auth-js"></div>
+    <div class="burger-menu-header">
+      <span class="burger-menu-span1"></span>
+      <span class="burger-menu-span2"></span>
+      <span class="burger-menu-span3"></span>
+      <span class="burger-menu-span4"></span>
+      <span class="burger-menu-span5"></span>
+    </div>
+  </div>
     <include src="./partials/burgerModal.html"></include>
     <div class="container container__shop-list-page">
       <!-- Sidebar -->

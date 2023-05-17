@@ -1,5 +1,5 @@
 .conteiner-header {
-  display: flex;
+  // display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 10px;
@@ -47,7 +47,7 @@
   text-transform: uppercase;
   color: $primary-txt-clr-light;
   cursor: pointer;
-  margin-left: 24px;
+  margin-left: 16px;
   display: flex;
   align-items: center;
   &.color-page {
@@ -57,9 +57,15 @@
     border-radius: 36px;
   }
 }
+.button-header-shoping {
+  @media screen and (min-width: 1140px) {
+    margin-left: 24px;
+  }
+}
 .logo-group {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .header-button-nav {
   margin-left: 40px;
@@ -150,5 +156,15 @@
     display: block;
     margin: 1px auto;
     transition: 0.4s;
+  }
+}
+.button-themes {
+  margin-left: auto;
+  display: flex;
+  @media (max-width: 768px) {
+    margin-right: 14px;
+  }
+  @media (min-width: 769px) {
+    margin-right: 24px;
   }
 }
