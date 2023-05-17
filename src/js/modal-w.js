@@ -1,4 +1,4 @@
-import { booksId } from './axiosApi';
+import { axiosApiBooks } from './axiosApi';
 import { DataFirebase } from './firebaseInteraction';
 import amazon from '../images/shops/amazon@1x.png';
 import amazon2x from '../images/shops/amazon@2x.png';
@@ -14,7 +14,7 @@ let BOOKID = null;
 export async function openModal(element) {
   const validToken = localStorage.getItem('email') !== null;
   const bookId = element;
-  const dataBook = await booksId(bookId);
+  const dataBook = await axiosApiBooks.fetchBookInfo(bookId);
   BOOKID = bookId;
   const backdrop = document.querySelector('.backdrop');
   backdrop.classList.remove('is-hidden');
