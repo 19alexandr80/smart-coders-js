@@ -54,20 +54,41 @@ export function getNewDataBatch(currentPage) {
 
 export function makeImageGallery(galleryItems) {
   return galleryItems
-    .map(({ bookImg, author, listName, title }) => {
-      return `
-      <li class="gallery__item">
-        <a class="gallery__link" href="#">
-            <img
-                class="gallery__image"
-                src="${bookImg}"
-                data-source="${listName}"
-                alt="${title}" width=800px height=800px
-            />
-        </a>
-        <p>${author}</p>
-        <p>${title}</p>
-        <p>${listName}</p>
+    .map(({ id, bookImg, author, title, description, listName, buy_links }) => {
+      return ` 
+      <li class="shop-list__one-card" data-id="${id}">
+        <img class="shop-list__img" src=${
+          bookImg ? bookImg : './src/images/stopper335@1x.png'
+        } alt="${title}" />
+        <div class="shop-list__text-container">
+          <h4 class="shop-list__title-book">${title ? title : 'No title.'}</h4>
+          <h5 class="shop-list__category-name">
+            ${listName ? listName : 'No list name.'}
+          </h5>
+          <p class="shop-list__descr">
+            ${description ? description : 'No description.'}
+          </p>
+          <h5 class="shop-list__author">${author ? author : 'No author.'}</h5>
+        </div>
+        <ul>
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+          <li><a href=""></a></li>
+        </ul>
+
+        <div>
+          <button
+            class="btn-trash-box"
+            type="button"
+            data-name="btn-trash"
+            data-id="${id}">
+            <span class="btn-icn-wrap">
+              <svg width="18" height="18">
+                <use href="/icons.adfc4680.svg#trash"></use>
+              </svg>
+            </span>
+          </button>
+        </div>
       </li>`;
     })
     .join('');

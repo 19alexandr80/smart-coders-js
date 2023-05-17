@@ -74,7 +74,7 @@ export async function openModal(element) {
 function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
   const amazonUrl = buy_links[0].url;
   const appleUrl = buy_links[1].url;
-  const bookShopUrl = buy_links[0].url;
+  const bookShopUrl = buy_links[2].url;
 
   return `
       <img class='book_modal-book-img' src="${

@@ -50,15 +50,21 @@ function onOpenPage() {
 
 function makeMarkupBook(dataBookRender) {
   const markup = dataBookRender
-    .map(({ id, bookImg, author, title, description, listName }) => {
+    .map(({ id, bookImg, author, title, description, listName, buy_links }) => {
       return ` 
       <li class="shop-list__one-card" data-id=${id}>
-        <img class="shop-list__img" src=${bookImg} alt="${title}" />
+        <img class="shop-list__img" src=${
+          bookImg ? bookImg : './src/images/stopper335@1x.png'
+        } alt="${title}" />
         <div class="shop-list__text-container">
-        <h2 class="shop-list__title-book">${title}</h2>
-        <h3 class="shop-list__category-name">${listName}</h3>
-        <p class="shop-list__descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum blanditiis quo similique placeat aut a.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum blanditiis quo similique placeat aut a.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum blanditiis quo similique placeat aut a.</p>
-        <h3 class="shop-list__author">${author}</h3>
+        <h2 class="shop-list__title-book">${title ? title : 'No title.'}</h2>
+        <h3 class="shop-list__category-name">${
+          listName ? listName : 'No list name.'
+        }</h3>
+        <p class="shop-list__descr">${
+          description ? description : 'No description.'
+        }</p>
+        <h3 class="shop-list__author">${author ? author : 'No author.'}</h3>
         </div>
         <ul>
           <li><a href=""></a></li>
