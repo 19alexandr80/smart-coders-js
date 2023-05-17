@@ -21,9 +21,9 @@ export async function openModal(element) {
 
   const modal = document.querySelector('.modal');
   modal.addEventListener('click', event => {
-    event.stopPropagation();
+    // event.stopPropagation();
   });
-
+  console.log('validBookKey');
   if (validToken) {
     setOrderBtnText();
   }
@@ -98,8 +98,11 @@ function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
 function setOrderBtnText() {
   const orderBtn = document.querySelector('[data-name="order-btn"]');
   const textAfterRemoveBtn = document.querySelector('.text-input');
-  const shopingListBook = JSON.parse(localStorage.getItem('shopingList'));
+  const shopingListBook = JSON.parse(localStorage.getItem('shopingList'))
+    ? JSON.parse(localStorage.getItem('shopingList'))
+    : {};
   const validBookKey = Object.keys(shopingListBook).includes(BOOKID);
+
   if (validBookKey) {
     orderBtn.textContent = 'remove from the shopping list';
     orderBtn.classList.add('btn-shop-list-modal-remove');

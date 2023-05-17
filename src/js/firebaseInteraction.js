@@ -138,6 +138,7 @@ export class DataFirebase {
       const basket = JSON.parse(localStorage.getItem('shopingList'))
         ? JSON.parse(localStorage.getItem('shopingList'))
         : {};
+      console.log(basket);
       basket[bookData.id] = bookData;
       const bookJson = JSON.stringify(basket);
       localStorage.setItem('shopingList', bookJson);
