@@ -9,6 +9,7 @@
 .modal-burger-menu-off {
   transform: translateX(-100%);
   transition: 0.3s;
+  display: none;
 }
 .burger-button-nav {
   display: flex;
