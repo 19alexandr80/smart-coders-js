@@ -228,7 +228,7 @@
   }
 
   @media screen and (min-width: 768px) and (max-width: 1399px) {
-    .category-book-list>li.book-item {
+    .book-item {
       flex-basis: calc((100% - 30px) / 3);
     }
   }
