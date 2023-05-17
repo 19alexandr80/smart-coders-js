@@ -48,16 +48,16 @@ function handlerPaginationCenter(evt) {
     if (evt.target.classList.contains('btn-pag--more-left')) {
       page = currentPage - 3; //! textContent ?
 
-      getPaginationPages(page);
+      getPaginationPage(page);
     }
 
     if (evt.target.classList.contains('btn-pag--more-right')) {
       if (currentPage <= lastPage - 3) {
         page = currentPage + 3; //! textContent ?
-        getPaginationPages(page);
+        getPaginationPage(page);
       } else {
         page = lastPage;
-        getPaginationPages(page);
+        getPaginationPage(page);
       }
     }
 
@@ -65,7 +65,7 @@ function handlerPaginationCenter(evt) {
   }
 
   page = Number(evt.target.textContent);
-  getPaginationPages(page);
+  getPaginationPage(page);
 }
 
 // Прослуховувач лівих керівних кнопок пагінації
@@ -86,7 +86,7 @@ function handlerPaginationLeft(evt) {
     }
 
     page = 1;
-    getPaginationPages(page);
+    getPaginationPage(page);
   }
 
   if (evt.target.closest('.js-pag-prev')) {
@@ -99,7 +99,7 @@ function handlerPaginationLeft(evt) {
     }
 
     page = currentPage - 1; //! textContent ?
-    getPaginationPages(page);
+    getPaginationPage(page);
   }
 }
 
@@ -119,7 +119,7 @@ function handlerPaginationRight(evt) {
     }
 
     page = lastPage;
-    getPaginationPages(page);
+    getPaginationPage(page);
   }
 
   if (evt.target.closest('.js-pag-next')) {
@@ -130,11 +130,11 @@ function handlerPaginationRight(evt) {
     }
 
     page = currentPage + 1; //! textContent ?
-    getPaginationPages(page);
+    getPaginationPage(page);
   }
 }
 
-function getPaginationPages(page) {
+function getPaginationPage(page) {
   getNewDataBatch(page);
   createPaginataion(page, lastPage);
 
