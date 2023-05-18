@@ -48,7 +48,7 @@ function onAuthBBurger(e) {
 buttonSingAutBurger();
 function buttonSingAutBurger() {
   if (localStorage.getItem('tokenResponse')) {
-    burgerButtonFilling.innerHTML = 'Log aut';
+    burgerButtonFilling.innerHTML = 'Log out';
   } else {
     burgerButtonFilling.innerHTML = 'Log in';
   }
@@ -200,7 +200,7 @@ async function onDataFormAuth(e) {
   const passwordConfirmation =
     e.currentTarget.elements.passwordConfirmation.value;
   if (password && password === passwordConfirmation) {
-    console.log(email, password);
+    // console.log(email, password);
     modalBox.innerHTML = '';
     document.body.classList.remove('scroll-off');
     try {
