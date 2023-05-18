@@ -10,11 +10,14 @@
 .shop-list__container {
   position: relative;
   padding-bottom: 40px;
+  padding-top: 42px;
   @media screen and (min-width: 768px) {
     padding-bottom: 84px;
+    padding-top: 62px;
   }
   @media screen and (min-width: 1440px) {
     padding-left: 40px;
+    padding-top: 52px;
   }
 }
 
