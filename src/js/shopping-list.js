@@ -159,9 +159,9 @@ async function onBtnTrash(e) {
   if (e.target.closest('button')) {
     const id = e.target.closest('button').dataset.id;
     await dataFirebase.deleteBook(id);
-    window.location.reload();
+    document.location.reload();
   }
   const id = e.target.closest('li').dataset.id;
   await dataFirebase.deleteBook(id);
-  window.location.reload();
+  document.location.reload();
 }

@@ -11,12 +11,11 @@ Report.init({
   titleFontSize: '24px',
   messageFontSize: '18px',
 });
-
 export const paginationLeft = document.querySelector('.js-pagination-left');
 export const paginationCenter = document.querySelector('.js-pagination-center');
 export const paginationRight = document.querySelector('.js-pagination-right');
 const currentPageElement = document.getElementById('current');
-
+console.log(currentPageElement);
 let currentPage = Number(currentPageElement.textContent);
 const lastPage = quantityPages;
 let page = 1;
