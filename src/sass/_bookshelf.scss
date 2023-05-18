@@ -115,6 +115,12 @@
   margin-bottom: 4px;
 }
 
+@media screen and (max-width: 340px) {
+  .book-title {
+    font-size: 4.11vw;
+  }
+}
+
 .author-name {
   font-family: 'DM Sans';
   width: 335px;
