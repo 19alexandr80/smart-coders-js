@@ -353,9 +353,9 @@
   }
 
   &--current {
-    border: 1px solid $primary-brdr-clr-light;
-    background-color: $secondary-bgc-dark;
-    color: $additional-txt-clr-light;
+    border: 1px solid $secondary-bgc-light;
+    background-color: $primary-brdr-clr-light;
+    color: $registration-modal-btn-txt-clr-light;
   }
 
   &--not-current {
