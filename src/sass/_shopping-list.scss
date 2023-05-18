@@ -3,10 +3,11 @@
     display: flex;
   }
 }
-
-@media screen and (min-width: 1440px) {
-  .shop-list__container {
+.shop-list__container {
+  padding-bottom: 40px;
+  @media screen and (min-width: 1440px) {
     padding-left: 40px;
+    padding-bottom: 40px;
   }
 }
 
@@ -68,21 +69,40 @@
   font-family: 'DM Sans';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+
   line-height: 1.12;
 
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
-  width: 144px;
-  height: 18px;
 
   letter-spacing: -0.04em;
   text-transform: uppercase;
 
   color: $primary-brdr-clr-light;
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    text-overflow: ellipsis;
+    max-width: 165px;
+    height: 34px;
+    font-size: 10px;
+  }
+  @media screen and (min-width: 368px) {
+    max-width: 144px;
+    height: 18px;
+
+    font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
   @media screen and (min-width: 768px) {
     width: 100%;
+  }
+  @media screen and (min-width: 320), (max-width: 368) {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70px;
+    font-size: 10px;
   }
 }
 .shop-list__img {
@@ -103,9 +123,13 @@
   flex-direction: column;
   padding-left: 14px;
   max-width: 193px;
+
   @media screen and (min-width: 768px) {
     padding-left: 24px;
     max-width: 508px;
+  }
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    max-width: 171px;
   }
 
   // max-width: 808px;
@@ -120,11 +144,15 @@
   letter-spacing: 0.03;
 
   color: $secondary-txt-clr;
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    max-width: 126px;
+  }
 }
 
 .shop-list__descr {
+  width: 100%;
   margin-top: 8px;
-  width: 193px;
+  // width: 193px;
   height: 68px;
 
   font-weight: 400;
@@ -133,7 +161,7 @@
   letter-spacing: -0.04;
 
   color: $primary-brdr-clr-light;
-  @media screen and (max-width: 767px) {
+  @media screen and (min-width: 768px), (max-width: 767px) {
     margin-top: 14px;
 
     text-overflow: ellipsis;
@@ -148,6 +176,11 @@
 
   // margin-top: 14px;
 }
+// .shop-list__descr {
+//   @media screen and (min-width: 320), (max-width: 368) {
+//     width: 100%;
+//   }
+// }
 
 .shop-list__author {
   position: absolute;
@@ -167,6 +200,13 @@
   letter-spacing: -0.04;
 
   color: $secondary-txt-clr;
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    bottom: 30px;
+  }
+  @media screen and (min-width: 368px) {
+    bottom: 14px;
+  }
+
   @media screen and (min-width: 768px) {
     bottom: 24px;
     width: 300px;
