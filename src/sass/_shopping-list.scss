@@ -1,3 +1,7 @@
+.visually-hidden {
+  padding-top: 0px;
+}
+
 @media screen and (min-width: 1440px) {
   .container__shop-list-page {
     display: flex;
@@ -81,9 +85,11 @@
   color: $primary-brdr-clr-light;
   @media screen and (min-width: 320px), (max-width: 368px) {
     text-overflow: ellipsis;
-    max-width: 165px;
-    height: 34px;
-    font-size: 10px;
+    max-width: 99px;
+    height: 42px;
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
   }
   @media screen and (min-width: 368px) {
     max-width: 144px;
@@ -93,16 +99,11 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    display: inline;
   }
 
   @media screen and (min-width: 768px) {
     width: 100%;
-  }
-  @media screen and (min-width: 320), (max-width: 368) {
-    display: flex;
-    flex-wrap: wrap;
-    width: 70px;
-    font-size: 10px;
   }
 }
 .shop-list__img {
@@ -274,7 +275,7 @@
   line-height: 1.29;
   text-align: center;
   letter-spacing: -0.02em;
-  color: rgba(0, 0, 0, 0.6);
+  color: $shop-list-info-txt-clr-light;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -334,5 +335,5 @@
 }
 
 .shop-list__links:hover {
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+  filter: $icon-hover-shadow;
 }
