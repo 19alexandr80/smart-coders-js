@@ -23,7 +23,6 @@ export async function openModal(element) {
   modal.addEventListener('click', event => {
     event.stopPropagation();
   });
-  console.log('validBookKey');
   if (validToken) {
     setOrderBtnText();
   }
@@ -55,14 +54,14 @@ export async function openModal(element) {
   // }
 
   function closeModal() {
-  backdrop.classList.add('is-hidden');
-  document.body.style.overflow = 'auto'; // Повернути стандартне переповнення тіла
-  setTimeout(() => {
-    bookInformation.innerHTML = ''; // Очищуємо вміст модального вікна після затримки
-  }, 500); // Затримка у 500 мілісекунд 
-  orderBtn.removeEventListener('click', onClick);
+    backdrop.classList.add('is-hidden');
+    document.body.style.overflow = 'auto'; // Повернути стандартне переповнення тіла
+    setTimeout(() => {
+      bookInformation.innerHTML = ''; // Очищуємо вміст модального вікна після затримки
+    }, 500); // Затримка у 500 мілісекунд
+    orderBtn.removeEventListener('click', onClick);
   }
-  
+
   function onClick(e) {
     const textAfterRemoveBtn = document.querySelector('.text-input');
     if (!orderBtn.classList.value.includes('btn-shop-list-modal-remove')) {

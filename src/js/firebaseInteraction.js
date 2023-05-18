@@ -122,7 +122,6 @@ export class DataFirebase {
   async addBookk(id) {
     const email = localStorage.getItem('email');
     const boo = await axiosApiBooks.fetchBookInfo(id);
-    console.log(boo);
     const bookData = {
       buyLinks: boo.buy_links,
       title: boo.title,
@@ -132,13 +131,11 @@ export class DataFirebase {
       author: boo.author,
       description: boo.description,
     };
-    console.log(bookData);
 
     if (localStorage.getItem('shopingList')) {
       const basket = JSON.parse(localStorage.getItem('shopingList'))
         ? JSON.parse(localStorage.getItem('shopingList'))
         : {};
-      console.log(basket);
       basket[bookData.id] = bookData;
       const bookJson = JSON.stringify(basket);
       localStorage.setItem('shopingList', bookJson);
