@@ -10,7 +10,6 @@ import { DataFirebase } from './firebaseInteraction.js';
 const dataFirebase = new DataFirebase();
 
 export const refs = {
-  // shopListContainer: document.querySelector('.shop-list__container'), //!!!!!
   container: document.querySelector('.shop-list__empty-page'),
   cards: document.querySelector('.shop-list__cards'),
 };
@@ -119,15 +118,6 @@ export function makeMarkupBook(dataBookRender) {
 refs.cards.addEventListener('click', onRemoveCard);
 
 function onRemoveCard(evt) {
-  console.log(evt.target.nodeName);
-  // if (evt.target.nodeName !== 'use') {
-  //   return;
-  // } //!!!!!!!!!!!
-
-  // if (evt.target.classList.contains('btn-trash-box')) {
-  //   evt.target.closest('.card').remove();
-  // }
-
   if (!evt.target.closest('.btn-trash-box')) {
     return;
   }
@@ -170,12 +160,7 @@ async function onBtnTrash(e) {
     return;
   }
   const id = e.target.closest('button').dataset.id;
-  // console.log(id); //!!!!!!!!!!!!
+
   await dataFirebase.deleteBook(id);
   window.location.reload();
-
-  // const id = e.target.closest('li').dataset.id;
-  // console.log(id); //!!!!!!!!!!!!
-  // await dataFirebase.deleteBook(id);
-  // window.location.reload();
 }
