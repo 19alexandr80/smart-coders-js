@@ -93,7 +93,7 @@ export function makeMarkupBook(dataBookRender) {
           <h4 class="shop-list__author">${author ? author : 'No author'}</h4>
         </div>
         <ul class='shop-list__links-group'>
-        <li class='shop-list__links'><a href=${amazonLink} target="_blank"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" rel="noopener noreferrer nofollow" aria-label="Amazon link"></a></li>
+        <li class='shop-list__links amazon__dark-theme'><a href=${amazonLink} target="_blank"> <img  src='${amazon}' srcset="${amazon} 1x, ${amazon2x} 2x" rel="noopener noreferrer nofollow" aria-label="Amazon link"></a></li>
         <li class='shop-list__links'><a href=${appleBookLink} target="_blank"> <img  src='${apple}' srcset="${apple} 1x, ${apple2x} 2x" rel="noopener noreferrer nofollow" aria-label="Apple Books link"'></a></li>
         <li class='shop-list__links'><a href=${bookShopLink} target="_blank"> <img  src='${bookShop}' srcset="${bookShop} 1x, ${bookShop2x} 2x" rel="noopener noreferrer nofollow" aria-label="Amazon link"></a></li>
         </ul> 
