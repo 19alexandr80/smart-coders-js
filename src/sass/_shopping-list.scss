@@ -1,11 +1,16 @@
+.visually-hidden {
+  padding-top: 0px;
+}
+
 @media screen and (min-width: 1440px) {
   .container__shop-list-page {
     display: flex;
   }
 }
-
-@media screen and (min-width: 1440px) {
-  .shop-list__container {
+.shop-list__container {
+  position: relative;
+  padding-bottom: 40px;
+  @media screen and (min-width: 1440px) {
     padding-left: 40px;
   }
 }
@@ -37,12 +42,15 @@
   @media screen and (min-width: 768px) {
     padding-top: 40px;
   }
+  // @media screen and (min-width: 1440px) {
+  //   min-height: 679px;
+  // }
 }
 .shop-list__one-card {
   position: relative;
 
   padding: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 
   display: flex;
   height: 170px;
@@ -65,19 +73,35 @@
   font-family: 'DM Sans';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+
   line-height: 1.12;
 
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
-  width: 144px;
-  height: 18px;
 
   letter-spacing: -0.04em;
   text-transform: uppercase;
 
   color: $primary-brdr-clr-light;
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    text-overflow: ellipsis;
+    max-width: 99px;
+    height: 42px;
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: 368px) {
+    max-width: 144px;
+    height: 18px;
+
+    font-size: 16px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline;
+  }
+
   @media screen and (min-width: 768px) {
     width: 100%;
   }
@@ -100,9 +124,13 @@
   flex-direction: column;
   padding-left: 14px;
   max-width: 193px;
+
   @media screen and (min-width: 768px) {
     padding-left: 24px;
     max-width: 508px;
+  }
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    max-width: 171px;
   }
 
   // max-width: 808px;
@@ -117,11 +145,15 @@
   letter-spacing: 0.03;
 
   color: $secondary-txt-clr;
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    max-width: 126px;
+  }
 }
 
 .shop-list__descr {
+  width: 100%;
   margin-top: 8px;
-  width: 193px;
+  // width: 193px;
   height: 68px;
 
   font-weight: 400;
@@ -130,7 +162,7 @@
   letter-spacing: -0.04;
 
   color: $primary-brdr-clr-light;
-  @media screen and (max-width: 767px) {
+  @media screen and (min-width: 768px), (max-width: 767px) {
     margin-top: 14px;
 
     text-overflow: ellipsis;
@@ -145,6 +177,11 @@
 
   // margin-top: 14px;
 }
+// .shop-list__descr {
+//   @media screen and (min-width: 320), (max-width: 368) {
+//     width: 100%;
+//   }
+// }
 
 .shop-list__author {
   position: absolute;
@@ -164,6 +201,13 @@
   letter-spacing: -0.04;
 
   color: $secondary-txt-clr;
+  @media screen and (min-width: 320px), (max-width: 368px) {
+    bottom: 30px;
+  }
+  @media screen and (min-width: 368px) {
+    bottom: 14px;
+  }
+
   @media screen and (min-width: 768px) {
     bottom: 24px;
     width: 300px;
@@ -231,7 +275,7 @@
   line-height: 1.29;
   text-align: center;
   letter-spacing: -0.02em;
-  color: rgba(0, 0, 0, 0.6);
+  color: $shop-list-info-txt-clr-light;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -261,7 +305,7 @@
 
   position: absolute;
   bottom: 21px;
-  right: 19;
+  right: 14;
 
   width: 80px;
   height: 16px;
@@ -269,8 +313,8 @@
     width: 140px;
     height: 30px;
 
-    bottom: 21px;
-    right: 19;
+    bottom: 24px;
+    right: 24px;
   }
 }
 
@@ -291,5 +335,5 @@
 }
 
 .shop-list__links:hover {
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+  filter: $icon-hover-shadow;
 }
