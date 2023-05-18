@@ -59,7 +59,7 @@ async function makeMarkupTopBooksGallery(data) {
         ${booksMarkup}
         </ul>
         <div class="bestsellers-button-container">
-        <button type="button" class="bestsellers-button" name="${list_name}">see more</button>
+        <button type="button" class="bestsellers-button" aria-label="see more" name="${list_name}">see more</button>
         </div>
         </div>`;
   });
