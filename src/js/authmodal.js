@@ -48,7 +48,7 @@ function onAuthBBurger(e) {
 buttonSingAutBurger();
 function buttonSingAutBurger() {
   if (localStorage.getItem('tokenResponse')) {
-    burgerButtonFilling.innerHTML = 'Log aut';
+    burgerButtonFilling.innerHTML = 'Log out';
   } else {
     burgerButtonFilling.innerHTML = 'Log in';
   }
