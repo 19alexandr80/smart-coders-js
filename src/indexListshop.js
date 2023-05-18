@@ -1,4 +1,4 @@
-import './js/support-create';
+import './js/support-markup';
 import './js/shopping-list';
 import './js/shopingAut';
 import './js/themes';

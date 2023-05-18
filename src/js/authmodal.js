@@ -234,6 +234,8 @@ function authUserMarkUp() {
           alt="user avatar"
           loading="lazy"
           class="user-img-auth"
+          width="100%"
+          height="auto"
         />
       <span class='nik-name'>${nikEmail}</span>
         <div class='svg-user-auth'>
