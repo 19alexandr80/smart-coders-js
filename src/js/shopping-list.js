@@ -155,7 +155,7 @@ function onRemoveCard(evt) {
     <p class="textEmptyPage">
       This page is empty, add some books and proceed to order.
     </p>
-    <img class="imgEmptyPage" src="./images/is-empty@2x.png" alt="" />
+    <img class="imgEmptyPage" src="./images/is-empty@2x.png" alt="books" />
   </div>`;
   }
 }
