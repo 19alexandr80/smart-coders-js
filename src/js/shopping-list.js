@@ -56,6 +56,10 @@ function onOpenPage() {
 export function makeMarkupBook(dataBookRender) {
   refs.cards.classList.remove('visually-hidden');
 
+  const descrText =
+    'Hi! We have no description. If you plan to read this book, we would be very happy to receive a description from you';
+  const categoryText = 'There is no category here';
+
   const markup = dataBookRender.map(
     ({ id, bookImg, author, title, description, listName, buyLinks }) => {
       let amazonLink = '';
@@ -81,10 +85,10 @@ export function makeMarkupBook(dataBookRender) {
         <div class="shop-list__text-container">
           <h3 class="shop-list__title-book">${title ? title : 'No title'} </h3>
           <h4 class="shop-list__category-name">${
-            listName ? listName : 'No category'
+            listName ? listName : categoryText
           }</h4>
           <p class="shop-list__descr ">${
-            description ? description : 'No description'
+            description ? description : descrText
           }</p>
           <h4 class="shop-list__author">${author ? author : 'No author'}</h4>
         </div>
