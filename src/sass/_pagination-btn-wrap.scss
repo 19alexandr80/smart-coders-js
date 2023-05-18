@@ -1,4 +1,5 @@
 .pag-wrap {
+  position: relative;
   display: flex;
   justify-content: space-between;
 
@@ -32,6 +33,7 @@
 
   // desktop
   @media screen and (min-width: 1440px) {
-    padding: 0 120px;
+    padding: 0 275px;
+    bottom: -44px;
   }
 }
