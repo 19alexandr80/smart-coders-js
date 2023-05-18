@@ -10,6 +10,7 @@ import bookShop2x from '../images/shops/books@2x.png';
 const LOCAL_KEY = 'booksID';
 const dataFirebase = new DataFirebase();
 let BOOKID = null;
+const buttonAddBook = document.querySelector('#button-add-book');
 
 export async function openModal(element) {
   const validToken = localStorage.getItem('email') !== null;
@@ -25,6 +26,9 @@ export async function openModal(element) {
   });
   if (validToken) {
     setOrderBtnText();
+  } else {
+    console.log(buttonAddBook);
+    buttonAddBook.classList.add('visually-hidden');
   }
 
   document.body.style.overflow = 'hidden';
@@ -106,11 +110,12 @@ function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
 function setOrderBtnText() {
   const orderBtn = document.querySelector('[data-name="order-btn"]');
   const textAfterRemoveBtn = document.querySelector('.text-input');
+  buttonAddBook.classList.remove('visually-hidden');
   const shopingListBook = JSON.parse(localStorage.getItem('shopingList'))
     ? JSON.parse(localStorage.getItem('shopingList'))
     : {};
   const validBookKey = Object.keys(shopingListBook).includes(BOOKID);
-
+  // console.log(buttonAddBook);
   if (validBookKey) {
     orderBtn.textContent = 'remove from the shopping list';
     orderBtn.classList.add('btn-shop-list-modal-remove');
@@ -123,3 +128,4 @@ function setOrderBtnText() {
     textAfterRemoveBtn.innerHTML = '';
   }
 }
+//  buttonAddBook
