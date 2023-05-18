@@ -5,18 +5,37 @@ import { createPaginataion } from './pagination-btn.js';
 import { quantityPages, getNewDataBatch } from './local-storage';
 
 Notify.init({
-  fontSize: '24px',
+  fontSize: '20px',
+  info: {
+    background: 'rgba(79, 46, 232, 0.8)',
+    textColor: '#fff',
+    notiflixIconColor: '#fff',
+  },
 });
 Report.init({
+  backgroundColor: 'rgba(79, 46, 232, 0.8)',
   titleFontSize: '24px',
   messageFontSize: '18px',
+  info: {
+    svgColor: '#fff',
+    titleColor: '#fff',
+    messageColor: '#fff',
+    buttonBackground: '#2f0fbc',
+    buttonColor: '#fff',
+    backOverlayColor: 'rgba(79, 46, 232, 0.2)',
+  },
 });
+
 export const paginationLeft = document.querySelector('.js-pagination-left');
 export const paginationCenter = document.querySelector('.js-pagination-center');
 export const paginationRight = document.querySelector('.js-pagination-right');
 const currentPageElement = document.getElementById('current');
-console.log(currentPageElement);
-let currentPage = Number(currentPageElement.textContent);
+
+let currentPage = 1;
+if (quantityPages > 1) {
+  currentPage = Number(currentPageElement.textContent);
+}
+
 const lastPage = quantityPages;
 let page = 1;
 
@@ -25,7 +44,6 @@ let page = 1;
 const callback = function (mutationsList) {
   for (const mutation of mutationsList) {
     if (mutation.type === 'childList') {
-      // Получение текстового содержимого измененного элемента
       const element = document.getElementById('current');
 
       currentPage = Number(element.textContent);
@@ -45,14 +63,14 @@ paginationCenter.addEventListener('click', handlerPaginationCenter);
 function handlerPaginationCenter(evt) {
   if (!evt.target.classList.contains('js-pag-marker')) {
     if (evt.target.classList.contains('btn-pag--more-left')) {
-      page = currentPage - 3; //! textContent ?
+      page = currentPage - 3;
 
       getPaginationPage(page);
     }
 
     if (evt.target.classList.contains('btn-pag--more-right')) {
       if (currentPage <= lastPage - 3) {
-        page = currentPage + 3; //! textContent ?
+        page = currentPage + 3;
         getPaginationPage(page);
       } else {
         page = lastPage;
@@ -97,7 +115,7 @@ function handlerPaginationLeft(evt) {
       return;
     }
 
-    page = currentPage - 1; //! textContent ?
+    page = currentPage - 1;
     getPaginationPage(page);
   }
 }
@@ -128,7 +146,7 @@ function handlerPaginationRight(evt) {
       return;
     }
 
-    page = currentPage + 1; //! textContent ?
+    page = currentPage + 1;
     getPaginationPage(page);
   }
 }
