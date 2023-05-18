@@ -10,7 +10,7 @@ import { DataFirebase } from './firebaseInteraction.js';
 const dataFirebase = new DataFirebase();
 
 export const refs = {
-  shopListContainer: document.querySelector('.shop-list__container'),
+  // shopListContainer: document.querySelector('.shop-list__container'), //!!!!!
   container: document.querySelector('.shop-list__empty-page'),
   cards: document.querySelector('.shop-list__cards'),
 };
@@ -116,10 +116,19 @@ export function makeMarkupBook(dataBookRender) {
 }
 
 // видаляємо книгу з localStorage та з розмітки сторінки
-refs.shopListContainer.addEventListener('click', onRemoveCard);
+refs.cards.addEventListener('click', onRemoveCard);
 
 function onRemoveCard(evt) {
-  if (evt.target.nodeName !== 'use') {
+  console.log(evt.target.nodeName);
+  // if (evt.target.nodeName !== 'use') {
+  //   return;
+  // } //!!!!!!!!!!!
+
+  // if (evt.target.classList.contains('btn-trash-box')) {
+  //   evt.target.closest('.card').remove();
+  // }
+
+  if (!evt.target.closest('.btn-trash-box')) {
     return;
   }
 
@@ -152,16 +161,21 @@ function onRemoveCard(evt) {
   </div>`;
   }
 }
+
 const btnTrash = document.querySelector('.shop-list__cards');
 btnTrash.addEventListener('click', onBtnTrash);
 
 async function onBtnTrash(e) {
-  if (e.target.closest('button')) {
-    const id = e.target.closest('button').dataset.id;
-    await dataFirebase.deleteBook(id);
-    window.location.reload();
+  if (!e.target.closest('.btn-trash-box')) {
+    return;
   }
-  const id = e.target.closest('li').dataset.id;
+  const id = e.target.closest('button').dataset.id;
+  // console.log(id); //!!!!!!!!!!!!
   await dataFirebase.deleteBook(id);
   window.location.reload();
+
+  // const id = e.target.closest('li').dataset.id;
+  // console.log(id); //!!!!!!!!!!!!
+  // await dataFirebase.deleteBook(id);
+  // window.location.reload();
 }
