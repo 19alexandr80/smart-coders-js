@@ -4,7 +4,7 @@
   position: absolute;
   z-index: 100;
   transition: 0.3s;
-  background: $gradient-bgc;
+  // background: $gradient-bgc;
 }
 .modal-burger-menu-off {
   transform: translateX(-100%);
@@ -29,7 +29,7 @@
   margin-left: auto;
   margin-right: auto;
 
-  background-image: url('../images/group-books@1x.png');
+  background-image: url('../images/group-books@1x.png'), $gradient-bgc;
   background-repeat: no-repeat;
   background-position: 50% 100%;
   background-size: initial;

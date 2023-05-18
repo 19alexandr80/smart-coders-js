@@ -1,6 +1,11 @@
 .container--home-page {
+  padding-top: 52px;
   @media screen and (min-width: 1440px) {
     display: flex;
+    padding-top: 72px;
+  }
+  @media (min-width: 768px) and (max-width: 1440px) {
+    padding-top: 72px;
   }
 }
 
