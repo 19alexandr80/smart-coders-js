@@ -23,7 +23,6 @@ export async function openModal(element) {
   modal.addEventListener('click', event => {
     event.stopPropagation();
   });
-
   if (validToken) {
     setOrderBtnText();
   }
@@ -47,11 +46,20 @@ export async function openModal(element) {
   const markup = bookInfoMarkup(dataBook);
   bookInformation.innerHTML = markup;
 
+  // function closeModal() {
+  //   backdrop.classList.add('is-hidden');
+  //   bookInformation.innerHTML = '';
+  //   orderBtn.removeEventListener('click', onClick);
+  //   document.body.style.overflow = '';
+  // }
+
   function closeModal() {
     backdrop.classList.add('is-hidden');
-    bookInformation.innerHTML = '';
+    document.body.style.overflow = 'auto'; // Повернути стандартне переповнення тіла
+    setTimeout(() => {
+      bookInformation.innerHTML = ''; // Очищуємо вміст модального вікна після затримки
+    }, 500); // Затримка у 500 мілісекунд
     orderBtn.removeEventListener('click', onClick);
-    document.body.style.overflow = '';
   }
 
   function onClick(e) {
@@ -98,8 +106,11 @@ function bookInfoMarkup({ book_image, title, author, description, buy_links }) {
 function setOrderBtnText() {
   const orderBtn = document.querySelector('[data-name="order-btn"]');
   const textAfterRemoveBtn = document.querySelector('.text-input');
-  const shopingListBook = JSON.parse(localStorage.getItem('shopingList'));
+  const shopingListBook = JSON.parse(localStorage.getItem('shopingList'))
+    ? JSON.parse(localStorage.getItem('shopingList'))
+    : {};
   const validBookKey = Object.keys(shopingListBook).includes(BOOKID);
+
   if (validBookKey) {
     orderBtn.textContent = 'remove from the shopping list';
     orderBtn.classList.add('btn-shop-list-modal-remove');

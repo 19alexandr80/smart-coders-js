@@ -146,7 +146,6 @@ async function onDataFormAuth(e) {
   const passwordConfirmation =
     e.currentTarget.elements.passwordConfirmation.value;
   if (password && password === passwordConfirmation) {
-    console.log(email, password);
     modalBox.innerHTML = '';
     document.body.classList.remove('scroll-off');
     try {
@@ -215,7 +214,6 @@ burgerEl.addEventListener('click', () => {
   burgerEl.classList.toggle('active');
   document.body.classList.toggle('scroll-off');
 });
-console.log(burgerButtonAuth);
 burgerButtonAuth.addEventListener('click', onAuthBBurger);
 function onAuthBBurger(e) {
   burgerEl.classList.toggle('active');
@@ -226,9 +224,7 @@ function onAuthBBurger(e) {
   // buttonSingAutBurger();
 }
 buttonSingAutBurger();
-buttonSingAutBurger();
 function buttonSingAutBurger() {
-  console.log(localStorage.getItem('tokenResponse'));
   if (localStorage.getItem('tokenResponse')) {
     burgerButtonFilling.innerHTML = 'Log aut';
   } else {

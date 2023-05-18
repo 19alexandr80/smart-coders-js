@@ -4,8 +4,6 @@ import './js/main';
 import './js/categories';
 import './js/scroll-up';
 
-import './js/burgerModal';
-
 // import './js/shopping-list';
 
 import './js/themes';
