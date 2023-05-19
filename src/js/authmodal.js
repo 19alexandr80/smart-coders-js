@@ -33,8 +33,9 @@ const burgerModalEl = document.querySelector('.modal-burger-menu');
 burgerEl.addEventListener('click', () => {
   burgerModalEl.classList.toggle('modal-burger-menu-off');
   burgerEl.classList.toggle('active');
+  window.scrollTo(0, 0);
   document.body.classList.toggle('scroll-off');
-  console.log(burgerEl.classList.value);
+
   if (burgerEl.classList.value.includes('active')) {
     window.document.addEventListener(
       'keydown',
@@ -83,6 +84,7 @@ function modalSignIn() {
     },
     { once: true }
   );
+  window.scrollTo(0, 0);
   if (localStorage.getItem('tokenResponse')) {
     localStorage.removeItem('tokenResponse');
     localStorage.removeItem('userAvatar');
