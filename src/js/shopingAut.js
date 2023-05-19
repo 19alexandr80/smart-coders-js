@@ -22,6 +22,16 @@ const auth = dataFirebase.auth;
 const modalBox = document.querySelector('.modalWindow');
 
 function modalSignIn() {
+  window.document.addEventListener(
+    'keydown',
+    event => {
+      if (event.key === 'Escape') {
+        onCloseModalAuth();
+      }
+    },
+    { once: true }
+  );
+  window.scrollTo(0, 0);
   if (localStorage.getItem('tokenResponse')) {
     localStorage.removeItem('tokenResponse');
     localStorage.removeItem('userAvatar');
@@ -212,7 +222,24 @@ const burgerEl = document.querySelector('.burger-menu-header');
 burgerEl.addEventListener('click', () => {
   burgerModalEl.classList.toggle('modal-burger-menu-off');
   burgerEl.classList.toggle('active');
+  window.scrollTo(0, 0);
   document.body.classList.toggle('scroll-off');
+  if (burgerEl.classList.value.includes('active')) {
+    window.document.addEventListener(
+      'keydown',
+      event => {
+        if (!burgerEl.classList.value.includes('active')) {
+          return;
+        }
+        if (event.key === 'Escape') {
+          burgerModalEl.classList.toggle('modal-burger-menu-off');
+          burgerEl.classList.toggle('active');
+          document.body.classList.toggle('scroll-off');
+        }
+      },
+      { once: true }
+    );
+  }
 });
 burgerButtonAuth.addEventListener('click', onAuthBBurger);
 function onAuthBBurger(e) {

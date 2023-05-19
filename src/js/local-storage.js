@@ -84,15 +84,20 @@ export function getNewDataBatch(currentPage) {
   refs.cards.innerHTML = makeMarkupBook(subarray.slice(minIndex, maxIndex));
 }
 
+
 const trashBtn = document.querySelector('.shop-list__cards');
 trashBtn.addEventListener('click', onBtnTrashClick);
 
 function onBtnTrashClick(e) {
+
+
   if (!e.target.closest('.btn-trash-box')) {
     return;
   }
   const id = e.target.closest('button').dataset.id;
+
   getData();
   //  dataFirebase.deleteBook(id);
   // window.location.reload();
+
 }
