@@ -47,3 +47,14 @@ export function getNewDataBatch(currentPage) {
 
   refs.cards.innerHTML = makeMarkupBook(subarray.slice(minIndex, maxIndex));
 }
+const btnTrashShoping = document.querySelector('.shop-list__cards');
+btnTrashShoping.addEventListener('click', onBtnTrashSoping);
+
+async function onBtnTrashSoping(e) {
+  if (!e.target.closest('.btn-trash-box')) {
+    return;
+  }
+  const id = e.target.closest('button').dataset.id;
+
+  getData();
+}
