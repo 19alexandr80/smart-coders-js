@@ -26,22 +26,22 @@ export function getData() {
   storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
   console.log('getData()', Object.values(storageData).length); //!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  if (!storageData) {
-    refs.cards.classList.add('visually-hidden');
-    refs.container.innerHTML = `
-      <div class="shop-list__empty-page">
-          <p class="textEmptyPage">
-            This page is empty, add some books and proceed to order.
-          </p>
-          <img class="imgEmptyPage" src="./images/is-empty@2x.png" alt="books" />
-      </div>`;
+  const items = Object.values(storageData);
 
-    remove;
+  if (!items.length) {
+    refs.cards.classList.add('visually-hidden');
+    refs.container.classList.remove('visually-hidden');
+    // refs.container.innerHTML = `
+    //   <p class="textEmptyPage">
+    //     This page is empty, add some books and proceed to order.
+    //   </p>
+    //   <img class="imgEmptyPage" src="../images/is-empty@2x.png" alt="books" />
+    //   `;
+
+    return;
   }
 
-  refs.container.remove();
-
-  const items = Object.values(storageData);
+  // refs.container.remove();
 
   quantityItems = items.length;
   quantityPages = Math.ceil(quantityItems / cards);
