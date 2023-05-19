@@ -2,7 +2,12 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 
 import { createPaginataion } from './pagination-btn.js';
-import { quantityPages, getNewDataBatch } from './local-storage';
+import {
+  quantityPages,
+  getNewDataBatch,
+  getNewQuantityPages,
+  newLastPage,
+} from './local-storage';
 
 Notify.init({
   fontSize: '20px',
@@ -36,8 +41,12 @@ if (quantityPages > 1) {
   currentPage = Number(currentPageElement.textContent);
 }
 
-const lastPage = quantityPages;
+// getNewQuantityPages();
+// console.log('getNewQuantityPages(x)', NewQuantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
+let lastPage = quantityPages; //!!! const -> let
 let page = 1;
+console.log('let lastPage = quantityPages', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //! =====================================================
 // Mutation Observer для відслідковування зміни currentPageElement
@@ -55,6 +64,11 @@ const observer = new MutationObserver(callback);
 
 const config = { childList: true, subtree: true };
 observer.observe(paginationCenter, config);
+
+// if (!document.getElementById('current')) {
+//   observer.unobserve(paginationCenter);
+// } //!!!!!!!!!!!!!!!!!!!!!!!!!
+
 //! =====================================================
 
 // Прослуховувач маркерів пагінації і додаткових (не статичних) кнопок
@@ -65,24 +79,31 @@ function handlerPaginationCenter(evt) {
     if (evt.target.classList.contains('btn-pag--more-left')) {
       page = currentPage - 3;
 
-      getPaginationPage(page);
+      getPaginationPage(page, lastPage);
     }
 
     if (evt.target.classList.contains('btn-pag--more-right')) {
       if (currentPage <= lastPage - 3) {
         page = currentPage + 3;
-        getPaginationPage(page);
+        getPaginationPage(page, lastPage);
       } else {
         page = lastPage;
-        getPaginationPage(page);
+        getPaginationPage(page, lastPage);
       }
     }
 
     return;
   }
 
+  lastPage = getNewQuantityPages();
+
+  console.log('getNewQuantityPages(2)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  // let lastPage = newLastPage;
   page = Number(evt.target.textContent);
-  getPaginationPage(page);
+  getPaginationPage(page, lastPage);
+
+  console.log('handlerPaginationCenter(lastPage)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 // Прослуховувач лівих керівних кнопок пагінації
@@ -103,7 +124,7 @@ function handlerPaginationLeft(evt) {
     }
 
     page = 1;
-    getPaginationPage(page);
+    getPaginationPage(page, lastPage);
   }
 
   if (evt.target.closest('.js-pag-prev')) {
@@ -116,7 +137,7 @@ function handlerPaginationLeft(evt) {
     }
 
     page = currentPage - 1;
-    getPaginationPage(page);
+    getPaginationPage(page, lastPage);
   }
 }
 
@@ -136,7 +157,7 @@ function handlerPaginationRight(evt) {
     }
 
     page = lastPage;
-    getPaginationPage(page);
+    getPaginationPage(page, lastPage);
   }
 
   if (evt.target.closest('.js-pag-next')) {
@@ -147,13 +168,15 @@ function handlerPaginationRight(evt) {
     }
 
     page = currentPage + 1;
-    getPaginationPage(page);
+    getPaginationPage(page, lastPage);
   }
 }
 
-function getPaginationPage(page) {
+function getPaginationPage(page, lastPage) {
   getNewDataBatch(page);
-  createPaginataion(page, lastPage);
 
+  createPaginataion(page, lastPage);
+  console.log('createPaginataion(page)', page); //!!!!!!!!!!!!!!!!!!!!!!!!!
+  console.log('createPaginataion(lastPage)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
   // currentPage = page; //застаріле (необхідне без MutationObserver)
 }
