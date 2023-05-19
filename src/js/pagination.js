@@ -36,19 +36,13 @@ export const paginationCenter = document.querySelector('.js-pagination-center');
 export const paginationRight = document.querySelector('.js-pagination-right');
 const currentPageElement = document.getElementById('current');
 
-console.log(currentPageElement); //!!!!!!!!!!!!!!!!!!!!!!!!!
-
 let currentPage = 1;
 if (quantityPages > 1) {
   currentPage = Number(currentPageElement.textContent);
 }
 
-// getNewQuantityPages();
-// console.log('getNewQuantityPages(x)', NewQuantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
-
 let lastPage = quantityPages; //!!! const -> let
 let page = 1;
-console.log('let lastPage = quantityPages', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //! =====================================================
 // Mutation Observer для відслідковування зміни currentPageElement
@@ -123,9 +117,6 @@ function handlerPaginationCenter(evt) {
     observer.disconnect();
   } //!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  console.log('getNewQuantityPages(2)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
-
-  // let lastPage = newLastPage;
   page = Number(evt.target.textContent);
 
   lastPage = getNewQuantityPages();
@@ -133,14 +124,6 @@ function handlerPaginationCenter(evt) {
     observer.disconnect();
   }
   getPaginationPage(page, lastPage);
-
-  console.log('handlerPaginationCenter(lastPage)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
-  console.log(
-    'handlerPaginationCenter(lastPage)',
-    currentPage,
-    '///',
-    lastPage
-  ); //!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 // Прослуховувач лівих керівних кнопок пагінації
@@ -231,7 +214,6 @@ function getPaginationPage(page, lastPage) {
   getNewDataBatch(page);
 
   createPaginataion(page, lastPage);
-  console.log('createPaginataion(page)', page); //!!!!!!!!!!!!!!!!!!!!!!!!!
-  console.log('createPaginataion(lastPage)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
   // currentPage = page; //застаріле (необхідне без MutationObserver)
 }
