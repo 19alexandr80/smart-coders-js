@@ -59,6 +59,22 @@ export function getData() {
 
   createPaginataionBtn(quantityPages);
   createPaginataion(currentPage, quantityPages);
+
+  // getNewQuantityPages(quantityPages);
+
+  console.log('getData(quantityPages)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
+  return quantityPages;
+}
+
+// console.log('QuantityPages(0)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
+getNewQuantityPages(); //!!!!!!!!!!!!!!!!!!!!!!!!!
+export function getNewQuantityPages(quantityPages) {
+  console.log('getNewQuantityPages(1)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
+  const newLastPage = getData();
+
+  console.log('newLastPage', newLastPage);
+  return newLastPage;
 }
 
 export function getNewDataBatch(currentPage) {
@@ -68,10 +84,10 @@ export function getNewDataBatch(currentPage) {
   refs.cards.innerHTML = makeMarkupBook(subarray.slice(minIndex, maxIndex));
 }
 
-const btnTrash12 = document.querySelector('.shop-list__cards');
-btnTrash12.addEventListener('click', onBtnTrash12);
+const trashBtn = document.querySelector('.shop-list__cards');
+trashBtn.addEventListener('click', onBtnTrashClick);
 
-function onBtnTrash12(e) {
+function onBtnTrashClick(e) {
   if (!e.target.closest('.btn-trash-box')) {
     return;
   }

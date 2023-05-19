@@ -137,7 +137,7 @@ function onRemoveCard(evt) {
       delete storageData[key];
     }
   });
-
+  console.log('Push Del'); //!!!!!!!!!!!!!!!!!!!!!!!!!
   localStorage.setItem('shopingList', JSON.stringify(storageData));
 
   console.log('onRemoveCard(evt)', Object.values(storageData).length); //!!!!!!!!!!!!!!!!!!!!!!!!!
