@@ -137,10 +137,8 @@ function onRemoveCard(evt) {
       delete storageData[key];
     }
   });
-  console.log('Push Del'); //!!!!!!!!!!!!!!!!!!!!!!!!!
-  localStorage.setItem('shopingList', JSON.stringify(storageData));
 
-  console.log('onRemoveCard(evt)', Object.values(storageData).length); //!!!!!!!!!!!!!!!!!!!!!!!!!
+  localStorage.setItem('shopingList', JSON.stringify(storageData));
 
   // видаляємо книгу з розмітки сторінки
   evt.target.closest('.shop-list__one-card').remove();

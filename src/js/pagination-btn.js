@@ -9,7 +9,6 @@ export function createPaginataionBtn(totalPages) {
   let markupBtnLeft = '';
   let markupBtnRight = '';
 
-  console.log('createPaginataionBtn(totalPages)', totalPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
   paginationLeft.innerHTML = markupBtnLeft;
   paginationRight.innerHTML = markupBtnRight;
 
@@ -52,12 +51,7 @@ export function createPaginataionBtn(totalPages) {
 // Рендерінг маркерів пагінації і додаткових (не статичних) кнопок
 export function createPaginataion(currentPage, totalPages) {
   let markup = '';
-  console.log(
-    'createPaginataion(currentPage, totalPages)',
-    currentPage,
-    '/',
-    totalPages
-  ); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
   paginationCenter.innerHTML = markup;
 
   if (totalPages > 1) {

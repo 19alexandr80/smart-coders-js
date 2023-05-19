@@ -24,7 +24,6 @@ getData();
 // get data from local storage by key
 export function getData() {
   storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  console.log('getData()', Object.values(storageData).length); //!!!!!!!!!!!!!!!!!!!!!!!!!
 
   const items = Object.values(storageData);
 
@@ -62,18 +61,13 @@ export function getData() {
 
   // getNewQuantityPages(quantityPages);
 
-  console.log('getData(quantityPages)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
   return quantityPages;
 }
 
-// console.log('QuantityPages(0)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
-
 getNewQuantityPages(); //!!!!!!!!!!!!!!!!!!!!!!!!!
 export function getNewQuantityPages(quantityPages) {
-  console.log('getNewQuantityPages(1)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
   const newLastPage = getData();
 
-  console.log('newLastPage', newLastPage);
   return newLastPage;
 }
 
