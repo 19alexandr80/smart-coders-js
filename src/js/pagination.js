@@ -49,34 +49,41 @@ let page = 1;
 console.log('let lastPage = quantityPages', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //! =====================================================
-// Mutation Observer для відслідковування зміни currentPageElement
-const callback = function (mutationsList) {
-  for (const mutation of mutationsList) {
-    if (mutation.type === 'childList') {
-      const element = document.getElementById('current');
+// // Mutation Observer для відслідковування зміни currentPageElement
+// const callback = function (mutationsList) {
+//   for (const mutation of mutationsList) {
+//     if (mutation.type === 'childList') {
+//       const element = document.getElementById('current');
 
-      currentPage = Number(element.textContent);
-    }
-  }
-};
+//       currentPage = Number(element.textContent);
+//     }
+//   }
+// };
 
-const observer = new MutationObserver(callback);
+// export const observer = new MutationObserver(callback);
 
-const config = { childList: true, subtree: true };
-observer.observe(paginationCenter, config);
-
-// if (!document.getElementById('current')) {
-//   observer.unobserve(paginationCenter);
-// } //!!!!!!!!!!!!!!!!!!!!!!!!!
+// const config = { childList: true, subtree: true };
+// observer.observe(paginationCenter, config);
 
 //! =====================================================
+
+// lastPage = getNewQuantityPages();
+// if (lastPage === 1) {
+//   observer.disconnect();
+// } //!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // Прослуховувач маркерів пагінації і додаткових (не статичних) кнопок
 paginationCenter.addEventListener('click', handlerPaginationCenter);
 
 function handlerPaginationCenter(evt) {
+  console.log('getNewQuantityPages(2)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
   if (!evt.target.classList.contains('js-pag-marker')) {
     if (evt.target.classList.contains('btn-pag--more-left')) {
+      // lastPage = getNewQuantityPages();
+      // if (lastPage < 2) {
+      //   observer.disconnect();
+      // } //!!!!!!!!!!!!!!!!!!!!!!!!!
       page = currentPage - 3;
 
       getPaginationPage(page, lastPage);
@@ -95,12 +102,9 @@ function handlerPaginationCenter(evt) {
     return;
   }
 
-  lastPage = getNewQuantityPages();
-
-  console.log('getNewQuantityPages(2)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
-
   // let lastPage = newLastPage;
   page = Number(evt.target.textContent);
+
   getPaginationPage(page, lastPage);
 
   console.log('handlerPaginationCenter(lastPage)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -110,6 +114,9 @@ function handlerPaginationCenter(evt) {
 paginationLeft.addEventListener('click', handlerPaginationLeft);
 
 function handlerPaginationLeft(evt) {
+  // lastPage = getNewQuantityPages();
+  // console.log('from handlerPaginationLeft', lastPage); //!!!!!!
+
   if (!evt.target.closest('.js-pagination-left')) {
     return;
   }
@@ -145,6 +152,9 @@ function handlerPaginationLeft(evt) {
 paginationRight.addEventListener('click', handlerPaginationRight);
 
 function handlerPaginationRight(evt) {
+  // lastPage = getNewQuantityPages();
+  // console.log('from handlerPaginationRight', lastPage); //!!!!!!
+
   if (!evt.target.closest('.js-pagination-right')) {
     return;
   }
@@ -178,5 +188,5 @@ function getPaginationPage(page, lastPage) {
   createPaginataion(page, lastPage);
   console.log('createPaginataion(page)', page); //!!!!!!!!!!!!!!!!!!!!!!!!!
   console.log('createPaginataion(lastPage)', lastPage); //!!!!!!!!!!!!!!!!!!!!!!!!!
-  // currentPage = page; //застаріле (необхідне без MutationObserver)
+  currentPage = page; //застаріле (необхідне без MutationObserver)
 }
