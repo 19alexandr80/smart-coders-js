@@ -137,7 +137,7 @@ function onRemoveCard(evt) {
       delete storageData[key];
     }
   });
-
+  console.log('Push Del'); //!!!!!!!!!!!!!!!!!!!!!!!!!
   localStorage.setItem('shopingList', JSON.stringify(storageData));
 
   console.log('onRemoveCard(evt)', Object.values(storageData).length); //!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -155,7 +155,7 @@ function onRemoveCard(evt) {
     <p class="textEmptyPage">
       This page is empty, add some books and proceed to order.
     </p>
-    <img class="imgEmptyPage" src="./images/is-empty@2x.png" alt="" />
+    <img class="imgEmptyPage" src="./images/is-empty@2x.png" alt="books" />
   </div>`;
   }
 }

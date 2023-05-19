@@ -1,5 +1,6 @@
-import { refs } from './shopping-list.js';
-import { makeMarkupBook } from './shopping-list.js';
+import { refs } from './shop-list-make-markup.js';
+import { makeMarkupBook } from './shop-list-make-markup.js';
+// import { onOpenPage } from './shop-list-make-markup.js'; //!!!!!!!!!!!!!!!!!!!!????
 import { createPaginataionBtn, createPaginataion } from './pagination-btn.js';
 
 let subarray = [];
@@ -16,13 +17,31 @@ if (window.screen.width < 768) {
 }
 
 const STORAGE_KEY = 'shopingList';
+export let storageData = {};
 
 getData();
 
 // get data from local storage by key
-function getData() {
-  const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+export function getData() {
+  storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  console.log('getData()', Object.values(storageData).length); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
   const items = Object.values(storageData);
+
+  if (!items.length) {
+    refs.cards.classList.add('visually-hidden');
+    refs.container.classList.remove('visually-hidden');
+    // refs.container.innerHTML = `
+    //   <p class="textEmptyPage">
+    //     This page is empty, add some books and proceed to order.
+    //   </p>
+    //   <img class="imgEmptyPage" src="../images/is-empty@2x.png" alt="books" />
+    //   `;
+
+    return;
+  }
+
+  // refs.container.remove();
 
   quantityItems = items.length;
   quantityPages = Math.ceil(quantityItems / cards);
@@ -35,10 +54,27 @@ function getData() {
     }
   }
 
+  // onOpenPage(storageData);
   refs.cards.innerHTML = makeMarkupBook(subarray.slice(0, cards));
 
   createPaginataionBtn(quantityPages);
   createPaginataion(currentPage, quantityPages);
+
+  // getNewQuantityPages(quantityPages);
+
+  console.log('getData(quantityPages)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
+  return quantityPages;
+}
+
+// console.log('QuantityPages(0)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
+
+getNewQuantityPages(); //!!!!!!!!!!!!!!!!!!!!!!!!!
+export function getNewQuantityPages(quantityPages) {
+  console.log('getNewQuantityPages(1)', quantityPages); //!!!!!!!!!!!!!!!!!!!!!!!!!
+  const newLastPage = getData();
+
+  console.log('newLastPage', newLastPage);
+  return newLastPage;
 }
 
 export function getNewDataBatch(currentPage) {
@@ -47,14 +83,21 @@ export function getNewDataBatch(currentPage) {
 
   refs.cards.innerHTML = makeMarkupBook(subarray.slice(minIndex, maxIndex));
 }
-const btnTrashShoping = document.querySelector('.shop-list__cards');
-btnTrashShoping.addEventListener('click', onBtnTrashSoping);
 
-async function onBtnTrashSoping(e) {
+
+const trashBtn = document.querySelector('.shop-list__cards');
+trashBtn.addEventListener('click', onBtnTrashClick);
+
+function onBtnTrashClick(e) {
+
+
   if (!e.target.closest('.btn-trash-box')) {
     return;
   }
   const id = e.target.closest('button').dataset.id;
 
   getData();
+  //  dataFirebase.deleteBook(id);
+  // window.location.reload();
+
 }
