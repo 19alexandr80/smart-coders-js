@@ -6,7 +6,6 @@ import {
 import svgRight from '../images/icons.svg';
 import mail from '../images/icons.svg';
 import lock from '../images/icons.svg';
-import { once } from 'process';
 
 //======================================================================
 const buttonAutnSing = document.querySelector('.button-sing-auth-js');
