@@ -6,6 +6,7 @@ import {
 import svgRight from '../images/icons.svg';
 import mail from '../images/icons.svg';
 import lock from '../images/icons.svg';
+import { once } from 'process';
 
 //======================================================================
 const buttonAutnSing = document.querySelector('.button-sing-auth-js');
@@ -33,6 +34,23 @@ burgerEl.addEventListener('click', () => {
   burgerModalEl.classList.toggle('modal-burger-menu-off');
   burgerEl.classList.toggle('active');
   document.body.classList.toggle('scroll-off');
+  console.log(burgerEl.classList.value);
+  if (burgerEl.classList.value.includes('active')) {
+    window.document.addEventListener(
+      'keydown',
+      event => {
+        if (!burgerEl.classList.value.includes('active')) {
+          return;
+        }
+        if (event.key === 'Escape') {
+          burgerModalEl.classList.toggle('modal-burger-menu-off');
+          burgerEl.classList.toggle('active');
+          document.body.classList.toggle('scroll-off');
+        }
+      },
+      { once: true }
+    );
+  }
 });
 const burgerButtonAuth = document.querySelector('.burger-button-auth');
 const burgerButtonFilling = document.querySelector('.burger-button-span');
@@ -41,9 +59,7 @@ function onAuthBBurger(e) {
   burgerEl.classList.toggle('active');
   burgerModalEl.classList.toggle('modal-burger-menu-off');
   document.body.classList.toggle('scroll-off');
-  // buttonSingAutBurger();
   modalSignIn();
-  // buttonSingAutBurger();
 }
 buttonSingAutBurger();
 function buttonSingAutBurger() {
@@ -57,6 +73,16 @@ function buttonSingAutBurger() {
 // =============================================================================
 
 function modalSignIn() {
+  window.document.addEventListener(
+    'keydown',
+    event => {
+      console.log('kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
+      if (event.key === 'Escape') {
+        onCloseModalAuth();
+      }
+    },
+    { once: true }
+  );
   if (localStorage.getItem('tokenResponse')) {
     localStorage.removeItem('tokenResponse');
     localStorage.removeItem('userAvatar');
