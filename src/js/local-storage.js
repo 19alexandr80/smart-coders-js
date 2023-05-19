@@ -1,6 +1,5 @@
-import { refs } from './shop-list-make-markup.js';
-import { makeMarkupBook } from './shop-list-make-markup.js';
-// import { onOpenPage } from './shop-list-make-markup.js'; //!!!!!!!!!!!!!!!!!!!!????
+import { refs } from './shopping-list.js';
+import { makeMarkupBook } from './shopping-list.js';
 import { createPaginataionBtn, createPaginataion } from './pagination-btn.js';
 
 let subarray = [];
@@ -17,30 +16,12 @@ if (window.screen.width < 768) {
 }
 
 const STORAGE_KEY = 'shopingList';
-export let storageData = {};
 
 getData();
 
 // get data from local storage by key
-export function getData() {
-  storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  console.log('getData()', Object.values(storageData).length); //!!!!!!!!!!!!!!!!!!!!!!!!!
-
-  if (!storageData) {
-    refs.cards.classList.add('visually-hidden');
-    refs.container.innerHTML = `
-      <div class="shop-list__empty-page">
-          <p class="textEmptyPage">
-            This page is empty, add some books and proceed to order.
-          </p>
-          <img class="imgEmptyPage" src="./images/is-empty@2x.png" alt="books" />
-      </div>`;
-
-    remove;
-  }
-
-  refs.container.remove();
-
+function getData() {
+  const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
   const items = Object.values(storageData);
 
   quantityItems = items.length;
@@ -54,7 +35,6 @@ export function getData() {
     }
   }
 
-  // onOpenPage(storageData);
   refs.cards.innerHTML = makeMarkupBook(subarray.slice(0, cards));
 
   createPaginataionBtn(quantityPages);
@@ -67,16 +47,14 @@ export function getNewDataBatch(currentPage) {
 
   refs.cards.innerHTML = makeMarkupBook(subarray.slice(minIndex, maxIndex));
 }
+const btnTrashShoping = document.querySelector('.shop-list__cards');
+btnTrashShoping.addEventListener('click', onBtnTrashSoping);
 
-const btnTrash12 = document.querySelector('.shop-list__cards');
-btnTrash12.addEventListener('click', onBtnTrash12);
-
-function onBtnTrash12(e) {
+async function onBtnTrashSoping(e) {
   if (!e.target.closest('.btn-trash-box')) {
     return;
   }
   const id = e.target.closest('button').dataset.id;
+
   getData();
-  //  dataFirebase.deleteBook(id);
-  // window.location.reload();
 }
