@@ -76,7 +76,6 @@ function modalSignIn() {
   window.document.addEventListener(
     'keydown',
     event => {
-      console.log('kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
       if (event.key === 'Escape') {
         onCloseModalAuth();
       }
