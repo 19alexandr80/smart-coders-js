@@ -46,6 +46,7 @@ export function getData() {
   quantityPages = Math.ceil(quantityItems / cards);
 
   let i = 0;
+  subarray = [];
   for (const item of items) {
     if (i <= quantityItems) {
       subarray[i] = item;
